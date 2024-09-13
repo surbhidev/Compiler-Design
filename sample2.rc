@@ -1,0 +1,14 @@
+//reads csv file as input
+input weather_data.csv;
+// Converts CSV file into data frame
+df = read('weather_data.csv');
+// Fills missing values with the median
+df_filled = df.miss_value(fill,method=ffill);
+// Group by Humidity and calculate the mean temperature
+grouped = df.groupby('Humidity').agg({'Temperature': 'mean'});
+// Reset index to make 'Humidity' a column again
+grouped.reset_index();
+//creating an output csv file
+grouped.to_csv('Output.csv', index=False)
+// Creating output csv of the grouped and aggregated data
+output Output.csv

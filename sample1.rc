@@ -1,0 +1,15 @@
+//reads csv file as input
+input weather_data.csv;
+// Converts CSV file into data frame
+df = read('weather_data.csv');
+// Fills missing values with the median
+df_filled = df.miss_value(fill,df.median());
+// Calculate aggregate statistics
+mean_temp = df_filled['Temperature'].mean();
+max_wind_speed = df_filled['WindSpeed'].max();
+sum_precipitation = df_filled['Precipitation'].sum();
+// Print results
+print(“Mean Temperature:”+mean_temp);
+print("Max Wind Speed:”+max_wind_speed");
+print("Total Precipitation:” + sum_precipitation);
+df_filled.head();
