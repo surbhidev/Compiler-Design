@@ -31,7 +31,7 @@
 #define NE_OPERATOR 23
 #define PERCENTAGE 24
 #define INTEGER 25
-#define WORD 26
+#define IDENTIFIER 26
 #define SEMICOLON 27
 #define AND_OPERATOR 28
 #define OR_OPERATOR 29
@@ -55,6 +55,7 @@ FILE *outfile;
 
 // Global counter
 int column = 0;
+int lineFlag = 0;
 %}
 start \/\*
 end \*\/
@@ -83,7 +84,7 @@ end \*\/
 ">="            {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return(GE_OPERATOR);}
 "=="            {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return(EQ_OPERATOR);}
 "!="            {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return(NE_OPERATOR);}
-";"             {count(); fprintf(outfile, "< | PUNCTUATION,(%s) | >\n",yytext); yylineno++; return(SEMICOLON);}
+";"             {count(); fprintf(outfile, "< | PUNCTUATION,(%s) | >\n",yytext); return(SEMICOLON);}
 "+"             {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return('+');}
 "-"             {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return('-');}
 "*"             {count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return('*');}
@@ -111,23 +112,31 @@ end \*\/
 ">>"			{count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return(RIGHTSHIFT_OPERATOR);}
 "<<"			{count(); fprintf(outfile, "< | OPERATOR,(%s) | >",yytext); return(LEFTSHIFT_OPERATOR);}
 "..."			{count(); fprintf(outfile, "< | PUNCTUATION,(%s) | >",yytext); return(ELLIPSIS);}
-[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)   {count(); fprintf(outfile, "< | EXPONENTIAL,(%s) | >",yytext); return EXPONENTIAL;}
-[0-9]+(\.[0-9]+)?% {count(); fprintf(outfile, "< | PERCENTAGE,(%s) | >",yytext); return PERCENTAGE;}
-\"([^\"\\]|\\.)*\" {count(); fprintf(outfile, "< | STRING_LITERAL,(%s) | >",yytext); return STRING;}
-[A-Za-z_]+\.csv  {count(); fprintf(outfile, "< | CSVFILE,(%s) | >",yytext); return CSVFILE;}
-[A-Za-z][A-Za-z0-9_]*          {count(); fprintf(outfile, "< | WORD,(%s) | >",yytext); return WORD;}
-\/\/[^\n]* { yylineno++; }
-{start}([^*]|\*+[^/])*{end} { yylineno++; }
-' {count(); fprintf(outfile, "< | PUNCTUATION,(') | >"); return '\'';}
-\" {count(); fprintf(outfile, "< | PUNCTUATION,('\"') | >"); return '\"';}
-[ ]                 ;
-. {count(); fprintf(outfile, "< | DUST,(%s) | >", yytext); return DUST;}
+[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); fprintf(outfile, "< | EXPONENTIAL,(%s) | >",yytext); return EXPONENTIAL;}
+[0-9]+(\.[0-9]+)?%                     {count(); fprintf(outfile, "< | PERCENTAGE,(%s) | >",yytext); return PERCENTAGE;}
+[0-9]+(\.[0-9]+)                       { count(); fprintf(outfile, "< | FLOAT,(%s) | >", yytext); return FLOAT; }
+[0-9]+                                 { count(); fprintf(outfile, "< | INTEGER,(%s) | >", yytext); return INTEGER; }
+\"([^\"\\]|\\.)*\"                     {count(); fprintf(outfile, "< | STRING_LITERAL,(%s) | >",yytext); return STRING;}
+[A-Za-z_]+\.csv                        {count(); fprintf(outfile, "< | CSVFILE,(%s) | >",yytext); return CSVFILE;}
+[A-Za-z][A-Za-z0-9_]*                  {count(); fprintf(outfile, "< | IDENTIFIER,(%s) | >",yytext); return IDENTIFIER;}
+\/\/[^\n]*                             ;
+{start}([^*]|\*+[^/])*{end}            ;
+'                                      {count(); fprintf(outfile, "< | PUNCTUATION,(') | >"); return '\'';}
+\"                                     {count(); fprintf(outfile, "< | PUNCTUATION,('\"') | >"); return '\"';}
+[ ]                                    ;
+\n                                     { count(); yylineno++; }
+[ \t\v\f]                              { count(); }
+.                                      {count(); fprintf(outfile, "< | DUST,(%s) | >", yytext); return DUST;}
 %%
 int main(int argc, char **argv)
 {
     char filename[100];
     scanf("%s",filename);
     yyin = fopen(filename,"r");
+    if (!yyin) {
+        fprintf(stderr, "Error: Unable to open input file\n");
+        exit(1);
+    }
     // Open the output file
     outfile = fopen("output.txt", "w");
     if (!outfile) {
