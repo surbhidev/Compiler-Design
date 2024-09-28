@@ -20,13 +20,15 @@ extern FILE *yyout;
 %start translation_unit
 
 %token FOR WHILE IF ELSE BREAK CONTINUE RETURN
-%token INT FLOAT STRING BOOL TRUE FALSE
+%token INT FLOAT STRING BOOL TRUE FALSE SINGLE_QUOTED_STRING
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
 %token LE_OPERATOR GE_OPERATOR EQ_OPERATOR NE_OPERATOR PERCENTAGE
 %token INTEGER IDENTIFIER SEMICOLON AND_OPERATOR OR_OPERATOR
 %token INC_OPERATOR DEC_OPERATOR RIGHTSHIFT_OPERATOR LEFTSHIFT_OPERATOR
 %token ELLIPSIS EXPONENTIAL DUST CSVFILE FUNCTIONCALL PRINT CONSTANT
+%token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
+%token AXIS_TOKEN DROP_TOKEN INPLACE_TOKEN METHOD_TOKEN HOW_TOKEN ON_TOKEN SUFFIXES_TOKEN FILL_TOKEN
 
 %%
 
@@ -37,6 +39,7 @@ translation_unit:
 
 declaration:
     type IDENTIFIER SEMICOLON
+    | assignment_statement
     | function_definition
     | input_statement
     ;
@@ -52,16 +55,55 @@ input_statement:
     INPUT CSVFILE SEMICOLON
     ;
 
+assignment_statement:
+    IDENTIFIER '=' function_call_statement SEMICOLON
+    ;
 
 function_definition:
     type IDENTIFIER '(' parameter_list ')' compound_statement
     ;
 
-parameter_list:
-    type IDENTIFIER
-    | parameter_list ',' type IDENTIFIER
-    | 
+function_call_statement:
+    READCSVFUNC '(' SINGLE_QUOTED_STRING ')'           
+    | HEADFUNC '(' ')'                                  
+    | TAILFUNC '(' ')'                                  
+    | RESETINDEXFUNC '(' parameter_list ')'           
+    | TOCSVFUNC '(' SINGLE_QUOTED_STRING ',' parameter_list ')' 
+    | DESCRIBEFUNC '(' ')'                              
+    | MEANFUNC '(' parameter_list ')'                  
+    | MODEFUNC '(' ')'                                   
+    | MEDIANFUNC '(' ')'                                 
+    | SUMFUNC '(' ')'                                   
+    | MINFUNC '(' ')'                                    
+    | MAXFUNC '(' ')'                                   
+    | MISSVALUEFUNC '(' fill_action ',' parameter_list ')' 
+    | GROUPBYFUNC '(' SINGLE_QUOTED_STRING ')'          
+    | CONCATFUNC '(' '[' expression_list ']' ',' parameter_list ')' 
+    | MERGEFUNC '(' IDENTIFIER ',' IDENTIFIER ',' how_clause ',' on_clause ',' suffixes_clause ')' 
+    | JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
     ;
+
+parameter_list:
+    | parameter
+    | parameter_list ',' parameter
+    ;
+
+
+parameter:
+    type IDENTIFIER
+    | AXIS_TOKEN '=' INTEGER
+    | INPLACE_TOKEN '=' BOOL
+    | METHOD_TOKEN '=' SINGLE_QUOTED_STRING
+    ;
+
+how_clause:
+    HOW_TOKEN '=' SINGLE_QUOTED_STRING
+
+on_clause:
+    ON_TOKEN '=' SINGLE_QUOTED_STRING
+
+suffixes_clause:
+    SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING ',' SINGLE_QUOTED_STRING ']'
 
 compound_statement:
     '{' statement_list '}'
@@ -107,6 +149,11 @@ expression_statement:
     | expression SEMICOLON
     ;
 
+expression_list:
+    expression
+    | expression_list ',' expression
+    ;
+
 expression:
     IDENTIFIER
     | CONSTANT
@@ -117,6 +164,12 @@ expression:
     | expression '%' expression
     | '(' expression ')'
     ;
+
+fill_action:
+    FILL_TOKEN
+    | DROP_TOKEN
+    ;
+
 
 %%
 
