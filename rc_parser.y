@@ -4,7 +4,7 @@
 
 void yyerror(const char *s);
 int yylex(); 
-
+extern int yylineno;
 extern FILE *yyin;
 extern FILE *yyout;
 %}
@@ -38,6 +38,7 @@ translation_unit:
 declaration:
     type IDENTIFIER SEMICOLON
     | function_definition
+    | input_statement
     ;
 
 type:
@@ -46,6 +47,11 @@ type:
     | STRING
     | BOOL
     ;
+
+input_statement:
+    INPUT CSVFILE SEMICOLON
+    ;
+
 
 function_definition:
     type IDENTIFIER '(' parameter_list ')' compound_statement
@@ -115,7 +121,7 @@ expression:
 %%
 
 void yyerror(const char *s) {
-    fprintf(stderr, "Error: %s\n", s);
+    fprintf(stderr, "Error at line %d: %s\n", yylineno, s);
 }
 
 int yywrap() {
