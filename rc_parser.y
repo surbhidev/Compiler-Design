@@ -38,17 +38,10 @@ translation_unit:
     ;
 
 declaration:
-    type IDENTIFIER SEMICOLON
+    IDENTIFIER SEMICOLON
     | assignment_statement SEMICOLON
     | function_definition
     | input_statement
-    ;
-
-type:
-    INT
-    | FLOAT
-    | STRING
-    | BOOL
     ;
 
 input_statement:
@@ -56,8 +49,7 @@ input_statement:
     ;
 
 assignment_statement:
-    IDENTIFIER EQ_OPERATOR expressions          { fprintf(syntax, "%s = %s;\n", $1, $3);}  { fprintf(statementlog, "%d: Assignment Statement\n", yylineno); } 
-    | access_operator EQ_OPERATOR expressions   { fprintf(syntax, "%s = %s;\n", $1, $3);}  { fprintf(statementlog, "%d: Assignment Statement\n", yylineno); } 
+    IDENTIFIER EQ_OPERATOR expressions          { fprintf(syntax, "%s = %s;\n", $1, $3);}  { fprintf(statementlog, "%d: Assignment Statement\n", yylineno); }
     ;
 
 expressions:
@@ -113,8 +105,72 @@ expressions:
     ;
 
 
-function_definition:
-    type IDENTIFIER '(' parameter_list ')' compound_statement
+Function_Declaration:
+    FUNC IDENTIFIER '(' argument_list ')'
+    '{' function_body '}'
+    ;
+
+argument_list:
+    IDENTIFIER
+    | argument_list ',' IDENTIFIER
+    |
+    ;
+
+function_body: 
+    '{' loop_body '}'                                          { $$ = strdup($2); }                                          
+    | Function_Assignment_Statement SEMICOLON function_body         { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "%s; %s", $1, $3);
+                                                                        $$ = strdup(buffer);
+                                                                    }
+    | Function_Loop_Statement function_body               { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "%s %s", $1, $3);
+                                                                        $$ = strdup(buffer);
+                                                                    }
+    | Identifier_List SEMICOLON function_body         { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "%s; %s", $1, $3);
+                                                                        $$ = strdup(buffer);
+                                                                    }
+    | Function_Print_Statement SEMICOLON function_body              { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "%s; %s", $1, $3);
+                                                                        $$ = strdup(buffer);
+                                                                    }
+    | RTRN return_statement SEMICOLON                               { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "return %s;", $2);
+                                                                        $$ = strdup(buffer);
+                                                                    } 
+    ;
+
+return_statement:
+    expressions         { $$ = strdup($1); }
+    ;
+
+Function_Print_Statement:
+    PRINT '(' print_expressions ')'  
+    | 
+    ;
+
+print_expressions:
+    expressions
+    | strings_list
+    | print_expressions '+' strings_list
+    ;
+
+strings_list:
+    STRING
+    ;
+
+Function_Loop_Statement:
+    Sub_Loop_Statement                            { fprintf(syntax, "%s\n",$1); }
+    ;
+
+Print_Statement:
+    PRINT '(' print_expressions ')'  
+    | 
     ;
 
 function_call_statement:
@@ -170,7 +226,6 @@ Loop_Statement:
 Sub_Loop_Statement:
     LOOP '(' initializtion SEMICOLON predicate_list SEMICOLON update ')'
     '{' loop_body '}' 
-    | Sub_Loop_Statement SEMICOLON finally  
     ;
 
 initializtion:
@@ -208,6 +263,85 @@ Identifier_List:
                                                             }
     ;
 
+update:
+    Function_Assignment_Statement                      
+    ;
+
+loop_body:
+    statment_list   
+    ;
+
+statment_list:
+    statement                                               { $$ = strdup($1); }            
+    | statment_list statement                               { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s", $1, $2);
+                                                                $$ = strdup(buffer);
+                                                            }                     
+    ;
+
+statement:                                                  
+    Function_Assignment_Statement SEMICOLON                 { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s", $1);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | Function_Print_Statement SEMICOLON                    { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s", $1);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | BREAK SEMICOLON
+    | CONTINUE SEMICOLON                                       
+    |                                                               { $$ = " "; }
+    ;
+
+Function_Assignment_Statement:
+    IDENTIFIER EQ_OPERATOR expressions         
+    ;
+
+predicate_list:
+    predicate                                               { $$ = strdup($1); }
+    | predicate_list logical_operators predicate            { 
+                                 | predicate_list QUESTION                               { $$ = strdup($1); }                                   char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | predicate_list comparison_operators predicate         { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    ;
+
+predicate:
+    expressions comparison_operators expressions            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions logical_operators expressions             { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    ;
+
+logical_operators:
+    LOG_AND         { $$ = "&&"; }
+    | LOG_NOT       { $$ = "!"; }
+    | LOG_OR        { $$ = "||"; }
+    ;
+
+comparison_operators:
+    LESS                { $$ = "<"; }       
+    | GREATER           { $$ = ">"; }       
+    | LSEQ              { $$ = "<="; }     
+    | GREQ              { $$ = ">="; }      
+    | NOTEQ             { $$ = "!="; }     
+    | DOUBLE_EQUAL      { $$ = "=="; }        
+    ;
+
 
 
 parameter_list:
@@ -231,66 +365,6 @@ on_clause:
 
 suffixes_clause:
     SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING ',' SINGLE_QUOTED_STRING ']'
-
-compound_statement:
-    '{' statement_list '}'
-    ;
-
-statement_list:
-    statement
-    | statement_list statement
-    ;
-
-statement:
-    if_statement
-    | while_statement
-    | for_statement
-    | compound_statement
-    | expression_statement
-    | jump_statement
-    ;
-
-if_statement:
-    IF '(' expression ')' statement %prec LOWER_THAN_ELSE
-    | IF '(' expression ')' statement ELSE statement
-    ;
-
-while_statement:
-    WHILE '(' expression ')' statement
-    ;
-
-for_statement:
-    FOR '(' expression_statement expression_statement ')' statement
-    | FOR '(' expression_statement expression_statement expression ')' statement
-    ;
-
-jump_statement:
-    BREAK SEMICOLON
-    | CONTINUE SEMICOLON
-    | RETURN SEMICOLON
-    | RETURN expression SEMICOLON
-    ;
-
-expression_statement:
-    ';'
-    | expression SEMICOLON
-    ;
-
-expression_list:
-    expression
-    | expression_list ',' expression
-    ;
-
-expression:
-    IDENTIFIER
-    | CONSTANT
-    | expression '+' expression
-    | expression '-' expression
-    | expression '*' expression
-    | expression '/' expression
-    | expression '%' expression
-    | '(' expression ')'
-    ;
 
 fill_action:
     FILL_TOKEN

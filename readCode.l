@@ -19,7 +19,9 @@ int lineFlag = 0;
 %}
 start \/\*
 end \*\/
-%%
+%% 
+"function"       { count(); return(FUNC); }
+"return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
 "if"            {count(); return(IF);}
 "else"          {count(); return(ELSE);}
