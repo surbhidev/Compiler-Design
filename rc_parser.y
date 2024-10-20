@@ -19,7 +19,7 @@ extern FILE *yyout;
 
 %start translation_unit
 
-%token FOR WHILE IF ELSE BREAK CONTINUE RETURN
+%token LOOP IF ELSE BREAK CONTINUE RETURN
 %token INT FLOAT STRING BOOL TRUE FALSE SINGLE_QUOTED_STRING
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
@@ -39,7 +39,7 @@ translation_unit:
 
 declaration:
     type IDENTIFIER SEMICOLON
-    | assignment_statement
+    | assignment_statement SEMICOLON
     | function_definition
     | input_statement
     ;
@@ -56,8 +56,62 @@ input_statement:
     ;
 
 assignment_statement:
-    IDENTIFIER '=' function_call_statement SEMICOLON
+    IDENTIFIER EQ_OPERATOR expressions          { fprintf(syntax, "%s = %s;\n", $1, $3);}  { fprintf(statementlog, "%d: Assignment Statement\n", yylineno); } 
+    | access_operator EQ_OPERATOR expressions   { fprintf(syntax, "%s = %s;\n", $1, $3);}  { fprintf(statementlog, "%d: Assignment Statement\n", yylineno); } 
     ;
+
+expressions:
+    expressions operators IDENTIFIER                        { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions operators INTNUM                          { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %d", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions operators FLOATNUM                        { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %f", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions operators grouping                        { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions operators Size_Of                         { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions operators function_call_statement         { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1, $2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | IDENTIFIER                                            { 
+                                                                $$ = strdup($1);
+                                                            }
+    | INTNUM                                                {
+                                                                char buffer[256];
+                                                                snprintf(buffer, sizeof(buffer), "%d", $1);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | FLOATNUM                                              {
+                                                                char buffer[256];
+                                                                snprintf(buffer, sizeof(buffer), "%f", $1);
+                                                                $$ = strdup(buffer);
+                                                            }       
+    | grouping                                              { 
+                                                                $$ = strdup($1);
+                                                            }
+    | function_call_statement                                         { 
+                                                                $$ = strdup($1);
+                                                            }
+    ;
+
 
 function_definition:
     type IDENTIFIER '(' parameter_list ')' compound_statement
@@ -81,7 +135,80 @@ function_call_statement:
     | CONCATFUNC '(' '[' expression_list ']' ',' parameter_list ')' 
     | MERGEFUNC '(' IDENTIFIER ',' IDENTIFIER ',' how_clause ',' on_clause ',' suffixes_clause ')' 
     | JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
+    | IDENTIFIER '(' actual_parameters ')'
     ;
+
+actual_parameters:          
+    expressions                                             
+    | actual_parameters ',' expressions                   
+    ;
+
+grouping:
+    '(' expressions ')'                               { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "(%s)", $2);
+                                                                $$ = strdup(buffer);
+                                                            }
+    ;
+
+operators:
+    ADD             { $$ = "+"; }
+    | SUB           { $$ = "-"; }
+    | MUL           { $$ = "*"; }
+    | DIV           { $$ = "/"; }
+    | MOD           { $$ = "%"; }
+    | BIT_AND       { $$ = "&"; }
+    | BIT_NOT       { $$ = "~"; }
+    | BIT_OR        { $$ = "|"; }
+    | BIT_XOR       { $$ = "^"; }
+    ;
+
+Loop_Statement:
+    Sub_Loop_Statement                            { fprintf(syntax, "%s\n",$1); }
+    ;
+
+Sub_Loop_Statement:
+    LOOP '(' initializtion SEMICOLON predicate_list SEMICOLON update ')'
+    '{' loop_body '}' 
+    | Sub_Loop_Statement SEMICOLON finally  
+    ;
+
+initializtion:
+    Identifier_List                                   
+    ;
+
+Identifier_List:
+    IDENTIFIER EQ_OPERATOR INTNUM                           { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s = %d", $1, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | IDENTIFIER EQ_OPERATOR FLOATNUM                       { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s = %f", $1, $3);
+                                                                $$ = strdup(buffer); 
+                                                            }
+    | IDENTIFIER                                            { 
+                                                                $$ = strdup($1);
+                                                            }
+    | Identifier_List COMMA IDENTIFIER                      {
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s, %s", $1, $3);
+                                                                $$ = strdup(buffer); 
+                                                            }
+    | Identifier_List COMMA IDENTIFIER EQ_OPERATOR INTNUM   {
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s, %s = %d", $1, $3, $5);
+                                                                $$ = strdup(buffer); 
+                                                            }
+    | Identifier_List COMMA IDENTIFIER EQ_OPERATOR FLOATNUM { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s, %s = %f", $1, $3, $5);
+                                                                $$ = strdup(buffer); 
+                                                            }
+    ;
+
+
 
 parameter_list:
     | parameter

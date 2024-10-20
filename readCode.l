@@ -20,8 +20,7 @@ int lineFlag = 0;
 start \/\*
 end \*\/
 %%
-"for"           {count(); return(FOR);}
-"while"         {count(); return(WHILE);}
+"loop"           {count(); return(LOOP);}
 "if"            {count(); return(IF);}
 "else"          {count(); return(ELSE);}
 "break"         {count(); return(BREAK);}
