@@ -9,7 +9,7 @@ mean_temp = df_filled['Temperature'].mean();
 max_wind_speed = df_filled['WindSpeed'].max();
 sum_precipitation = df_filled['Precipitation'].sum();
 // Print results
-print(“Mean Temperature:”+mean_temp);
-print("Max Wind Speed:”+max_wind_speed");
-print("Total Precipitation:” + sum_precipitation);
+print(“Mean Temperature:” \ mean_temp);
+print("Max Wind Speed:” \ max_wind_speed");
+print("Total Precipitation:” \ sum_precipitation);
 df_filled.head();

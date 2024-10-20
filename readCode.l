@@ -20,6 +20,7 @@ int lineFlag = 0;
 start \/\*
 end \*\/
 %% 
+\"\"            { count(); return('\\'); }
 "function"       { count(); return(FUNC); }
 "return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
@@ -27,9 +28,9 @@ end \*\/
 "else"          {count(); return(ELSE);}
 "break"         {count(); return(BREAK);}
 "continue"      {count(); return(CONTINUE);}
-"int"           {count(); return(INT);}
-"float"         {count(); return(FLOAT);}
-"string"        {count(); return(STRING);}
+"int"           {count(); return(INT_TYPE);}
+"float"         {count(); return(FLOAT_TYPE);}
+"string"        {count(); return(STRING_TYPE);}
 "bool"          {count(); return(BOOL);}
 "true"          {count(); return(TRUE);}
 "false"         {count(); return(FALSE);}
@@ -43,8 +44,9 @@ end \*\/
 "%="            {count(); return(MOD_ASSIGN_OPERATOR);}
 "<="            {count(); return(LE_OPERATOR);}
 ">="            {count(); return(GE_OPERATOR);}
-"=="            {count(); return(EQ_OPERATOR);}
+"=="            {count(); return(DEQ_OPERATOR);}
 "!="            {count(); return(NE_OPERATOR);}
+"!"            {count(); return(NOT_OPERATOR);}
 ";"             {count(); return(SEMICOLON);}
 "+"             {count(); return('+');}
 "-"             {count(); return('-');}
@@ -57,6 +59,7 @@ end \*\/
 "&"             {count(); return('&');}
 "^"			    {count(); return('^');}
 "|"             {count(); return('|');}
+"~"             {count(); return('~');}
 "."			    {count(); return('.');}
 "("			    {count(); return('(');}
 ")"			    {count(); return(')');}
@@ -93,8 +96,8 @@ end \*\/
 "join"         { count(); return JOINFUNC; }
 [0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); return EXPONENTIAL;}
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
-[0-9]+(\.[0-9]+)                       { count(); return FLOAT; }
-[0-9]+                                 { count(); return INTEGER; }
+[0-9]+(\.[0-9]+)                       { count(); return FLOATNUM; }
+[0-9]+                                 { count(); return INTNUM; }
 "'"([^'\\]|\\.)*"'"                    {count(); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); return STRING;}
 [A-Za-z_]+\.csv                        {count(); return CSVFILE;}
