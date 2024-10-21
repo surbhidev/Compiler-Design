@@ -27,6 +27,8 @@ extern FILE *yyout;
 %token <in> INTNUM
 %type <in> axis_bit
 %token INT_TYPE FLOAT_TYPE STRING_TYPE DATAFRAME SKIPNA
+%token FILL FFILL BFILL INTERPOLATE METHOD REGX
+%token INNER LEFT RIGHT OUTER
 %token SEP HEADER INDEX_COL USECOLS INDEX
 %token DROP INPLACE AXIS NUMERIC
 %token LOOP IF ELSE BREAK CONTINUE RTRN FUNC
@@ -37,7 +39,7 @@ extern FILE *yyout;
 %token INTEGER IDENTIFIER SEMICOLON AND_OPERATOR OR_OPERATOR NOT_OPERATOR
 %token INC_OPERATOR DEC_OPERATOR RIGHTSHIFT_OPERATOR LEFTSHIFT_OPERATOR
 %token ELLIPSIS EXPONENTIAL DUST CSVFILE FUNCTIONCALL PRINT CONSTANT
-%token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
+%token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEVALUEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
 %token AXIS_TOKEN DROP_TOKEN INPLACE_TOKEN METHOD_TOKEN HOW_TOKEN ON_TOKEN SUFFIXES_TOKEN FILL_TOKEN
 
 %%
@@ -62,7 +64,8 @@ input_statement:
 
 assignment_statement:
     IDENTIFIER '=' expressions
-    | dataframe '=' function_call_statement
+    | dataframe_list '=' function_call_statement
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING_LIST ')' 
     ;
 
 dataframe: 
@@ -138,7 +141,10 @@ Print_Statement:
 aggregate_function_calls:
     dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEANFUNC '(' ')'      
     | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MODEFUNC '(' ')'  
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEDIANFUNC '(' ')'                              
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEDIANFUNC '(' ')'  
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' SUMFUNC '(' ')'
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MINFUNC '(' ')'
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MAXFUNC '(' ')'
     | dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'                  
     | dataframe '.' MODEFUNC '('  mean_body mean_numerical ')'                                   
     | dataframe '.' MEDIANFUNC '('  mean_body mean_numerical ')'                                 
@@ -153,16 +159,60 @@ function_call_statement:
     | dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'           
     | dataframe '.' TOCSVFUNC '(' CSVFILE readcsv_body ')' 
     | dataframe '.' DESCRIBEFUNC '(' ')'                                  
-    | dataframe '.' MISSVALUEFUNC '(' fill_action ',' parameter_list ')' 
-    | dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING ')'          
-    | dataframe '.' CONCATFUNC '(' '[' expressions ']' ',' parameter_list ')' 
-    | dataframe '.' MERGEFUNC '(' IDENTIFIER ',' IDENTIFIER ',' how_clause ',' on_clause ',' suffixes_clause ')' 
-    | dataframe '.' JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
+    | dataframe '.' MISSVALUEFUNC '(' missing_value_body_confirm missing_value_body ')' 
+    | dataframe '.' EXCHANGEVALUEFUNC '(' to_exchange ',' exchange_value exchange_body_optional ')'          
+    | CONCATFUNC '(' '[' dataframe_list ']' ',' concat_body ')' 
+    | MERGEFUNC '(' dataframe ',' dataframe ',' how_clause ',' on_clause ',' suffixes_clause ')' 
     | IDENTIFIER '(' actual_parameters ')'
     ;
 
+concat_body:
+    AXIS '=' axis_bit 
+    ;
+
+dataframe_list:
+    dataframe
+    | dataframe_list ',' dataframe
+    ;
+
+to_exchange:
+    REGX SINGLE_QUOTED_STRING
+    ; 
+
+exchange_value:
+    INTNUM
+    | FLOATNUM
+    | EXPONENTIAL
+    | PERCENTAGE
+    | IDENTIFIER
+    ;
+
+exchange_body_optional:
+    ',' INPLACE '=' BOOL
+    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']'
+    | ',' mean_body
+    | 
+    ;
+
+missing_value_body_confirm:
+    FILL ',' INTNUM
+    | FILL ',' aggregate_function_calls
+    | FILL ',' METHOD '=' FFILL 
+    | FILL ',' METHOD '=' BFILL
+    | FILL ',' METHOD '=' INTERPOLATE
+    | DROP
+    ;
+
+missing_value_body:
+    ',' INPLACE '=' BOOL missing_value_body
+    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' missing_value_body
+    | ',' mean_body missing_value_body
+    | 
+    ;
+
 mean_body:
-    AXIS '=' axis_bit
+    AXIS '=' axis_bit 
+    | 
     ; 
 
 axis_bit:
@@ -199,16 +249,16 @@ reset_index_body_implace:
     ;
 
 head_tail_body:
-    INTNUM
+    INTNUM 
     | 
     ;
 
 readcsv_body:
-    ',' SEP '=' SINGLE_QUOTED_STRING
-    | ',' HEADER '=' INTNUM
-    | ',' INDEX_COL '=' INTNUM
-    | ',' INDEX '=' BOOL
-    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']'
+    ',' SEP '=' SINGLE_QUOTED_STRING readcsv_body
+    | ',' HEADER '=' INTNUM readcsv_body
+    | ',' INDEX_COL '=' INTNUM readcsv_body
+    | ',' INDEX '=' BOOL readcsv_body
+    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' readcsv_body
     |
     ;
 
@@ -312,33 +362,23 @@ comparison_operators:
     | DEQ_OPERATOR           
     ;
 
-
-
-parameter_list:
-    | parameter
-    | parameter_list ',' parameter
-    ;
-
-
-parameter:
-    IDENTIFIER
-    | AXIS_TOKEN '=' INTEGER
-    | INPLACE_TOKEN '=' BOOL
-    | METHOD_TOKEN '=' SINGLE_QUOTED_STRING
-    ;
-
 how_clause:
-    HOW_TOKEN '=' SINGLE_QUOTED_STRING
+    HOW_TOKEN '=' how_list
+    ;
+
+how_list:
+    INNER 
+    | LEFT
+    | RIGHT
+    | OUTER
+    ;
 
 on_clause:
     ON_TOKEN '=' SINGLE_QUOTED_STRING
+    ;
 
 suffixes_clause:
-    SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING ',' SINGLE_QUOTED_STRING ']'
-
-fill_action:
-    FILL_TOKEN
-    | DROP_TOKEN
+    SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING_LIST ']'
     ;
 
 

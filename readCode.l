@@ -29,6 +29,16 @@ end \*\/
 "drop"       { count(); return(DROP); }
 "skip_na"       { count(); return(SKIPNA); }
 "inplace"       { count(); return(INPLACE); }
+"ffill"       { count(); return(FFILL); }
+"bfill"       { count(); return(BFILL); }
+"fill"       { count(); return(FILL); }
+"method"       { count(); return(METHOD); }
+"interpolate"       { count(); return(INTERPOLATE); }
+"regex"       { count(); return(REGX); }
+"inner"       { count(); return(INNER); }
+"outer"       { count(); return(OUTER); }
+"left"       { count(); return(LEFT); }
+"right"       { count(); return(RIGHT); }
 "function"       { count(); return(FUNC); }
 "return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
@@ -98,10 +108,13 @@ end \*\/
 "numeric"          { count(); return NUMERIC; }
 "axis"          { count(); return AXIS; }
 "miss_value"   { count(); return MISSVALUEFUNC; }
-"exchange"     { count(); return EXCHANGEFUNC; }
+"exchange"     { count(); return EXCHANGEVALUEFUNC; }
 "groupby"      { count(); return GROUPBYFUNC; }
 "concat"       { count(); return CONCATFUNC; }
 "merge"        { count(); return MERGEFUNC; }
+"how"          { count(); return HOW_TOKEN;  }
+"on"          { count(); return ON_TOKEN;  }
+"suffix"          { count(); return SUFFIXES_TOKEN;  }
 "join"         { count(); return JOINFUNC; }
 [0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); return EXPONENTIAL;}
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
