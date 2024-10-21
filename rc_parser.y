@@ -19,7 +19,7 @@ extern FILE *yyout;
 
 %start translation_unit
 
-%token INT_TYPE FLOAT_TYPE STRING_TYPE
+%token INT_TYPE FLOAT_TYPE STRING_TYPE DATAFRAME
 %token LOOP IF ELSE BREAK CONTINUE RTRN FUNC
 %token INTNUM FLOATNUM STRING BOOL TRUE FALSE SINGLE_QUOTED_STRING
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
@@ -44,6 +44,7 @@ declaration_statement:
     | input_statement
     | Print_Statement
     | Loop_Statement
+    | function_call_statement SEMICOLON
     ;
 
 input_statement:
@@ -52,17 +53,22 @@ input_statement:
 
 assignment_statement:
     IDENTIFIER '=' expressions
+    | dataframe '=' function_call_statement
+    ;
+
+dataframe: 
+    DATAFRAME '(' IDENTIFIER ')'
     ;
 
 expressions:
-    expressions operators IDENTIFIER                        
+    expressions operators IDENTIFIER 
     | expressions operators INTNUM
     | expressions operators FLOATNUM
     | expressions operators grouping
     | expressions operators function_call_statement
     | IDENTIFIER
     | INTNUM                                                
-    | FLOATNUM                                                     
+    | FLOATNUM
     | grouping                                              
     | function_call_statement                     
     ;
@@ -119,23 +125,23 @@ Print_Statement:
 //     ;
 
 function_call_statement:
-    READCSVFUNC '(' SINGLE_QUOTED_STRING ')'           
-    | HEADFUNC '(' ')'                                  
-    | TAILFUNC '(' ')'                                  
-    | RESETINDEXFUNC '(' parameter_list ')'           
-    | TOCSVFUNC '(' SINGLE_QUOTED_STRING ',' parameter_list ')' 
-    | DESCRIBEFUNC '(' ')'                              
-    | MEANFUNC '(' parameter_list ')'                  
-    | MODEFUNC '(' ')'                                   
-    | MEDIANFUNC '(' ')'                                 
-    | SUMFUNC '(' ')'                                   
-    | MINFUNC '(' ')'                                    
-    | MAXFUNC '(' ')'                                   
-    | MISSVALUEFUNC '(' fill_action ',' parameter_list ')' 
-    | GROUPBYFUNC '(' SINGLE_QUOTED_STRING ')'          
-    | CONCATFUNC '(' '[' expressions ']' ',' parameter_list ')' 
-    | MERGEFUNC '(' IDENTIFIER ',' IDENTIFIER ',' how_clause ',' on_clause ',' suffixes_clause ')' 
-    | JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
+    READCSVFUNC '(' SINGLE_QUOTED_STRING ')'         
+    | dataframe '.' HEADFUNC '(' ')'                                  
+    | dataframe '.' TAILFUNC '(' ')'                                  
+    | dataframe '.' RESETINDEXFUNC '(' parameter_list ')'           
+    | dataframe '.' TOCSVFUNC '(' SINGLE_QUOTED_STRING ',' parameter_list ')' 
+    | dataframe '.' DESCRIBEFUNC '(' ')'                              
+    | dataframe '.' MEANFUNC '(' parameter_list ')'                  
+    | dataframe '.' MODEFUNC '(' ')'                                   
+    | dataframe '.' MEDIANFUNC '(' ')'                                 
+    | dataframe '.' SUMFUNC '(' ')'                                   
+    | dataframe '.' MINFUNC '(' ')'                                    
+    | dataframe '.' MAXFUNC '(' ')'                                   
+    | dataframe '.' MISSVALUEFUNC '(' fill_action ',' parameter_list ')' 
+    | dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING ')'          
+    | dataframe '.' CONCATFUNC '(' '[' expressions ']' ',' parameter_list ')' 
+    | dataframe '.' MERGEFUNC '(' IDENTIFIER ',' IDENTIFIER ',' how_clause ',' on_clause ',' suffixes_clause ')' 
+    | dataframe '.' JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
     | IDENTIFIER '(' actual_parameters ')'
     ;
 
@@ -286,10 +292,7 @@ int main(int argc, char **argv) {
     }
 
     // Call yyparse to parse the input until EOF
-    while (yyparse() == 0) {
-        // Parsing successful
-    }
-
+    yyparse();
     // Clean up
     fclose(yyin);
     return EXIT_SUCCESS;

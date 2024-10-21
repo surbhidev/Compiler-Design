@@ -20,7 +20,7 @@ int lineFlag = 0;
 start \/\*
 end \*\/
 %% 
-\"\"            { count(); return('\\'); }
+"df"       { count(); return(DATAFRAME); }
 "function"       { count(); return(FUNC); }
 "return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
@@ -109,7 +109,7 @@ end \*\/
 [ ]                                    ;
 \n                                     { count(); yylineno++; }
 [ \t\v\f]                              { count(); }
-.                                      {count();return DUST;}
+.                                      {count();}
 %%
 
 void count()
