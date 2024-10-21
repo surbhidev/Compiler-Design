@@ -9,6 +9,11 @@ extern FILE *yyin;
 extern FILE *yyout;
 %}
 
+%union {
+    int in;
+    float flt;
+    char *str;  
+}
 
 %left '+' '-' '\\' '.'
 %left '*' '/' '%'
@@ -19,9 +24,13 @@ extern FILE *yyout;
 
 %start translation_unit
 
-%token INT_TYPE FLOAT_TYPE STRING_TYPE DATAFRAME
+%token <in> INTNUM
+%type <in> axis_bit
+%token INT_TYPE FLOAT_TYPE STRING_TYPE DATAFRAME SKIPNA
+%token SEP HEADER INDEX_COL USECOLS INDEX
+%token DROP INPLACE AXIS NUMERIC
 %token LOOP IF ELSE BREAK CONTINUE RTRN FUNC
-%token INTNUM FLOATNUM STRING BOOL TRUE FALSE SINGLE_QUOTED_STRING
+%token FLOATNUM STRING TRUE FALSE SINGLE_QUOTED_STRING
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
 %token LE_OPERATOR GE_OPERATOR DEQ_OPERATOR NE_OPERATOR PERCENTAGE
@@ -66,11 +75,13 @@ expressions:
     | expressions operators FLOATNUM
     | expressions operators grouping
     | expressions operators function_call_statement
+    | expressions operators aggregate_function_calls
     | IDENTIFIER
     | INTNUM                                                
     | FLOATNUM
     | grouping                                              
-    | function_call_statement                     
+    | function_call_statement  
+    | aggregate_function_calls                   
     ;
 
 Function_Declaration:
@@ -124,19 +135,24 @@ Print_Statement:
 //     IDENTIFIER '(' actual_parameters ')'
 //     ;
 
+aggregate_function_calls:
+    dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEANFUNC '(' ')'      
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MODEFUNC '(' ')'  
+    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEDIANFUNC '(' ')'                              
+    | dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'                  
+    | dataframe '.' MODEFUNC '('  mean_body mean_numerical ')'                                   
+    | dataframe '.' MEDIANFUNC '('  mean_body mean_numerical ')'                                 
+    | dataframe '.' SUMFUNC '(' mean_body mean_numerical ')'                                   
+    | dataframe '.' MINFUNC '(' mean_body mean_numerical ')'                                    
+    | dataframe '.' MAXFUNC '(' mean_body mean_numerical ')' 
+
 function_call_statement:
-    READCSVFUNC '(' SINGLE_QUOTED_STRING ')'         
-    | dataframe '.' HEADFUNC '(' ')'                                  
-    | dataframe '.' TAILFUNC '(' ')'                                  
-    | dataframe '.' RESETINDEXFUNC '(' parameter_list ')'           
-    | dataframe '.' TOCSVFUNC '(' SINGLE_QUOTED_STRING ',' parameter_list ')' 
-    | dataframe '.' DESCRIBEFUNC '(' ')'                              
-    | dataframe '.' MEANFUNC '(' parameter_list ')'                  
-    | dataframe '.' MODEFUNC '(' ')'                                   
-    | dataframe '.' MEDIANFUNC '(' ')'                                 
-    | dataframe '.' SUMFUNC '(' ')'                                   
-    | dataframe '.' MINFUNC '(' ')'                                    
-    | dataframe '.' MAXFUNC '(' ')'                                   
+    READCSVFUNC '(' CSVFILE readcsv_body ')'         
+    | dataframe '.' HEADFUNC '(' head_tail_body ')'                                  
+    | dataframe '.' TAILFUNC '(' head_tail_body ')'                                  
+    | dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'           
+    | dataframe '.' TOCSVFUNC '(' CSVFILE readcsv_body ')' 
+    | dataframe '.' DESCRIBEFUNC '(' ')'                                  
     | dataframe '.' MISSVALUEFUNC '(' fill_action ',' parameter_list ')' 
     | dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING ')'          
     | dataframe '.' CONCATFUNC '(' '[' expressions ']' ',' parameter_list ')' 
@@ -144,6 +160,63 @@ function_call_statement:
     | dataframe '.' JOINFUNC '(' IDENTIFIER ',' how_clause ',' on_clause ')' 
     | IDENTIFIER '(' actual_parameters ')'
     ;
+
+mean_body:
+    AXIS '=' axis_bit
+    ; 
+
+axis_bit:
+    INTNUM 
+    {
+        if($1 == 0)
+        {
+            $$ = 0;
+        }
+        else if($1 == 1)
+        {
+            $$ = 1;
+        }
+    }
+
+mean_numerical:
+    ',' NUMERIC '=' BOOL
+    | ',' SKIPNA '=' BOOL
+    |
+    ; 
+
+reset_index_body_drop:
+    DROP '=' TRUE
+    | DROP '=' FALSE ',' IDENTIFIER
+
+BOOL:
+    TRUE
+    | FALSE
+    ;
+
+reset_index_body_implace:
+    ',' INPLACE '=' BOOL
+    | 
+    ;
+
+head_tail_body:
+    INTNUM
+    | 
+    ;
+
+readcsv_body:
+    ',' SEP '=' SINGLE_QUOTED_STRING
+    | ',' HEADER '=' INTNUM
+    | ',' INDEX_COL '=' INTNUM
+    | ',' INDEX '=' BOOL
+    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']'
+    |
+    ;
+
+SINGLE_QUOTED_STRING_LIST:
+    SINGLE_QUOTED_STRING
+    | SINGLE_QUOTED_STRING_LIST ',' SINGLE_QUOTED_STRING
+    ;
+
 
 actual_parameters:          
     expressions                                             

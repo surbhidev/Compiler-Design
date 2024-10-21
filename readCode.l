@@ -21,6 +21,14 @@ start \/\*
 end \*\/
 %% 
 "df"       { count(); return(DATAFRAME); }
+"sep"       { count(); return(SEP); }
+"header"       { count(); return(HEADER); }
+"index_col"       { count(); return(INDEX_COL); }
+"index"       { count(); return(INDEX); }
+"usecols"       { count(); return(USECOLS); }
+"drop"       { count(); return(DROP); }
+"skip_na"       { count(); return(SKIPNA); }
+"inplace"       { count(); return(INPLACE); }
 "function"       { count(); return(FUNC); }
 "return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
@@ -31,7 +39,6 @@ end \*\/
 "int"           {count(); return(INT_TYPE);}
 "float"         {count(); return(FLOAT_TYPE);}
 "string"        {count(); return(STRING_TYPE);}
-"bool"          {count(); return(BOOL);}
 "true"          {count(); return(TRUE);}
 "false"         {count(); return(FALSE);}
 "input"         {count(); return(INPUT);}
@@ -88,6 +95,8 @@ end \*\/
 "sum"          { count(); return SUMFUNC; }
 "min"          { count(); return MINFUNC; }
 "max"          { count(); return MAXFUNC; }
+"numeric"          { count(); return NUMERIC; }
+"axis"          { count(); return AXIS; }
 "miss_value"   { count(); return MISSVALUEFUNC; }
 "exchange"     { count(); return EXCHANGEFUNC; }
 "groupby"      { count(); return GROUPBYFUNC; }
@@ -97,10 +106,10 @@ end \*\/
 [0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); return EXPONENTIAL;}
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
 [0-9]+(\.[0-9]+)                       {count(); return FLOATNUM; }
-[0-9]+                                 {count(); return INTNUM; }
+[0-9]+                                 {count(); yylval.in = atoi(yytext); return INTNUM; }
+"'"[A-Za-z_]+\.csv"'"                  { count(); return CSVFILE; }
 "'"([^'\\]|\\.)*"'"                    {count(); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); return STRING;}
-[A-Za-z_]+\.csv                        {count(); return CSVFILE;}
 [A-Za-z][A-Za-z0-9_]*                  {count(); return IDENTIFIER;}
 \/\/[^\n]*                             ;
 {start}([^*]|\*+[^/])*{end}            ;
