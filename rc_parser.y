@@ -10,7 +10,7 @@ extern FILE *yyout;
 %}
 
 
-%left '+' '-' '\\'
+%left '+' '-' '\\' '.'
 %left '*' '/' '%'
 %left '=' 
 %nonassoc '<' '>' 
@@ -92,13 +92,14 @@ return_statement:
     ;
 
 Function_Print_Statement:
-    PRINT '(' print_expressions ')'  
+    PRINT '(' print_expressions ')' 
     ;
 
 print_expressions:
     expressions
     | strings_list
-    | print_expressions '\\' strings_list
+    | print_expressions ',' strings_list    //expr , string
+    | print_expressions ',' expressions // string or expr, expr 
     ;
 
 strings_list:
@@ -110,7 +111,7 @@ Function_Loop_Statement:
     ;
 
 Print_Statement:
-    PRINT '(' print_expressions ')'  
+    PRINT '(' print_expressions ')' SEMICOLON 
     ;
 
 // function_call_statement:
@@ -175,8 +176,8 @@ initializtion:
 Identifier_List:
     IDENTIFIER '=' INTNUM                          
     | IDENTIFIER '=' FLOATNUM                      
-    // | IDENTIFIER                                            
-    // | Identifier_List ',' IDENTIFIER                     
+    | IDENTIFIER                                            
+    | Identifier_List ',' IDENTIFIER                     
     | Identifier_List ',' IDENTIFIER '=' INTNUM  
     | Identifier_List ',' IDENTIFIER '=' FLOATNUM 
     ;

@@ -96,8 +96,8 @@ end \*\/
 "join"         { count(); return JOINFUNC; }
 [0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); return EXPONENTIAL;}
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
-[0-9]+(\.[0-9]+)                       { count(); return FLOATNUM; }
-[0-9]+                                 { count(); return INTNUM; }
+[0-9]+(\.[0-9]+)                       {count(); return FLOATNUM; }
+[0-9]+                                 {count(); return INTNUM; }
 "'"([^'\\]|\\.)*"'"                    {count(); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); return STRING;}
 [A-Za-z_]+\.csv                        {count(); return CSVFILE;}

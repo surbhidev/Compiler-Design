@@ -1354,12 +1354,12 @@ YY_RULE_SETUP
 case 77:
 YY_RULE_SETUP
 #line 99 "readCode.l"
-{ count(); return FLOATNUM; }
+{count(); return FLOATNUM; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
 #line 100 "readCode.l"
-{ count(); return INTNUM; }
+{count(); return INTNUM; }
 	YY_BREAK
 case 79:
 /* rule 79 can match eol */
