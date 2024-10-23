@@ -152,6 +152,7 @@ aggregate_function_calls:
     | dataframe '.' SUMFUNC '(' mean_body mean_numerical ')'                                   
     | dataframe '.' MINFUNC '(' mean_body mean_numerical ')'                                    
     | dataframe '.' MAXFUNC '(' mean_body mean_numerical ')' 
+    ;
 
 function_call_statement:
     READCSVFUNC '(' CSVFILE readcsv_body ')'         
