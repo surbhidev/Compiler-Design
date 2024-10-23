@@ -190,9 +190,9 @@ exchange_value:
     ;
 
 exchange_body_optional:
-    ',' INPLACE '=' BOOL
-    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']'
-    | ',' mean_body
+    ',' INPLACE '=' BOOL exchange_body_optional
+    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' exchange_body_optional
+    | ',' mean_body exchange_body_optional
     | 
     ;
 
@@ -229,6 +229,7 @@ axis_bit:
             $$ = 1;
         }
     }
+    ;
 
 mean_numerical:
     ',' NUMERIC '=' BOOL
@@ -239,6 +240,7 @@ mean_numerical:
 reset_index_body_drop:
     DROP '=' TRUE
     | DROP '=' FALSE ',' IDENTIFIER
+    ;
 
 BOOL:
     TRUE
