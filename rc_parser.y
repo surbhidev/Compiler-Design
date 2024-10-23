@@ -31,7 +31,7 @@ extern FILE *yyout;
 %token INNER LEFT RIGHT OUTER
 %token SEP HEADER INDEX_COL USECOLS INDEX
 %token DROP INPLACE AXIS NUMERIC
-%token LOOP IF ELSE BREAK CONTINUE RTRN FUNC
+%token LOOP IF ELSE ELSEIF BREAK CONTINUE RTRN FUNC
 %token FLOATNUM STRING TRUE FALSE SINGLE_QUOTED_STRING
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
@@ -56,6 +56,7 @@ declaration_statement:
     | Print_Statement
     | Loop_Statement
     | function_call_statement SEMICOLON
+    | Conditional_Statements
     ;
 
 input_statement:
@@ -326,16 +327,22 @@ statment_list:
 
 statement:                                                  
     Function_Assignment_Statement SEMICOLON                 
-    | Function_Print_Statement SEMICOLON                    
+    | Function_Print_Statement SEMICOLON    
+    | Conditional_Statements   
+    | Loop_Statement             
     | BREAK SEMICOLON
-    | CONTINUE SEMICOLON                                       
+    | CONTINUE SEMICOLON
+    | function_call_statement 
+    | Function_Assignment_Statement              
     // |                                                        
     ;
 
 Function_Assignment_Statement:
-    IDENTIFIER '=' expressions         
+    IDENTIFIER '=' expressions
+    | dataframe_list '=' function_call_statement
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING_LIST ')' 
     ;
-
+    
 predicate_list:
     predicate                                               
     | predicate_list logical_operators predicate            
@@ -381,6 +388,36 @@ suffixes_clause:
     SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING_LIST ']'
     ;
 
+Conditional_Statements:
+    Conditional_Statements_1
+    | Conditional_Statements_2
+    | Conditional_Statements_3
+    | Conditional_Statements_4
+    ;
+
+Conditional_Statements_1:
+    IF '(' predicate_list ')' '{' conditional_body '}' 
+    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    ELSE '{' conditional_body '}'
+    ;
+
+Conditional_Statements_2:
+    IF '(' predicate_list ')' '{' conditional_body '}' 
+    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    ;
+
+Conditional_Statements_3:
+    IF '(' predicate_list ')' '{' conditional_body '}' 
+    ELSE '{' conditional_body '}'
+    ;
+
+Conditional_Statements_4:
+    IF '(' predicate_list ')' '{' conditional_body '}' 
+    ;
+
+conditional_body:
+    loop_body
+    ;
 
 %%
 

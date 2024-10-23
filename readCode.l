@@ -43,6 +43,7 @@ end \*\/
 "return"         { count(); return(RTRN); }
 "loop"           {count(); return(LOOP);}
 "if"            {count(); return(IF);}
+"else if"       {count(); return(ELSEIF);}
 "else"          {count(); return(ELSE);}
 "break"         {count(); return(BREAK);}
 "continue"      {count(); return(CONTINUE);}

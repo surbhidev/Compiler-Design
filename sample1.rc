@@ -27,3 +27,48 @@ column_mean = df(df_2).mean(axis = 0);
 hello = df(indenti).sum(axis=1, skip_na = false);
 concat([df(df1), df(df2)], axis=0);
 merge(df(df1), df(df2),how=left, on= 'jkndk', suffix=['1njnjk', 'bhjbj']);
+
+if(suvedh==1)
+{
+    print("super");
+}
+
+if(suvedh==1)
+{
+    print("super");
+}
+
+if(suvedh==1)
+{
+    print("super");
+}
+else
+{
+    print("not wow");
+}
+
+if(suvedh==1)
+{
+    print("super");
+}
+else if(suvedh == 2)
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+}
+
+if(suvedh==1)
+{
+    print("super");
+}
+else if(suvedh == 2)
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+}
+else 
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    loop(i=0; i<10; i=i+1)
+    {
+        suvedh = suvedh+1;
+    }
+}
