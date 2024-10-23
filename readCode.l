@@ -20,28 +20,28 @@ int lineFlag = 0;
 start \/\*
 end \*\/
 %% 
-"df"       { count(); return(DATAFRAME); }
-"sep"       { count(); return(SEP); }
-"header"       { count(); return(HEADER); }
-"index_col"       { count(); return(INDEX_COL); }
-"index"       { count(); return(INDEX); }
-"usecols"       { count(); return(USECOLS); }
-"drop"       { count(); return(DROP); }
-"skip_na"       { count(); return(SKIPNA); }
-"inplace"       { count(); return(INPLACE); }
-"ffill"       { count(); return(FFILL); }
-"bfill"       { count(); return(BFILL); }
-"fill"       { count(); return(FILL); }
-"method"       { count(); return(METHOD); }
-"interpolate"       { count(); return(INTERPOLATE); }
-"regex"       { count(); return(REGX); }
-"inner"       { count(); return(INNER); }
-"outer"       { count(); return(OUTER); }
-"left"       { count(); return(LEFT); }
-"right"       { count(); return(RIGHT); }
-"function"       { count(); return(FUNC); }
-"return"         { count(); return(RTRN); }
-"loop"           {count(); return(LOOP);}
+"df"                                                    { count(); return(DATAFRAME); }
+"sep"                                                   { count(); return(SEP); }
+"header"                                                { count(); return(HEADER); }
+"index_col"                                             { count(); return(INDEX_COL); }
+"index"                                                 { count(); return(INDEX); }
+"usecols"                                               { count(); return(USECOLS); }
+"drop"                                                  { count(); return(DROP); }
+"skip_na"                                               { count(); return(SKIPNA); }
+"inplace"                                               { count(); return(INPLACE); }
+"ffill"                                                 { count(); return(FFILL); }
+"bfill"                                                 { count(); return(BFILL); }
+"fill"                                                  { count(); return(FILL); }
+"method"                                                { count(); return(METHOD); }
+"interpolate"                                           { count(); return(INTERPOLATE); }
+"regex"                                                 { count(); return(REGX); }
+"inner"                                                 { count(); return(INNER); }
+"outer"                                                 { count(); return(OUTER); }
+"left"                                                  { count(); return(LEFT); }
+"right"                                                 { count(); return(RIGHT); }
+"function"                                              { count(); return(FUNC); }
+"return"                                                { count(); return(RTRN); }
+"loop"                                                  {count(); return(LOOP);}
 "if"            {count(); return(IF);}
 "else if"       {count(); return(ELSEIF);}
 "else"          {count(); return(ELSE);}
@@ -64,7 +64,7 @@ end \*\/
 ">="            {count(); return(GE_OPERATOR);}
 "=="            {count(); return(DEQ_OPERATOR);}
 "!="            {count(); return(NE_OPERATOR);}
-"!"            {count(); return(NOT_OPERATOR);}
+"!"             {count(); return(NOT_OPERATOR);}
 ";"             {count(); return(SEMICOLON);}
 "+"             {count(); return('+');}
 "-"             {count(); return('-');}
@@ -94,29 +94,29 @@ end \*\/
 ">>"			{count(); return(RIGHTSHIFT_OPERATOR);}
 "<<"			{count(); return(LEFTSHIFT_OPERATOR);}
 "..."			{count(); return(ELLIPSIS);}
-"read"         { count(); return READCSVFUNC; }
-"head"         { count(); return HEADFUNC; }
-"tail"         { count(); return TAILFUNC; }
-"reset_index"  { count(); return RESETINDEXFUNC; }
-"to_csv"       { count(); return TOCSVFUNC; }
-"describe"     { count(); return DESCRIBEFUNC; }
-"mean"         { count(); return MEANFUNC; }
-"mode"         { count(); return MODEFUNC; }
-"median"       { count(); return MEDIANFUNC; }
-"sum"          { count(); return SUMFUNC; }
-"min"          { count(); return MINFUNC; }
-"max"          { count(); return MAXFUNC; }
-"numeric"          { count(); return NUMERIC; }
+"read"          { count(); return READCSVFUNC; }
+"head"          { count(); return HEADFUNC; }
+"tail"          { count(); return TAILFUNC; }
+"reset_index"   { count(); return RESETINDEXFUNC; }
+"to_csv"        { count(); return TOCSVFUNC; }
+"describe"      { count(); return DESCRIBEFUNC; }
+"mean"          { count(); return MEANFUNC; }
+"mode"          { count(); return MODEFUNC; }
+"median"        { count(); return MEDIANFUNC; }
+"sum"           { count(); return SUMFUNC; }
+"min"           { count(); return MINFUNC; }
+"max"           { count(); return MAXFUNC; }
+"numeric"       { count(); return NUMERIC; }
 "axis"          { count(); return AXIS; }
-"miss_value"   { count(); return MISSVALUEFUNC; }
-"exchange"     { count(); return EXCHANGEVALUEFUNC; }
-"groupby"      { count(); return GROUPBYFUNC; }
-"concat"       { count(); return CONCATFUNC; }
-"merge"        { count(); return MERGEFUNC; }
-"how"          { count(); return HOW_TOKEN;  }
-"on"          { count(); return ON_TOKEN;  }
-"suffix"          { count(); return SUFFIXES_TOKEN;  }
-"join"         { count(); return JOINFUNC; }
+"miss_value"    { count(); return MISSVALUEFUNC; }
+"exchange"      { count(); return EXCHANGEVALUEFUNC; }
+"groupby"       { count(); return GROUPBYFUNC; }
+"concat"        { count(); return CONCATFUNC; }
+"merge"         { count(); return MERGEFUNC; }
+"how"           { count(); return HOW_TOKEN;  }
+"on"            { count(); return ON_TOKEN;  }
+"suffix"        { count(); return SUFFIXES_TOKEN;  }
+"join"          { count(); return JOINFUNC; }
 [0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); return EXPONENTIAL;}
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
 [0-9]+(\.[0-9]+)                       {count(); return FLOATNUM; }
