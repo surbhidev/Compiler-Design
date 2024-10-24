@@ -427,13 +427,13 @@ Conditional_Statements:
 
 Conditional_Statements_1:
     IF '(' predicate_list ')' '{' conditional_body '}' 
-    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    else_if_loop
     ELSE '{' conditional_body '}'
     ;
 
 Conditional_Statements_2:
     IF '(' predicate_list ')' '{' conditional_body '}' 
-    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    else_if_loop
     ;
 
 Conditional_Statements_3:
@@ -443,6 +443,11 @@ Conditional_Statements_3:
 
 Conditional_Statements_4:
     IF '(' predicate_list ')' '{' conditional_body '}' 
+    ;
+
+else_if_loop:
+    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    | else_if_loop ELSEIF '(' predicate_list ')' '{' conditional_body '}'
     ;
 
 conditional_body:

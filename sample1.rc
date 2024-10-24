@@ -54,10 +54,10 @@ if(suvedh==1)
     {
         print("super");
     }
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
-}
+    else if(suvedh == 2)
+    {
+        df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    }
 }
 else if(suvedh == 2)
 {
@@ -67,6 +67,18 @@ else if(suvedh == 2)
 if(suvedh==1)
 {
     print("super");
+}
+else if(suvedh == 2)
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+}
+else if(suvedh == 2)
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+}
+else if(suvedh == 2)
+{
+    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
 }
 else if(suvedh == 2)
 {
