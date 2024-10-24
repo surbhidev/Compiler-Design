@@ -20,7 +20,7 @@ int lineFlag = 0;
 start \/\*
 end \*\/
 %% 
-"df"                                                    { count(); return(DATAFRAME); }
+"df"                                                    { count(); yylval.str = strdup(yytext); return(DATAFRAME); }
 "sep"                                                   { count(); return(SEP); }
 "header"                                                { count(); return(HEADER); }
 "index_col"                                             { count(); return(INDEX_COL); }
@@ -124,7 +124,7 @@ end \*\/
 "'"[A-Za-z_]+\.csv"'"                  { count(); return CSVFILE; }
 "'"([^'\\]|\\.)*"'"                    {count(); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); return STRING;}
-[A-Za-z][A-Za-z0-9_]*                  {count(); return IDENTIFIER;}
+[A-Za-z][A-Za-z0-9_]*                  {count(); yylval.str = strdup(yytext); return IDENTIFIER;}
 \/\/[^\n]*                             ;
 {start}([^*]|\*+[^/])*{end}            ;
 '                                      {count(); return '\'';}

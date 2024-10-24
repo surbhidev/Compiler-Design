@@ -952,7 +952,7 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 YY_RULE_SETUP
 #line 23 "readCode.l"
-{ count(); return(DATAFRAME); }
+{ count(); yylval.str = strdup(yytext); return(DATAFRAME); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
@@ -1474,7 +1474,7 @@ YY_RULE_SETUP
 case 105:
 YY_RULE_SETUP
 #line 127 "readCode.l"
-{count(); return IDENTIFIER;}
+{count(); yylval.str = strdup(yytext); return IDENTIFIER;}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP

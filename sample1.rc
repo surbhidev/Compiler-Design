@@ -3,7 +3,7 @@ input 'weather_data.csv';
 // Converts CSV file into data frame
 df(df_1) = read('weather_data.csv');
 // Fills missing values with the median
-df(df_filled) = df(df_1).miss_value(fill,df(df_1).median());
+df(df_filled),df(df2) = df(df_1).miss_value(fill,df(df_1).median());
 df(df_filled) = df(df_1).miss_value(fill , 1 , axis = 0 , inplace = true);
 df(df_filled) = df(df_1).miss_value(fill,method = ffill);
 df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);

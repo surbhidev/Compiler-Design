@@ -1,7 +1,7 @@
 %{
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 void yyerror(const char *s);
 int yylex(); 
 extern int yylineno;
@@ -25,8 +25,10 @@ extern FILE *yyout;
 %start translation_unit
 
 %token <in> INTNUM
+%token <str> IDENTIFIER DATAFRAME
 %type <in> axis_bit
-%token INT_TYPE FLOAT_TYPE STRING_TYPE DATAFRAME SKIPNA
+%type <str> dataframe_list dataframe assignment_statement
+%token INT_TYPE FLOAT_TYPE STRING_TYPE SKIPNA
 %token FILL FFILL BFILL INTERPOLATE METHOD REGX
 %token INNER LEFT RIGHT OUTER
 %token SEP HEADER INDEX_COL USECOLS INDEX
@@ -36,7 +38,7 @@ extern FILE *yyout;
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
 %token LE_OPERATOR GE_OPERATOR DEQ_OPERATOR NE_OPERATOR PERCENTAGE
-%token INTEGER IDENTIFIER SEMICOLON AND_OPERATOR OR_OPERATOR NOT_OPERATOR
+%token INTEGER SEMICOLON AND_OPERATOR OR_OPERATOR NOT_OPERATOR
 %token INC_OPERATOR DEC_OPERATOR RIGHTSHIFT_OPERATOR LEFTSHIFT_OPERATOR
 %token ELLIPSIS EXPONENTIAL DUST CSVFILE FUNCTIONCALL PRINT CONSTANT
 %token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEVALUEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
@@ -66,7 +68,21 @@ input_statement:
 assignment_statement:
     IDENTIFIER '=' expressions
     | dataframe_list '=' function_call_statement
-    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING_LIST ')' 
+                                                            {   
+                                                                int count = 0;
+                                                                for(int i = 0; i < strlen($1); i++){
+                                                                    if($1[i] == ','){
+                                                                        count ++;
+                                                                    }
+                                                                }
+                                                                if(count != 0)
+                                                                {
+                                                                    perror("Syntax Error: Expected single dataframe");
+                                                                    return 0;
+                                                                }
+                                                            }
+
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')' 
     ;
 
 dataframe: 
@@ -140,12 +156,12 @@ Print_Statement:
 //     ;
 
 aggregate_function_calls:
-    dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEANFUNC '(' ')'      
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MODEFUNC '(' ')'  
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MEDIANFUNC '(' ')'  
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' SUMFUNC '(' ')'
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MINFUNC '(' ')'
-    | dataframe'[' SINGLE_QUOTED_STRING_LIST ']' '.' MAXFUNC '(' ')'
+    dataframe'[' single_quoted_string_list ']' '.' MEANFUNC '(' ')'      
+    | dataframe'[' single_quoted_string_list ']' '.' MODEFUNC '(' ')'  
+    | dataframe'[' single_quoted_string_list ']' '.' MEDIANFUNC '(' ')'  
+    | dataframe'[' single_quoted_string_list ']' '.' SUMFUNC '(' ')'
+    | dataframe'[' single_quoted_string_list ']' '.' MINFUNC '(' ')'
+    | dataframe'[' single_quoted_string_list ']' '.' MAXFUNC '(' ')'
     | dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'                  
     | dataframe '.' MODEFUNC '('  mean_body mean_numerical ')'                                   
     | dataframe '.' MEDIANFUNC '('  mean_body mean_numerical ')'                                 
@@ -191,7 +207,7 @@ exchange_value:
 
 exchange_body_optional:
     ',' INPLACE '=' BOOL exchange_body_optional
-    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' exchange_body_optional
+    | ',' USECOLS '=' '[' single_quoted_string_list ']' exchange_body_optional
     | ',' mean_body exchange_body_optional
     | 
     ;
@@ -207,7 +223,7 @@ missing_value_body_confirm:
 
 missing_value_body:
     ',' INPLACE '=' BOOL missing_value_body
-    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' missing_value_body
+    | ',' USECOLS '=' '[' single_quoted_string_list ']' missing_value_body
     | ',' mean_body missing_value_body
     | 
     ;
@@ -232,14 +248,15 @@ axis_bit:
     ;
 
 mean_numerical:
-    ',' NUMERIC '=' BOOL
-    | ',' SKIPNA '=' BOOL
+    ',' NUMERIC '=' BOOL mean_numerical
+    | ',' SKIPNA '=' BOOL mean_numerical
+    | ',' USECOLS '=' '[' single_quoted_string_list ']' mean_numerical
     |
     ; 
 
 reset_index_body_drop:
     DROP '=' TRUE
-    | DROP '=' FALSE ',' IDENTIFIER
+    | DROP '=' FALSE ',' USECOLS '=' '[' single_quoted_string_list ']'
     ;
 
 BOOL:
@@ -262,13 +279,13 @@ readcsv_body:
     | ',' HEADER '=' INTNUM readcsv_body
     | ',' INDEX_COL '=' INTNUM readcsv_body
     | ',' INDEX '=' BOOL readcsv_body
-    | ',' USECOLS '=' '[' SINGLE_QUOTED_STRING_LIST ']' readcsv_body
+    | ',' USECOLS '=' '[' single_quoted_string_list ']' readcsv_body
     |
     ;
 
-SINGLE_QUOTED_STRING_LIST:
+single_quoted_string_list:
     SINGLE_QUOTED_STRING
-    | SINGLE_QUOTED_STRING_LIST ',' SINGLE_QUOTED_STRING
+    | single_quoted_string_list ',' SINGLE_QUOTED_STRING
     ;
 
 
@@ -343,7 +360,7 @@ statement:
 Function_Assignment_Statement:
     IDENTIFIER '=' expressions
     | dataframe_list '=' function_call_statement
-    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' SINGLE_QUOTED_STRING_LIST ')' 
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')' 
     ;
     
 predicate_list:
@@ -388,7 +405,7 @@ on_clause:
     ;
 
 suffixes_clause:
-    SUFFIXES_TOKEN '=' '[' SINGLE_QUOTED_STRING_LIST ']'
+    SUFFIXES_TOKEN '=' '[' single_quoted_string_list ']'
     ;
 
 Conditional_Statements:
@@ -448,5 +465,5 @@ int main(int argc, char **argv) {
     yyparse();
     // Clean up
     fclose(yyin);
-    return EXIT_SUCCESS;
+    return 0;
 }
