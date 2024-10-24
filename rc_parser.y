@@ -86,7 +86,11 @@ assignment_statement:
     ;
 
 dataframe: 
-    DATAFRAME '(' IDENTIFIER ')'
+    DATAFRAME '(' IDENTIFIER ')'                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s(%s)", $1, $3);
+                                                                $$ = strdup(buffer); 
+                                                            }
     ;
 
 expressions:
@@ -189,8 +193,14 @@ concat_body:
     ;
 
 dataframe_list:
-    dataframe
-    | dataframe_list ',' dataframe
+    dataframe                                               { 
+                                                                $$ = $1;
+                                                            }
+    | dataframe_list ',' dataframe                          { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s,%s", $1, $3);
+                                                                $$ = strdup(buffer); 
+                                                            }
     ;
 
 to_exchange:
