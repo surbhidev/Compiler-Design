@@ -92,3 +92,7 @@ else
         suvedh = suvedh+1;
     }
 }
+
+a=2*(3+4);
+
+a=4*foo(3,4)+e*d-3+4^5/0;
