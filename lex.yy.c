@@ -1457,7 +1457,7 @@ YY_RULE_SETUP
 case 102:
 YY_RULE_SETUP
 #line 124 "readCode.l"
-{ count(); return CSVFILE; }
+{ count(); yylval.str = strdup(yytext) ;return CSVFILE; }
 	YY_BREAK
 case 103:
 /* rule 103 can match eol */

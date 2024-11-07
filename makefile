@@ -1,5 +1,5 @@
 myshell: lex.yy.c y.tab.c
-	gcc lex.yy.c y.tab.c -o raccoon
+	gcc lex.yy.c y.tab.c typechecker.c -o raccoon
 
 lex.yy.c: readCode.l
 	lex readCode.l

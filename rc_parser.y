@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "typechecker.h"
 void yyerror(const char *s);
 int yylex(); 
 extern int yylineno;
@@ -25,7 +26,7 @@ extern FILE *yyout;
 %start translation_unit
 
 %token <in> INTNUM
-%token <str> IDENTIFIER DATAFRAME
+%token <str> IDENTIFIER DATAFRAME CSVFILE
 %type <in> axis_bit
 %type <str> dataframe_list dataframe assignment_statement
 %token INT_TYPE FLOAT_TYPE STRING_TYPE SKIPNA
@@ -40,7 +41,7 @@ extern FILE *yyout;
 %token LE_OPERATOR GE_OPERATOR DEQ_OPERATOR NE_OPERATOR PERCENTAGE
 %token INTEGER SEMICOLON AND_OPERATOR OR_OPERATOR NOT_OPERATOR
 %token INC_OPERATOR DEC_OPERATOR RIGHTSHIFT_OPERATOR LEFTSHIFT_OPERATOR
-%token ELLIPSIS EXPONENTIAL DUST CSVFILE FUNCTIONCALL PRINT CONSTANT
+%token ELLIPSIS EXPONENTIAL DUST FUNCTIONCALL PRINT CONSTANT
 %token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEVALUEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
 %token AXIS_TOKEN DROP_TOKEN INPLACE_TOKEN METHOD_TOKEN HOW_TOKEN ON_TOKEN SUFFIXES_TOKEN FILL_TOKEN
 
@@ -62,7 +63,22 @@ declaration_statement:
     ;
 
 input_statement:
-    INPUT CSVFILE SEMICOLON
+    INPUT CSVFILE SEMICOLON        
+    {
+        char *cleaned_filename = double_quote_remover($2);  // remove quotes from filename
+        FILE *file = fopen(cleaned_filename, "r");
+        
+        if (file == NULL) 
+        {
+            fprintf(stderr, "Failed to open file: %s\n", cleaned_filename);
+        } 
+        else 
+        {
+            fclose(file);
+        }
+        
+        free(cleaned_filename);
+    }
     ;
 
 assignment_statement:

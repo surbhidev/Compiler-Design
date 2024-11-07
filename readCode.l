@@ -121,7 +121,7 @@ end \*\/
 [0-9]+(\.[0-9]+)?%                     {count(); return PERCENTAGE;}
 [0-9]+(\.[0-9]+)                       {count(); return FLOATNUM; }
 [0-9]+                                 {count(); yylval.in = atoi(yytext); return INTNUM; }
-"'"[A-Za-z_]+\.csv"'"                  { count(); return CSVFILE; }
+"'"[A-Za-z_]+\.csv"'"                  { count(); yylval.str = strdup(yytext) ;return CSVFILE; }
 "'"([^'\\]|\\.)*"'"                    {count(); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); return STRING;}
 [A-Za-z][A-Za-z0-9_]*                  {count(); yylval.str = strdup(yytext); return IDENTIFIER;}
