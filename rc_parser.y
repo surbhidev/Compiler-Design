@@ -72,12 +72,12 @@ input_statement:
         {
             fprintf(stderr, "Failed to open file: %s\n", cleaned_filename);
         } 
-        else 
+        /* else 
         {
             fclose(file);
         }
         
-        free(cleaned_filename);
+        free(cleaned_filename); */
     }
     ;
 
