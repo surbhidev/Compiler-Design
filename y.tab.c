@@ -73,8 +73,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include "typechecker.h"
+
 void yyerror(const char *s);
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int yylex();
+int yyparse();
+int yywrap();
+
+#ifdef __cplusplus
+}
+#endif
+
 extern int yylineno;
 extern FILE *yyin;
 extern FILE *yyout;
@@ -82,7 +95,7 @@ extern FILE *yyout;
 FILE* yacc_output;
 extern FILE* lex_output;
 
-#line 86 "y.tab.c"
+#line 99 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -327,13 +340,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 16 "rc_parser.y"
+#line 29 "rc_parser.y"
 
     int in;
     float flt;
     char *str;
 
-#line 337 "y.tab.c"
+#line 350 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -927,25 +940,25 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    54,    54,    55,    59,    60,    61,    62,    63,    64,
-      65,    69,    88,    89,   104,   108,   116,   117,   118,   119,
-     120,   121,   122,   123,   124,   125,   126,   127,   131,   136,
-     137,   138,   142,   143,   144,   146,   147,   151,   155,   159,
-     160,   161,   162,   166,   170,   174,   182,   183,   184,   185,
-     186,   187,   188,   189,   190,   191,   192,   193,   197,   198,
-     199,   200,   201,   202,   203,   204,   205,   206,   207,   211,
-     215,   218,   226,   230,   231,   232,   233,   234,   238,   239,
-     240,   241,   245,   246,   247,   248,   249,   250,   254,   255,
-     256,   257,   261,   262,   266,   280,   281,   282,   283,   287,
-     288,   292,   293,   297,   298,   302,   303,   307,   308,   309,
-     310,   311,   312,   316,   317,   322,   323,   327,   331,   332,
-     333,   334,   335,   336,   337,   338,   339,   343,   347,   352,
-     356,   357,   358,   359,   360,   361,   365,   369,   373,   374,
-     378,   379,   380,   381,   382,   383,   384,   385,   390,   391,
-     392,   396,   397,   398,   402,   403,   404,   408,   409,   413,
-     414,   415,   416,   417,   418,   422,   426,   427,   428,   429,
-     433,   437,   441,   442,   443,   444,   448,   454,   459,   464,
-     468,   469,   473
+       0,    67,    67,    68,    72,    73,    74,    75,    76,    77,
+      78,    82,   101,   102,   117,   121,   129,   130,   131,   132,
+     133,   134,   135,   136,   137,   138,   139,   140,   144,   149,
+     150,   151,   155,   156,   157,   159,   160,   164,   168,   172,
+     173,   174,   175,   179,   183,   187,   195,   196,   197,   198,
+     199,   200,   201,   202,   203,   204,   205,   206,   210,   211,
+     212,   213,   214,   215,   216,   217,   218,   219,   220,   224,
+     228,   231,   239,   243,   244,   245,   246,   247,   251,   252,
+     253,   254,   258,   259,   260,   261,   262,   263,   267,   268,
+     269,   270,   274,   275,   279,   293,   294,   295,   296,   300,
+     301,   305,   306,   310,   311,   315,   316,   320,   321,   322,
+     323,   324,   325,   329,   330,   335,   336,   340,   344,   345,
+     346,   347,   348,   349,   350,   351,   352,   356,   360,   365,
+     369,   370,   371,   372,   373,   374,   378,   382,   386,   387,
+     391,   392,   393,   394,   395,   396,   397,   398,   403,   404,
+     405,   409,   410,   411,   415,   416,   417,   421,   422,   426,
+     427,   428,   429,   430,   431,   435,   439,   440,   441,   442,
+     446,   450,   454,   455,   456,   457,   461,   467,   472,   477,
+     481,   482,   486
 };
 #endif
 
@@ -1842,7 +1855,7 @@ yyreduce:
   switch (yyn)
     {
   case 11: /* input_statement: INPUT CSVFILE SEMICOLON  */
-#line 70 "rc_parser.y"
+#line 83 "rc_parser.y"
     {
         char *cleaned_filename = double_quote_remover((yyvsp[-1].str));  // remove quotes from filename
         FILE *file = fopen(cleaned_filename, "r");
@@ -1858,11 +1871,11 @@ yyreduce:
 
         free(cleaned_filename); */
     }
-#line 1862 "y.tab.c"
+#line 1875 "y.tab.c"
     break;
 
   case 13: /* assignment_statement: dataframe_list '=' function_call_statement  */
-#line 90 "rc_parser.y"
+#line 103 "rc_parser.y"
                                                             {
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen((yyvsp[-2].str)); i++){
@@ -1876,39 +1889,39 @@ yyreduce:
                                                                     return 0;
                                                                 }
                                                             }
-#line 1880 "y.tab.c"
+#line 1893 "y.tab.c"
     break;
 
   case 15: /* dataframe: DATAFRAME '(' IDENTIFIER ')'  */
-#line 108 "rc_parser.y"
+#line 121 "rc_parser.y"
                                                             {
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", (yyvsp[-3].str), (yyvsp[-1].str));
                                                                 (yyval.str) = strdup(buffer);
                                                             }
-#line 1890 "y.tab.c"
+#line 1903 "y.tab.c"
     break;
 
   case 70: /* dataframe_list: dataframe  */
-#line 215 "rc_parser.y"
+#line 228 "rc_parser.y"
                                                             {
                                                                 (yyval.str) = (yyvsp[0].str);
                                                             }
-#line 1898 "y.tab.c"
+#line 1911 "y.tab.c"
     break;
 
   case 71: /* dataframe_list: dataframe_list ',' dataframe  */
-#line 218 "rc_parser.y"
+#line 231 "rc_parser.y"
                                                             {
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str), (yyvsp[0].str));
                                                                 (yyval.str) = strdup(buffer);
                                                             }
-#line 1908 "y.tab.c"
+#line 1921 "y.tab.c"
     break;
 
   case 94: /* axis_bit: INTNUM  */
-#line 267 "rc_parser.y"
+#line 280 "rc_parser.y"
     {
         if((yyvsp[0].in) == 0)
         {
@@ -1919,11 +1932,11 @@ yyreduce:
             (yyval.in) = 1;
         }
     }
-#line 1923 "y.tab.c"
+#line 1936 "y.tab.c"
     break;
 
 
-#line 1927 "y.tab.c"
+#line 1940 "y.tab.c"
 
       default: break;
     }
@@ -2116,7 +2129,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 476 "rc_parser.y"
+#line 489 "rc_parser.y"
 
 
 void yyerror(const char *s) {
@@ -2125,6 +2138,24 @@ void yyerror(const char *s) {
 
 int yywrap() {
     return 1;
+}
+
+char* double_quote_remover(char* x){
+    printf("Original file name = %s\n", x);
+    char* result = x;  // Resulting string will overwrite the original
+    int i = 0, j = 0;
+
+    // Traverse the input string
+    while (x[i] != '\0') {
+        if (x[i] != '\'') {  // If the current character is not a single quote
+            result[j++] = x[i];
+        }
+        i++;
+    }
+    result[j] = '\0';  // Null-terminate the resulting string
+
+    printf("Processed file name = %s\n", result);
+    return result;
 }
 
 int main(int argc, char **argv) {

@@ -1,4 +1,6 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <unordered_map>
+
 
 using namespace ::std;
 
@@ -10,7 +12,9 @@ class ST{
     public:
         ST() = default;
         void put(const Key& key, const Value& val){
-            symbol_table[key] = val;
+            // symbol_table[key] = val;
+            symbol_table.insert({key, val});
+
         }
         Value get(const Key& key){
             auto it = symbol_table.find(key);
@@ -46,24 +50,24 @@ struct SymbolInfo {
         : token_name(std::move(name)), line_number(line), column_number(column), type(std::move(token_type)) {}
 };
 
-int main() {
-    // Create a symbol table with string keys and SymbolInfo values
-    ST<std::string, SymbolInfo> symbolTable;
+// int main() {
+//     // Create a symbol table with string keys and SymbolInfo values
+//     ST<std::string, SymbolInfo> symbolTable;
 
-    // Add entries to the symbol table
-    symbolTable.put("x", SymbolInfo("x", 1, 5, "identifier"));
-    symbolTable.put("if", SymbolInfo("if", 2, 1, "keyword"));
+//     // Add entries to the symbol table
+//     symbolTable.put("x", SymbolInfo("x", 1, 5, "identifier"));
+//     symbolTable.put("if", SymbolInfo("if", 2, 1, "keyword"));
 
-    // Retrieve and print an entry
-    try {
-        SymbolInfo info = symbolTable.get("x");
-        std::cout << "Token Name: " << info.token_name
-                  << ", Line: " << info.line_number
-                  << ", Column: " << info.column_number
-                  << ", Type: " << info.type << std::endl;
-    } catch (const std::runtime_error& e) {
-        std::cout << e.what() << std::endl;
-    }
+//     // Retrieve and print an entry
+//     try {
+//         SymbolInfo info = symbolTable.get("x");
+//         std::cout << "Token Name: " << info.token_name
+//                   << ", Line: " << info.line_number
+//                   << ", Column: " << info.column_number
+//                   << ", Type: " << info.type << std::endl;
+//     } catch (const std::runtime_error& e) {
+//         std::cout << e.what() << std::endl;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
