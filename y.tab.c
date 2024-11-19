@@ -74,12 +74,15 @@
 #include <string.h>
 #include "typechecker.h"
 void yyerror(const char *s);
-int yylex(); 
+int yylex();
 extern int yylineno;
 extern FILE *yyin;
 extern FILE *yyout;
 
-#line 83 "y.tab.c"
+FILE* yacc_output;
+extern FILE* lex_output;
+
+#line 86 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -324,13 +327,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 13 "rc_parser.y"
+#line 16 "rc_parser.y"
 
     int in;
     float flt;
-    char *str;  
+    char *str;
 
-#line 334 "y.tab.c"
+#line 337 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -924,25 +927,25 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    51,    51,    52,    56,    57,    58,    59,    60,    61,
-      62,    66,    85,    86,   101,   105,   113,   114,   115,   116,
-     117,   118,   119,   120,   121,   122,   123,   124,   128,   133,
-     134,   135,   139,   140,   141,   143,   144,   148,   152,   156,
-     157,   158,   159,   163,   167,   171,   179,   180,   181,   182,
-     183,   184,   185,   186,   187,   188,   189,   190,   194,   195,
-     196,   197,   198,   199,   200,   201,   202,   203,   204,   208,
-     212,   215,   223,   227,   228,   229,   230,   231,   235,   236,
-     237,   238,   242,   243,   244,   245,   246,   247,   251,   252,
-     253,   254,   258,   259,   263,   277,   278,   279,   280,   284,
-     285,   289,   290,   294,   295,   299,   300,   304,   305,   306,
-     307,   308,   309,   313,   314,   319,   320,   324,   328,   329,
-     330,   331,   332,   333,   334,   335,   336,   340,   344,   349,
-     353,   354,   355,   356,   357,   358,   362,   366,   370,   371,
-     375,   376,   377,   378,   379,   380,   381,   382,   387,   388,
-     389,   393,   394,   395,   399,   400,   401,   405,   406,   410,
-     411,   412,   413,   414,   415,   419,   423,   424,   425,   426,
-     430,   434,   438,   439,   440,   441,   445,   451,   456,   461,
-     465,   466,   470
+       0,    54,    54,    55,    59,    60,    61,    62,    63,    64,
+      65,    69,    88,    89,   104,   108,   116,   117,   118,   119,
+     120,   121,   122,   123,   124,   125,   126,   127,   131,   136,
+     137,   138,   142,   143,   144,   146,   147,   151,   155,   159,
+     160,   161,   162,   166,   170,   174,   182,   183,   184,   185,
+     186,   187,   188,   189,   190,   191,   192,   193,   197,   198,
+     199,   200,   201,   202,   203,   204,   205,   206,   207,   211,
+     215,   218,   226,   230,   231,   232,   233,   234,   238,   239,
+     240,   241,   245,   246,   247,   248,   249,   250,   254,   255,
+     256,   257,   261,   262,   266,   280,   281,   282,   283,   287,
+     288,   292,   293,   297,   298,   302,   303,   307,   308,   309,
+     310,   311,   312,   316,   317,   322,   323,   327,   331,   332,
+     333,   334,   335,   336,   337,   338,   339,   343,   347,   352,
+     356,   357,   358,   359,   360,   361,   365,   369,   373,   374,
+     378,   379,   380,   381,   382,   383,   384,   385,   390,   391,
+     392,   396,   397,   398,   402,   403,   404,   408,   409,   413,
+     414,   415,   416,   417,   418,   422,   426,   427,   428,   429,
+     433,   437,   441,   442,   443,   444,   448,   454,   459,   464,
+     468,   469,   473
 };
 #endif
 
@@ -1839,28 +1842,28 @@ yyreduce:
   switch (yyn)
     {
   case 11: /* input_statement: INPUT CSVFILE SEMICOLON  */
-#line 67 "rc_parser.y"
+#line 70 "rc_parser.y"
     {
         char *cleaned_filename = double_quote_remover((yyvsp[-1].str));  // remove quotes from filename
         FILE *file = fopen(cleaned_filename, "r");
-        
-        if (file == NULL) 
+
+        if (file == NULL)
         {
             fprintf(stderr, "Failed to open file: %s\n", cleaned_filename);
-        } 
-        /* else 
+        }
+        /* else
         {
             fclose(file);
         }
-        
+
         free(cleaned_filename); */
     }
-#line 1859 "y.tab.c"
+#line 1862 "y.tab.c"
     break;
 
   case 13: /* assignment_statement: dataframe_list '=' function_call_statement  */
-#line 87 "rc_parser.y"
-                                                            {   
+#line 90 "rc_parser.y"
+                                                            {
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen((yyvsp[-2].str)); i++){
                                                                     if((yyvsp[-2].str)[i] == ','){
@@ -1873,39 +1876,39 @@ yyreduce:
                                                                     return 0;
                                                                 }
                                                             }
-#line 1877 "y.tab.c"
+#line 1880 "y.tab.c"
     break;
 
   case 15: /* dataframe: DATAFRAME '(' IDENTIFIER ')'  */
-#line 105 "rc_parser.y"
-                                                            { 
-                                                                char buffer[256]; 
+#line 108 "rc_parser.y"
+                                                            {
+                                                                char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", (yyvsp[-3].str), (yyvsp[-1].str));
-                                                                (yyval.str) = strdup(buffer); 
+                                                                (yyval.str) = strdup(buffer);
                                                             }
-#line 1887 "y.tab.c"
+#line 1890 "y.tab.c"
     break;
 
   case 70: /* dataframe_list: dataframe  */
-#line 212 "rc_parser.y"
-                                                            { 
+#line 215 "rc_parser.y"
+                                                            {
                                                                 (yyval.str) = (yyvsp[0].str);
                                                             }
-#line 1895 "y.tab.c"
+#line 1898 "y.tab.c"
     break;
 
   case 71: /* dataframe_list: dataframe_list ',' dataframe  */
-#line 215 "rc_parser.y"
-                                                            { 
-                                                                char buffer[256]; 
+#line 218 "rc_parser.y"
+                                                            {
+                                                                char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str), (yyvsp[0].str));
-                                                                (yyval.str) = strdup(buffer); 
+                                                                (yyval.str) = strdup(buffer);
                                                             }
-#line 1905 "y.tab.c"
+#line 1908 "y.tab.c"
     break;
 
   case 94: /* axis_bit: INTNUM  */
-#line 264 "rc_parser.y"
+#line 267 "rc_parser.y"
     {
         if((yyvsp[0].in) == 0)
         {
@@ -1916,11 +1919,11 @@ yyreduce:
             (yyval.in) = 1;
         }
     }
-#line 1920 "y.tab.c"
+#line 1923 "y.tab.c"
     break;
 
 
-#line 1924 "y.tab.c"
+#line 1927 "y.tab.c"
 
       default: break;
     }
@@ -2113,7 +2116,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 473 "rc_parser.y"
+#line 476 "rc_parser.y"
 
 
 void yyerror(const char *s) {
@@ -2129,11 +2132,20 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
         return EXIT_FAILURE;
     }
-    
+
     yyin = fopen(argv[1], "r");
     if (!yyin) {
         fprintf(stderr, "Error: Unable to open input file: %s\n", argv[1]);
         return EXIT_FAILURE;
+    }
+
+    yacc_output = fopen("yacc_output.txt", "w");
+    if(!yacc_output){
+        fprintf(stderr, "Error: Unable to open yacc_output.txt");
+    }
+    lex_output = fopen("lex_output.txt", "w");
+    if(!yacc_output){
+        fprintf(stderr, "Error: Unable to open lex_output.txt");
     }
 
     // Call yyparse to parse the input until EOF

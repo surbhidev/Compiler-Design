@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -664,6 +664,9 @@ char *yytext;
 #include <stdlib.h>
 #include "y.tab.h"
 
+FILE* lex_output;
+extern FILE* yacc_output;
+
 // Function prototypes
 void count();
 
@@ -672,8 +675,8 @@ void count();
 // Global counter
 int column = 0;
 int lineFlag = 0;
-#line 676 "lex.yy.c"
-#line 677 "lex.yy.c"
+#line 678 "lex.yy.c"
+#line 679 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -890,9 +893,9 @@ YY_DECL
 		}
 
 	{
-#line 22 "readCode.l"
+#line 25 "readCode.l"
 
-#line 896 "lex.yy.c"
+#line 898 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -951,579 +954,579 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 23 "readCode.l"
-{ count(); yylval.str = strdup(yytext); return(DATAFRAME); }
+#line 26 "readCode.l"
+{ count(); yylval.str = strdup(yytext); fprintf(lex_output, "\n %d : DATAFRAME", yylineno); return(DATAFRAME); }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 24 "readCode.l"
-{ count(); return(SEP); }
+#line 27 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : SEP", yylineno); return(SEP); }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 25 "readCode.l"
-{ count(); return(HEADER); }
+#line 28 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : HEADER", yylineno); return(HEADER); }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 26 "readCode.l"
-{ count(); return(INDEX_COL); }
+#line 29 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : INDEX_COL", yylineno); return(INDEX_COL); }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 27 "readCode.l"
-{ count(); return(INDEX); }
+#line 30 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : INDEX", yylineno); return(INDEX); }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 28 "readCode.l"
-{ count(); return(USECOLS); }
+#line 31 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : USECOLS", yylineno); return(USECOLS); }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 29 "readCode.l"
-{ count(); return(DROP); }
+#line 32 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : DROP", yylineno); return(DROP); }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 30 "readCode.l"
-{ count(); return(SKIPNA); }
+#line 33 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : SKIPNA", yylineno); return(SKIPNA); }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 31 "readCode.l"
-{ count(); return(INPLACE); }
+#line 34 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : INPLACE", yylineno); return(INPLACE); }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 32 "readCode.l"
-{ count(); return(FFILL); }
+#line 35 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : FFILL", yylineno); return(FFILL); }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 33 "readCode.l"
-{ count(); return(BFILL); }
+#line 36 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : BFILL", yylineno); return(BFILL); }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 34 "readCode.l"
-{ count(); return(FILL); }
+#line 37 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : FILL", yylineno); return(FILL); }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 35 "readCode.l"
-{ count(); return(METHOD); }
+#line 38 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : METHOD", yylineno); return(METHOD); }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 36 "readCode.l"
-{ count(); return(INTERPOLATE); }
+#line 39 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : INTERPOLATE", yylineno); return(INTERPOLATE); }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 37 "readCode.l"
-{ count(); return(REGX); }
+#line 40 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : REGX", yylineno); return(REGX); }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 38 "readCode.l"
-{ count(); return(INNER); }
+#line 41 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : INNER", yylineno); return(INNER); }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 39 "readCode.l"
-{ count(); return(OUTER); }
+#line 42 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : OUTER", yylineno); return(OUTER); }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 40 "readCode.l"
-{ count(); return(LEFT); }
+#line 43 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : LEFT", yylineno); return(LEFT); }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 41 "readCode.l"
-{ count(); return(RIGHT); }
+#line 44 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : RIGHT", yylineno); return(RIGHT); }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 42 "readCode.l"
-{ count(); return(FUNC); }
+#line 45 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : FUNC", yylineno); return(FUNC); }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 43 "readCode.l"
-{ count(); return(RTRN); }
+#line 46 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : RTRN", yylineno); return(RTRN); }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 44 "readCode.l"
-{count(); return(LOOP);}
+#line 47 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : LOOP", yylineno); return(LOOP);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 45 "readCode.l"
-{count(); return(IF);}
+#line 48 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : IF", yylineno); return(IF);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 46 "readCode.l"
-{count(); return(ELSEIF);}
+#line 49 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ELSEIF", yylineno); return(ELSEIF);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 47 "readCode.l"
-{count(); return(ELSE);}
+#line 50 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ELSE", yylineno); return(ELSE);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 48 "readCode.l"
-{count(); return(BREAK);}
+#line 51 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : BREAK", yylineno); return(BREAK);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 49 "readCode.l"
-{count(); return(CONTINUE);}
+#line 52 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : CONTINUE", yylineno); return(CONTINUE);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 50 "readCode.l"
-{count(); return(INT_TYPE);}
+#line 53 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : INT_TYPE", yylineno); return(INT_TYPE);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 51 "readCode.l"
-{count(); return(FLOAT_TYPE);}
+#line 54 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : FLOAT_TYPE", yylineno); return(FLOAT_TYPE);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 52 "readCode.l"
-{count(); return(STRING_TYPE);}
+#line 55 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : STRING_TYPE", yylineno); return(STRING_TYPE);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 53 "readCode.l"
-{count(); return(TRUE);}
+#line 56 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : TRUE", yylineno); return(TRUE);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 54 "readCode.l"
-{count(); return(FALSE);}
+#line 57 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : FALSE", yylineno); return(FALSE);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 55 "readCode.l"
-{count(); return(INPUT);}
+#line 58 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : INPUT", yylineno); return(INPUT);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 56 "readCode.l"
-{count(); return(OUTPUT);}
+#line 59 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : OUTPUT", yylineno); return(OUTPUT);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 57 "readCode.l"
-{count(); return(PRINT);}
+#line 60 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : PRINT", yylineno); return(PRINT);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 58 "readCode.l"
-{count(); return(ADD_ASSIGN_OPERATOR);}
+#line 61 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ADD_ASSIGN_OPERATOR", yylineno); return(ADD_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 59 "readCode.l"
-{count(); return(SUB_ASSIGN_OPERATOR);}
+#line 62 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : SUB_ASSIGN_OPERATOR", yylineno); return(SUB_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 60 "readCode.l"
-{count(); return(MUL_ASSIGN_OPERATOR);}
+#line 63 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : MUL_ASSIGN_OPERATOR", yylineno); return(MUL_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 61 "readCode.l"
-{count(); return(DIV_ASSIGN_OPERATOR);}
+#line 64 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : DIV_ASSIGN_OPERATOR", yylineno); return(DIV_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 62 "readCode.l"
-{count(); return(MOD_ASSIGN_OPERATOR);}
+#line 65 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : MOD_ASSIGN_OPERATOR", yylineno); return(MOD_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 63 "readCode.l"
-{count(); return(LE_OPERATOR);}
+#line 66 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : LE_OPERATOR", yylineno); return(LE_OPERATOR);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 64 "readCode.l"
-{count(); return(GE_OPERATOR);}
+#line 67 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : GE_OPERATOR", yylineno); return(GE_OPERATOR);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 65 "readCode.l"
-{count(); return(DEQ_OPERATOR);}
+#line 68 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : DEQ_OPERATOR", yylineno); return(DEQ_OPERATOR);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 66 "readCode.l"
-{count(); return(NE_OPERATOR);}
+#line 69 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : NE_OPERATOR", yylineno); return(NE_OPERATOR);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 67 "readCode.l"
-{count(); return(NOT_OPERATOR);}
+#line 70 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : NOT_OPERATOR", yylineno); return(NOT_OPERATOR);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 68 "readCode.l"
-{count(); return(SEMICOLON);}
+#line 71 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : SEMICOLON", yylineno); return(SEMICOLON);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 69 "readCode.l"
-{count(); return('+');}
+#line 72 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : +", yylineno); return('+');}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 70 "readCode.l"
-{count(); return('-');}
+#line 73 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : -", yylineno); return('-');}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 71 "readCode.l"
-{count(); return('*');}
+#line 74 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : *", yylineno); return('*');}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 72 "readCode.l"
-{count(); return('/');}
+#line 75 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : /", yylineno); return('/');}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 73 "readCode.l"
-{count(); return('%');}
+#line 76 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : %", yylineno); return('%');}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 74 "readCode.l"
-{count(); return('=');}
+#line 77 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : =", yylineno); return('=');}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 75 "readCode.l"
-{count(); return('<');}
+#line 78 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : <", yylineno); return('<');}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 76 "readCode.l"
-{count(); return('>');}
+#line 79 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : >", yylineno); return('>');}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 77 "readCode.l"
-{count(); return('&');}
+#line 80 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : &", yylineno); return('&');}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 78 "readCode.l"
-{count(); return('^');}
+#line 81 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ^", yylineno); return('^');}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 79 "readCode.l"
-{count(); return('|');}
+#line 82 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : |", yylineno); return('|');}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 80 "readCode.l"
-{count(); return('~');}
+#line 83 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ~", yylineno); return('~');}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 81 "readCode.l"
-{count(); return('.');}
+#line 84 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : .", yylineno); return('.');}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 82 "readCode.l"
-{count(); return('(');}
+#line 85 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : (", yylineno); return('(');}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 83 "readCode.l"
-{count(); return(')');}
+#line 86 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : )", yylineno); return(')');}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 84 "readCode.l"
-{count(); return('[');}
+#line 87 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : [", yylineno); return('[');}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 85 "readCode.l"
-{count(); return(']');}
+#line 88 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ]", yylineno); return(']');}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 86 "readCode.l"
-{count(); return('{');}
+#line 89 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : {", yylineno); return('{');}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 87 "readCode.l"
-{count(); return('}');}
+#line 90 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : }", yylineno); return('}');}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 88 "readCode.l"
-{count(); return(',');}
+#line 91 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ,", yylineno); return(',');}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 89 "readCode.l"
-{count(); return(':');}
+#line 92 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : :", yylineno); return(':');}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 90 "readCode.l"
-{count(); return(AND_OPERATOR);}
+#line 93 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : AND_OPERATOR", yylineno); return(AND_OPERATOR);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 91 "readCode.l"
-{count(); return(OR_OPERATOR);}
+#line 94 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : OR_OPERATOR", yylineno); return(OR_OPERATOR);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 92 "readCode.l"
-{count(); return(INC_OPERATOR);}
+#line 95 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : INC_OPERATOR", yylineno); return(INC_OPERATOR);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 93 "readCode.l"
-{count(); return(DEC_OPERATOR);}
+#line 96 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : DEC_OPERATOR", yylineno); return(DEC_OPERATOR);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 94 "readCode.l"
-{count(); return(RIGHTSHIFT_OPERATOR);}
+#line 97 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : RIGHTSHIFT_OPERATOR", yylineno); return(RIGHTSHIFT_OPERATOR);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 95 "readCode.l"
-{count(); return(LEFTSHIFT_OPERATOR);}
+#line 98 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : LEFTSHIFT_OPERATOR", yylineno); return(LEFTSHIFT_OPERATOR);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 96 "readCode.l"
-{count(); return(ELLIPSIS);}
+#line 99 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : ELLIPSIS", yylineno); return(ELLIPSIS);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 97 "readCode.l"
-{ count(); return READCSVFUNC; }
+#line 100 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : READCSVFUNC", yylineno); return READCSVFUNC; }
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 98 "readCode.l"
-{ count(); return HEADFUNC; }
+#line 101 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : HEADFUNC", yylineno); return HEADFUNC; }
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 99 "readCode.l"
-{ count(); return TAILFUNC; }
+#line 102 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : TAILFUNC", yylineno); return TAILFUNC; }
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 100 "readCode.l"
-{ count(); return RESETINDEXFUNC; }
+#line 103 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : RESETINDEXFUNC", yylineno); return RESETINDEXFUNC; }
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 101 "readCode.l"
-{ count(); return TOCSVFUNC; }
+#line 104 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : TOCSVFUNC", yylineno); return TOCSVFUNC; }
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 102 "readCode.l"
-{ count(); return DESCRIBEFUNC; }
+#line 105 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : DESCRIBEFUNC", yylineno); return DESCRIBEFUNC; }
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 103 "readCode.l"
-{ count(); return MEANFUNC; }
+#line 106 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MEANFUNC", yylineno); return MEANFUNC; }
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 104 "readCode.l"
-{ count(); return MODEFUNC; }
+#line 107 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MODEFUNC", yylineno); return MODEFUNC; }
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 105 "readCode.l"
-{ count(); return MEDIANFUNC; }
+#line 108 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MEDIANFUNC", yylineno); return MEDIANFUNC; }
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 106 "readCode.l"
-{ count(); return SUMFUNC; }
+#line 109 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : SUMFUNC", yylineno); return SUMFUNC; }
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 107 "readCode.l"
-{ count(); return MINFUNC; }
+#line 110 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MINFUNC", yylineno); return MINFUNC; }
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 108 "readCode.l"
-{ count(); return MAXFUNC; }
+#line 111 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MAXFUNC", yylineno); return MAXFUNC; }
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 109 "readCode.l"
-{ count(); return NUMERIC; }
+#line 112 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : NUMERIC", yylineno); return NUMERIC; }
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 110 "readCode.l"
-{ count(); return AXIS; }
+#line 113 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : AXIS", yylineno); return AXIS; }
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 111 "readCode.l"
-{ count(); return MISSVALUEFUNC; }
+#line 114 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MISSVALUEFUNC", yylineno); return MISSVALUEFUNC; }
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 112 "readCode.l"
-{ count(); return EXCHANGEVALUEFUNC; }
+#line 115 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : EXCHANGEVALUEFUNC", yylineno); return EXCHANGEVALUEFUNC; }
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 113 "readCode.l"
-{ count(); return GROUPBYFUNC; }
+#line 116 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : GROUPBYFUNC", yylineno); return GROUPBYFUNC; }
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 114 "readCode.l"
-{ count(); return CONCATFUNC; }
+#line 117 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : CONCATFUNC", yylineno); return CONCATFUNC; }
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 115 "readCode.l"
-{ count(); return MERGEFUNC; }
+#line 118 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : MERGEFUNC", yylineno); return MERGEFUNC; }
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 116 "readCode.l"
-{ count(); return HOW_TOKEN;  }
+#line 119 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : HOW_TOKEN", yylineno); return HOW_TOKEN;  }
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 117 "readCode.l"
-{ count(); return ON_TOKEN;  }
+#line 120 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : ON_TOKEN", yylineno); return ON_TOKEN;  }
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 118 "readCode.l"
-{ count(); return SUFFIXES_TOKEN;  }
+#line 121 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : SUFFIXES_TOKEN", yylineno); return SUFFIXES_TOKEN;  }
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 119 "readCode.l"
-{ count(); return JOINFUNC; }
+#line 122 "readCode.l"
+{ count(); fprintf(lex_output, "\n %d : JOINFUNC", yylineno); return JOINFUNC; }
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 120 "readCode.l"
-{count(); return EXPONENTIAL;}
+#line 123 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : EXPONENTIAL", yylineno); return EXPONENTIAL;}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 121 "readCode.l"
-{count(); return PERCENTAGE;}
+#line 124 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : PERCENTAGE", yylineno); return PERCENTAGE;}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 122 "readCode.l"
-{count(); return FLOATNUM; }
+#line 125 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : FLOATNUM", yylineno); return FLOATNUM; }
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 123 "readCode.l"
-{count(); yylval.in = atoi(yytext); return INTNUM; }
+#line 126 "readCode.l"
+{count(); yylval.in = atoi(yytext); fprintf(lex_output, "\n %d : INTNUM", yylineno); return INTNUM; }
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 124 "readCode.l"
-{ count(); yylval.str = strdup(yytext) ;return CSVFILE; }
+#line 127 "readCode.l"
+{count(); yylval.str = strdup(yytext); fprintf(lex_output, "\n %d : CSVFILE", yylineno); return CSVFILE; }
 	YY_BREAK
 case 103:
 /* rule 103 can match eol */
 YY_RULE_SETUP
-#line 125 "readCode.l"
-{count(); return SINGLE_QUOTED_STRING;}
+#line 128 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : SINGLE_QUOTED_STRING", yylineno); return SINGLE_QUOTED_STRING;}
 	YY_BREAK
 case 104:
 /* rule 104 can match eol */
 YY_RULE_SETUP
-#line 126 "readCode.l"
-{count(); return STRING;}
+#line 129 "readCode.l"
+{count(); fprintf(lex_output, "\n %d : STRING", yylineno); return STRING;}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 127 "readCode.l"
-{count(); yylval.str = strdup(yytext); return IDENTIFIER;}
+#line 130 "readCode.l"
+{count(); yylval.str = strdup(yytext); fprintf(lex_output, "\n %d : IDENTIFIER", yylineno); return IDENTIFIER;}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 128 "readCode.l"
+#line 131 "readCode.l"
 ;
 	YY_BREAK
 case 107:
 /* rule 107 can match eol */
 YY_RULE_SETUP
-#line 129 "readCode.l"
+#line 132 "readCode.l"
 ;
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 130 "readCode.l"
+#line 133 "readCode.l"
 {count(); return '\'';}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 131 "readCode.l"
+#line 134 "readCode.l"
 {count(); return '\"';}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 132 "readCode.l"
+#line 135 "readCode.l"
 ;
 	YY_BREAK
 case 111:
 /* rule 111 can match eol */
 YY_RULE_SETUP
-#line 133 "readCode.l"
+#line 136 "readCode.l"
 { count(); yylineno++; }
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 134 "readCode.l"
+#line 137 "readCode.l"
 { count(); }
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 135 "readCode.l"
+#line 138 "readCode.l"
 {count();}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 136 "readCode.l"
+#line 139 "readCode.l"
 ECHO;
 	YY_BREAK
-#line 1527 "lex.yy.c"
+#line 1529 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2528,7 +2531,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 136 "readCode.l"
+#line 139 "readCode.l"
 
 
 void count()

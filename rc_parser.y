@@ -4,22 +4,25 @@
 #include <string.h>
 #include "typechecker.h"
 void yyerror(const char *s);
-int yylex(); 
+int yylex();
 extern int yylineno;
 extern FILE *yyin;
 extern FILE *yyout;
+
+FILE* yacc_output;
+extern FILE* lex_output;
 %}
 
 %union {
     int in;
     float flt;
-    char *str;  
+    char *str;
 }
 
 %left '+' '-' '\\' '.'
 %left '*' '/' '%'
-%left '=' 
-%nonassoc '<' '>' 
+%left '='
+%nonassoc '<' '>'
 %nonassoc LOWER_THAN_ELSE
 %right ELSE
 
@@ -63,20 +66,20 @@ declaration_statement:
     ;
 
 input_statement:
-    INPUT CSVFILE SEMICOLON        
+    INPUT CSVFILE SEMICOLON
     {
         char *cleaned_filename = double_quote_remover($2);  // remove quotes from filename
         FILE *file = fopen(cleaned_filename, "r");
-        
-        if (file == NULL) 
+
+        if (file == NULL)
         {
             fprintf(stderr, "Failed to open file: %s\n", cleaned_filename);
-        } 
-        /* else 
+        }
+        /* else
         {
             fclose(file);
         }
-        
+
         free(cleaned_filename); */
     }
     ;
@@ -84,7 +87,7 @@ input_statement:
 assignment_statement:
     IDENTIFIER '=' expressions
     | dataframe_list '=' function_call_statement
-                                                            {   
+                                                            {
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen($1); i++){
                                                                     if($1[i] == ','){
@@ -98,30 +101,30 @@ assignment_statement:
                                                                 }
                                                             }
 
-    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')' 
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')'
     ;
 
-dataframe: 
-    DATAFRAME '(' IDENTIFIER ')'                            { 
-                                                                char buffer[256]; 
+dataframe:
+    DATAFRAME '(' IDENTIFIER ')'                            {
+                                                                char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", $1, $3);
-                                                                $$ = strdup(buffer); 
+                                                                $$ = strdup(buffer);
                                                             }
     ;
 
 expressions:
-    expressions operators IDENTIFIER 
+    expressions operators IDENTIFIER
     | expressions operators INTNUM
     | expressions operators FLOATNUM
     | expressions operators grouping
     | expressions operators function_call_statement
     | expressions operators aggregate_function_calls
     | IDENTIFIER
-    | INTNUM                                                
+    | INTNUM
     | FLOATNUM
-    | grouping                                              
-    | function_call_statement  
-    | aggregate_function_calls                   
+    | grouping
+    | function_call_statement
+    | aggregate_function_calls
     ;
 
 Function_Declaration:
@@ -135,28 +138,28 @@ argument_list:
     |
     ;
 
-function_body: 
-    '{' loop_body '}'                                                                                
-    | Function_Assignment_Statement SEMICOLON function_body         
-    | Function_Loop_Statement function_body               
-    // | Identifier_List SEMICOLON function_body        
-    | Function_Print_Statement SEMICOLON function_body             
-    | RTRN return_statement SEMICOLON                              
+function_body:
+    '{' loop_body '}'
+    | Function_Assignment_Statement SEMICOLON function_body
+    | Function_Loop_Statement function_body
+    // | Identifier_List SEMICOLON function_body
+    | Function_Print_Statement SEMICOLON function_body
+    | RTRN return_statement SEMICOLON
     ;
 
 return_statement:
-    expressions       
+    expressions
     ;
 
 Function_Print_Statement:
-    PRINT '(' print_expressions ')' 
+    PRINT '(' print_expressions ')'
     ;
 
 print_expressions:
     expressions
     | strings_list
     | print_expressions ',' strings_list    //expr , string
-    | print_expressions ',' expressions // string or expr, expr 
+    | print_expressions ',' expressions // string or expr, expr
     ;
 
 strings_list:
@@ -164,11 +167,11 @@ strings_list:
     ;
 
 Function_Loop_Statement:
-    Sub_Loop_Statement                            
+    Sub_Loop_Statement
     ;
 
 Print_Statement:
-    PRINT '(' print_expressions ')' SEMICOLON 
+    PRINT '(' print_expressions ')' SEMICOLON
     ;
 
 // function_call_statement:
@@ -176,52 +179,52 @@ Print_Statement:
 //     ;
 
 aggregate_function_calls:
-    dataframe'[' single_quoted_string_list ']' '.' MEANFUNC '(' ')'      
-    | dataframe'[' single_quoted_string_list ']' '.' MODEFUNC '(' ')'  
-    | dataframe'[' single_quoted_string_list ']' '.' MEDIANFUNC '(' ')'  
+    dataframe'[' single_quoted_string_list ']' '.' MEANFUNC '(' ')'
+    | dataframe'[' single_quoted_string_list ']' '.' MODEFUNC '(' ')'
+    | dataframe'[' single_quoted_string_list ']' '.' MEDIANFUNC '(' ')'
     | dataframe'[' single_quoted_string_list ']' '.' SUMFUNC '(' ')'
     | dataframe'[' single_quoted_string_list ']' '.' MINFUNC '(' ')'
     | dataframe'[' single_quoted_string_list ']' '.' MAXFUNC '(' ')'
-    | dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'                  
-    | dataframe '.' MODEFUNC '('  mean_body mean_numerical ')'                                   
-    | dataframe '.' MEDIANFUNC '('  mean_body mean_numerical ')'                                 
-    | dataframe '.' SUMFUNC '(' mean_body mean_numerical ')'                                   
-    | dataframe '.' MINFUNC '(' mean_body mean_numerical ')'                                    
-    | dataframe '.' MAXFUNC '(' mean_body mean_numerical ')' 
+    | dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'
+    | dataframe '.' MODEFUNC '('  mean_body mean_numerical ')'
+    | dataframe '.' MEDIANFUNC '('  mean_body mean_numerical ')'
+    | dataframe '.' SUMFUNC '(' mean_body mean_numerical ')'
+    | dataframe '.' MINFUNC '(' mean_body mean_numerical ')'
+    | dataframe '.' MAXFUNC '(' mean_body mean_numerical ')'
     ;
 
 function_call_statement:
-    READCSVFUNC '(' CSVFILE readcsv_body ')'         
-    | dataframe '.' HEADFUNC '(' head_tail_body ')'                                  
-    | dataframe '.' TAILFUNC '(' head_tail_body ')'                                  
-    | dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'           
-    | dataframe '.' TOCSVFUNC '(' CSVFILE readcsv_body ')' 
-    | dataframe '.' DESCRIBEFUNC '(' ')'                                  
-    | dataframe '.' MISSVALUEFUNC '(' missing_value_body_confirm missing_value_body ')' 
-    | dataframe '.' EXCHANGEVALUEFUNC '(' to_exchange ',' exchange_value exchange_body_optional ')'          
-    | CONCATFUNC '(' '[' dataframe_list ']' ',' concat_body ')' 
-    | MERGEFUNC '(' dataframe ',' dataframe ',' how_clause ',' on_clause ',' suffixes_clause ')' 
+    READCSVFUNC '(' CSVFILE readcsv_body ')'
+    | dataframe '.' HEADFUNC '(' head_tail_body ')'
+    | dataframe '.' TAILFUNC '(' head_tail_body ')'
+    | dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'
+    | dataframe '.' TOCSVFUNC '(' CSVFILE readcsv_body ')'
+    | dataframe '.' DESCRIBEFUNC '(' ')'
+    | dataframe '.' MISSVALUEFUNC '(' missing_value_body_confirm missing_value_body ')'
+    | dataframe '.' EXCHANGEVALUEFUNC '(' to_exchange ',' exchange_value exchange_body_optional ')'
+    | CONCATFUNC '(' '[' dataframe_list ']' ',' concat_body ')'
+    | MERGEFUNC '(' dataframe ',' dataframe ',' how_clause ',' on_clause ',' suffixes_clause ')'
     | IDENTIFIER '(' actual_parameters ')'
     ;
 
 concat_body:
-    AXIS '=' axis_bit 
+    AXIS '=' axis_bit
     ;
 
 dataframe_list:
-    dataframe                                               { 
+    dataframe                                               {
                                                                 $$ = $1;
                                                             }
-    | dataframe_list ',' dataframe                          { 
-                                                                char buffer[256]; 
+    | dataframe_list ',' dataframe                          {
+                                                                char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s,%s", $1, $3);
-                                                                $$ = strdup(buffer); 
+                                                                $$ = strdup(buffer);
                                                             }
     ;
 
 to_exchange:
     REGX SINGLE_QUOTED_STRING
-    ; 
+    ;
 
 exchange_value:
     INTNUM
@@ -235,13 +238,13 @@ exchange_body_optional:
     ',' INPLACE '=' BOOL exchange_body_optional
     | ',' USECOLS '=' '[' single_quoted_string_list ']' exchange_body_optional
     | ',' mean_body exchange_body_optional
-    | 
+    |
     ;
 
 missing_value_body_confirm:
     FILL ',' INTNUM
     | FILL ',' aggregate_function_calls
-    | FILL ',' METHOD '=' FFILL 
+    | FILL ',' METHOD '=' FFILL
     | FILL ',' METHOD '=' BFILL
     | FILL ',' METHOD '=' INTERPOLATE
     | DROP
@@ -251,16 +254,16 @@ missing_value_body:
     ',' INPLACE '=' BOOL missing_value_body
     | ',' USECOLS '=' '[' single_quoted_string_list ']' missing_value_body
     | ',' mean_body missing_value_body
-    | 
+    |
     ;
 
 mean_body:
-    AXIS '=' axis_bit 
-    | 
-    ; 
+    AXIS '=' axis_bit
+    |
+    ;
 
 axis_bit:
-    INTNUM 
+    INTNUM
     {
         if($1 == 0)
         {
@@ -278,7 +281,7 @@ mean_numerical:
     | ',' SKIPNA '=' BOOL mean_numerical
     | ',' USECOLS '=' '[' single_quoted_string_list ']' mean_numerical
     |
-    ; 
+    ;
 
 reset_index_body_drop:
     DROP '=' TRUE
@@ -292,12 +295,12 @@ BOOL:
 
 reset_index_body_implace:
     ',' INPLACE '=' BOOL
-    | 
+    |
     ;
 
 head_tail_body:
-    INTNUM 
-    | 
+    INTNUM
+    |
     ;
 
 readcsv_body:
@@ -315,13 +318,13 @@ single_quoted_string_list:
     ;
 
 
-actual_parameters:          
-    expressions                                             
-    | actual_parameters ',' expressions                   
+actual_parameters:
+    expressions
+    | actual_parameters ',' expressions
     ;
 
 grouping:
-    '(' expressions ')'                              
+    '(' expressions ')'
     ;
 
 operators:
@@ -342,61 +345,61 @@ Loop_Statement:
 
 Sub_Loop_Statement:
     LOOP '(' initializtion SEMICOLON predicate_list SEMICOLON update ')'
-    '{' loop_body '}' 
+    '{' loop_body '}'
     ;
 
 initializtion:
-    Identifier_List                                   
+    Identifier_List
     ;
 
 Identifier_List:
-    IDENTIFIER '=' INTNUM                          
-    | IDENTIFIER '=' FLOATNUM                      
-    | IDENTIFIER                                            
-    | Identifier_List ',' IDENTIFIER                     
-    | Identifier_List ',' IDENTIFIER '=' INTNUM  
-    | Identifier_List ',' IDENTIFIER '=' FLOATNUM 
+    IDENTIFIER '=' INTNUM
+    | IDENTIFIER '=' FLOATNUM
+    | IDENTIFIER
+    | Identifier_List ',' IDENTIFIER
+    | Identifier_List ',' IDENTIFIER '=' INTNUM
+    | Identifier_List ',' IDENTIFIER '=' FLOATNUM
     ;
 
 update:
-    Function_Assignment_Statement                      
+    Function_Assignment_Statement
     ;
 
 loop_body:
-    statment_list   
+    statment_list
     ;
 
 statment_list:
-    statement                                 
-    | statment_list statement                                                  
+    statement
+    | statment_list statement
     ;
 
-statement:                                                  
-    Function_Assignment_Statement SEMICOLON                 
-    | Function_Print_Statement SEMICOLON    
-    | Conditional_Statements   
-    | Loop_Statement             
+statement:
+    Function_Assignment_Statement SEMICOLON
+    | Function_Print_Statement SEMICOLON
+    | Conditional_Statements
+    | Loop_Statement
     | BREAK SEMICOLON
     | CONTINUE SEMICOLON
-    | function_call_statement 
-    | Function_Assignment_Statement              
-    // |                                                        
+    | function_call_statement
+    | Function_Assignment_Statement
+    // |
     ;
 
 Function_Assignment_Statement:
     IDENTIFIER '=' expressions
     | dataframe_list '=' function_call_statement
-    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')' 
+    | dataframe_list '=' dataframe '.' GROUPBYFUNC '(' single_quoted_string_list ')'
     ;
-    
+
 predicate_list:
-    predicate                                               
-    | predicate_list logical_operators predicate            
-    | predicate_list comparison_operators predicate 
+    predicate
+    | predicate_list logical_operators predicate
+    | predicate_list comparison_operators predicate
     ;
 
 predicate:
-    expressions comparison_operators expressions            
+    expressions comparison_operators expressions
     | expressions logical_operators expressions
     | NOT_OPERATOR expressions
     ;
@@ -407,12 +410,12 @@ logical_operators:
     ;
 
 comparison_operators:
-    '<'                   
-    | '>'              
-    | LE_OPERATOR                
-    | GE_OPERATOR                 
-    | NE_OPERATOR              
-    | DEQ_OPERATOR           
+    '<'
+    | '>'
+    | LE_OPERATOR
+    | GE_OPERATOR
+    | NE_OPERATOR
+    | DEQ_OPERATOR
     ;
 
 how_clause:
@@ -420,7 +423,7 @@ how_clause:
     ;
 
 how_list:
-    INNER 
+    INNER
     | LEFT
     | RIGHT
     | OUTER
@@ -442,23 +445,23 @@ Conditional_Statements:
     ;
 
 Conditional_Statements_1:
-    IF '(' predicate_list ')' '{' conditional_body '}' 
+    IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
     ELSE '{' conditional_body '}'
     ;
 
 Conditional_Statements_2:
-    IF '(' predicate_list ')' '{' conditional_body '}' 
+    IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
     ;
 
 Conditional_Statements_3:
-    IF '(' predicate_list ')' '{' conditional_body '}' 
+    IF '(' predicate_list ')' '{' conditional_body '}'
     ELSE '{' conditional_body '}'
     ;
 
 Conditional_Statements_4:
-    IF '(' predicate_list ')' '{' conditional_body '}' 
+    IF '(' predicate_list ')' '{' conditional_body '}'
     ;
 
 else_if_loop:
@@ -485,11 +488,20 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
         return EXIT_FAILURE;
     }
-    
+
     yyin = fopen(argv[1], "r");
     if (!yyin) {
         fprintf(stderr, "Error: Unable to open input file: %s\n", argv[1]);
         return EXIT_FAILURE;
+    }
+
+    yacc_output = fopen("yacc_output.txt", "w");
+    if(!yacc_output){
+        fprintf(stderr, "Error: Unable to open yacc_output.txt");
+    }
+    lex_output = fopen("lex_output.txt", "w");
+    if(!yacc_output){
+        fprintf(stderr, "Error: Unable to open lex_output.txt");
     }
 
     // Call yyparse to parse the input until EOF

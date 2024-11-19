@@ -255,11 +255,11 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 13 "rc_parser.y"
+#line 16 "rc_parser.y"
 
     int in;
     float flt;
-    char *str;  
+    char *str;
 
 #line 265 "y.tab.h"
 
