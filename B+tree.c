@@ -27,6 +27,8 @@ void split_child(Node* parent, int pos, Node* child);
 void insert_non_full(Node* node, int key, char* row_data);
 void traverse(Node* node);
 void load_csv(BPlusTree* tree, const char* filename, const char* delimiter, int skip_header);
+void head(BPlusTree* tree, int n);
+void tail(BPlusTree* tree, int n);
 
 // Create a new B+ tree node
 Node* create_node(int is_leaf) {
@@ -142,6 +144,57 @@ void traverse(Node* node) {
     }
 }
 
+// View the first N rows (head functionality)
+void head(BPlusTree* tree, int n) {
+    Node* current = tree->root;
+    while (!current->is_leaf) {
+        current = current->children[0];
+    }
+
+    printf("First %d rows:\n", n);
+    int count = 0;
+    while (current && count < n) {
+        for (int i = 0; i < current->num_keys && count < n; i++, count++) {
+            printf("Key: %d, Data: %s\n", current->keys[i], current->data[i]);
+        }
+        current = current->next;
+    }
+}
+
+// View the last N rows (tail functionality)
+void tail(BPlusTree* tree, int n) {
+    Node* current = tree->root;
+    while (!current->is_leaf) {
+        current = current->children[current->num_keys];
+    }
+
+    // Count total rows in the leaf nodes
+    int total = 0;
+    Node* temp = current;
+    while (temp) {
+        total += temp->num_keys;
+        temp = temp->next;
+    }
+
+    int skip = total > n ? total - n : 0;
+    current = tree->root;
+    while (!current->is_leaf) {
+        current = current->children[0];
+    }
+
+    printf("Last %d rows:\n", n);
+    int count = 0;
+    while (current) {
+        for (int i = 0; i < current->num_keys; i++) {
+            if (count >= skip) {
+                printf("Key: %d, Data: %s\n", current->keys[i], current->data[i]);
+            }
+            count++;
+        }
+        current = current->next;
+    }
+}
+
 // Load CSV into the B+ tree with a given delimiter and optional header skipping
 void load_csv(BPlusTree* tree, const char* filename, const char* delimiter, int skip_header) {
     FILE* file = fopen(filename, "r");
@@ -211,5 +264,12 @@ int main() {
     printf("B+ Tree contents:\n");
     traverse(tree->root);
 
+    printf("\nHead (first 5 rows):\n");
+    head(tree, 5);
+
+    printf("\nTail (last 5 rows):\n");
+    tail(tree, 5);
+
     return 0;
 }
+
