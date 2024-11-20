@@ -94,7 +94,7 @@ end \*\/
 "-"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : -", yylineno); return('-');}
 "*"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : *", yylineno); return('*');}
 "/"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : /", yylineno); return('/');}
-"%"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : %", yylineno); return('%');}
+"%"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : %%", yylineno); return('%');}
 "="             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : =", yylineno); return('=');}
 "<"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : <", yylineno); return('<');}
 ">"             {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : >", yylineno); return('>');}

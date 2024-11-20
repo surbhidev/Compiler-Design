@@ -1,5 +1,5 @@
 
-#line 2 "lex.yy.c"
+#line 3 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -695,8 +695,8 @@ ST<int, SymbolInfo> symbolTable;
 // Counter for unique IDs
 int uniqueID = 1;
 
-#line 698 "lex.yy.c"
 #line 699 "lex.yy.c"
+#line 700 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -915,7 +915,7 @@ YY_DECL
 	{
 #line 46 "readCode.l"
 
-#line 918 "lex.yy.c"
+#line 919 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1225,7 +1225,7 @@ YY_RULE_SETUP
 case 51:
 YY_RULE_SETUP
 #line 97 "readCode.l"
-{count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : %", yylineno); return('%');}
+{count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : %%", yylineno); return('%');}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
@@ -1546,7 +1546,7 @@ YY_RULE_SETUP
 #line 160 "readCode.l"
 ECHO;
 	YY_BREAK
-#line 1549 "lex.yy.c"
+#line 1550 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

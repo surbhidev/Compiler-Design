@@ -2140,24 +2140,6 @@ int yywrap() {
     return 1;
 }
 
-char* double_quote_remover(char* x){
-    printf("Original file name = %s\n", x);
-    char* result = x;  // Resulting string will overwrite the original
-    int i = 0, j = 0;
-
-    // Traverse the input string
-    while (x[i] != '\0') {
-        if (x[i] != '\'') {  // If the current character is not a single quote
-            result[j++] = x[i];
-        }
-        i++;
-    }
-    result[j] = '\0';  // Null-terminate the resulting string
-
-    printf("Processed file name = %s\n", result);
-    return result;
-}
-
 int main(int argc, char **argv) {
     if (argc < 2) {
         fprintf(stderr, "Usage: %s <filename>\n", argv[0]);
