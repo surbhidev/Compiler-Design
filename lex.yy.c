@@ -1125,12 +1125,12 @@ YY_RULE_SETUP
 case 31:
 YY_RULE_SETUP
 #line 77 "readCode.l"
-{count(); std::string token_name = "TRUE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : TRUE", yylineno); return(TRUE);}
+{count(); yylval.bl = true; std::string token_name = "TRUE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : TRUE", yylineno); return(TRUE);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
 #line 78 "readCode.l"
-{count(); std::string token_name = "FALSE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FALSE", yylineno); return(FALSE);}
+{count(); yylval.bl = false; std::string token_name = "FALSE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FALSE", yylineno); return(FALSE);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
@@ -1470,7 +1470,7 @@ YY_RULE_SETUP
 case 100:
 YY_RULE_SETUP
 #line 146 "readCode.l"
-{count(); std::string token_name = "FLOATNUM"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FLOATNUM", yylineno); return FLOATNUM;}
+{count(); yylval.in = atof(yytext); std::string token_name = "FLOATNUM"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FLOATNUM", yylineno); return FLOATNUM;}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
@@ -1492,7 +1492,7 @@ case 104:
 /* rule 104 can match eol */
 YY_RULE_SETUP
 #line 150 "readCode.l"
-{count(); std::string token_name = "STRING"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : STRING", yylineno); return STRING;}
+{count(); yylval.str = strdup(yytext); std::string token_name = "STRING"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : STRING", yylineno); return STRING;}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP

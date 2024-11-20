@@ -260,8 +260,9 @@ union YYSTYPE
     int in;
     float flt;
     char *str;
+    bool bl;
 
-#line 265 "y.tab.h"
+#line 266 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

@@ -345,8 +345,9 @@ union YYSTYPE
     int in;
     float flt;
     char *str;
+    bool bl;
 
-#line 350 "y.tab.c"
+#line 351 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -940,25 +941,25 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    67,    67,    68,    72,    73,    74,    75,    76,    77,
-      78,    82,   101,   102,   117,   121,   129,   130,   131,   132,
-     133,   134,   135,   136,   137,   138,   139,   140,   144,   149,
-     150,   151,   155,   156,   157,   159,   160,   164,   168,   172,
-     173,   174,   175,   179,   183,   187,   195,   196,   197,   198,
-     199,   200,   201,   202,   203,   204,   205,   206,   210,   211,
-     212,   213,   214,   215,   216,   217,   218,   219,   220,   224,
-     228,   231,   239,   243,   244,   245,   246,   247,   251,   252,
-     253,   254,   258,   259,   260,   261,   262,   263,   267,   268,
-     269,   270,   274,   275,   279,   293,   294,   295,   296,   300,
-     301,   305,   306,   310,   311,   315,   316,   320,   321,   322,
-     323,   324,   325,   329,   330,   335,   336,   340,   344,   345,
-     346,   347,   348,   349,   350,   351,   352,   356,   360,   365,
-     369,   370,   371,   372,   373,   374,   378,   382,   386,   387,
-     391,   392,   393,   394,   395,   396,   397,   398,   403,   404,
-     405,   409,   410,   411,   415,   416,   417,   421,   422,   426,
-     427,   428,   429,   430,   431,   435,   439,   440,   441,   442,
-     446,   450,   454,   455,   456,   457,   461,   467,   472,   477,
-     481,   482,   486
+       0,    71,    71,    72,    76,    77,    78,    79,    80,    81,
+      82,    86,   105,   106,   121,   125,   133,   134,   135,   136,
+     137,   138,   139,   140,   141,   142,   143,   144,   148,   153,
+     154,   155,   159,   160,   161,   163,   164,   168,   172,   176,
+     177,   178,   179,   183,   187,   191,   199,   200,   201,   202,
+     203,   204,   205,   206,   207,   208,   209,   210,   214,   215,
+     216,   217,   218,   219,   220,   221,   222,   223,   224,   228,
+     232,   235,   243,   247,   248,   249,   250,   251,   255,   256,
+     257,   258,   262,   263,   264,   265,   266,   267,   271,   272,
+     273,   274,   278,   279,   283,   297,   298,   299,   300,   304,
+     305,   309,   310,   314,   315,   319,   320,   324,   325,   326,
+     327,   328,   329,   333,   334,   339,   340,   344,   348,   349,
+     350,   351,   352,   353,   354,   355,   356,   360,   364,   369,
+     373,   374,   375,   376,   377,   378,   382,   386,   390,   391,
+     395,   396,   397,   398,   399,   400,   401,   402,   407,   408,
+     409,   413,   414,   415,   419,   420,   421,   425,   426,   430,
+     431,   432,   433,   434,   435,   439,   443,   444,   445,   446,
+     450,   454,   458,   459,   460,   461,   465,   471,   476,   481,
+     485,   486,   490
 };
 #endif
 
@@ -1855,7 +1856,7 @@ yyreduce:
   switch (yyn)
     {
   case 11: /* input_statement: INPUT CSVFILE SEMICOLON  */
-#line 83 "rc_parser.y"
+#line 87 "rc_parser.y"
     {
         char *cleaned_filename = double_quote_remover((yyvsp[-1].str));  // remove quotes from filename
         FILE *file = fopen(cleaned_filename, "r");
@@ -1871,11 +1872,11 @@ yyreduce:
 
         free(cleaned_filename); */
     }
-#line 1875 "y.tab.c"
+#line 1876 "y.tab.c"
     break;
 
   case 13: /* assignment_statement: dataframe_list '=' function_call_statement  */
-#line 103 "rc_parser.y"
+#line 107 "rc_parser.y"
                                                             {
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen((yyvsp[-2].str)); i++){
@@ -1889,39 +1890,39 @@ yyreduce:
                                                                     return 0;
                                                                 }
                                                             }
-#line 1893 "y.tab.c"
+#line 1894 "y.tab.c"
     break;
 
   case 15: /* dataframe: DATAFRAME '(' IDENTIFIER ')'  */
-#line 121 "rc_parser.y"
+#line 125 "rc_parser.y"
                                                             {
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", (yyvsp[-3].str), (yyvsp[-1].str));
                                                                 (yyval.str) = strdup(buffer);
                                                             }
-#line 1903 "y.tab.c"
+#line 1904 "y.tab.c"
     break;
 
   case 70: /* dataframe_list: dataframe  */
-#line 228 "rc_parser.y"
+#line 232 "rc_parser.y"
                                                             {
                                                                 (yyval.str) = (yyvsp[0].str);
                                                             }
-#line 1911 "y.tab.c"
+#line 1912 "y.tab.c"
     break;
 
   case 71: /* dataframe_list: dataframe_list ',' dataframe  */
-#line 231 "rc_parser.y"
+#line 235 "rc_parser.y"
                                                             {
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str), (yyvsp[0].str));
                                                                 (yyval.str) = strdup(buffer);
                                                             }
-#line 1921 "y.tab.c"
+#line 1922 "y.tab.c"
     break;
 
   case 94: /* axis_bit: INTNUM  */
-#line 280 "rc_parser.y"
+#line 284 "rc_parser.y"
     {
         if((yyvsp[0].in) == 0)
         {
@@ -1932,11 +1933,11 @@ yyreduce:
             (yyval.in) = 1;
         }
     }
-#line 1936 "y.tab.c"
+#line 1937 "y.tab.c"
     break;
 
 
-#line 1940 "y.tab.c"
+#line 1941 "y.tab.c"
 
       default: break;
     }
@@ -2129,7 +2130,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 489 "rc_parser.y"
+#line 493 "rc_parser.y"
 
 
 void yyerror(const char *s) {
