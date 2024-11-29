@@ -255,7 +255,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 29 "rc_parser.y"
+#line 30 "../src/rc_parser.y"
 
     int in;
     float flt;

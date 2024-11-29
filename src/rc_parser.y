@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "typechecker.h"
+#include <stdbool.h>
 
 void yyerror(const char *s);
 
@@ -512,12 +513,14 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    yacc_output = fopen("yacc_output.txt", "w");
+    yacc_output = fopen("../outputs/yacc_output.txt", "w");
     if(!yacc_output){
+        perror("Error: Unable to open yacc_output.txt");
         fprintf(stderr, "Error: Unable to open yacc_output.txt");
     }
-    lex_output = fopen("lex_output.txt", "w");
-    if(!yacc_output){
+    lex_output = fopen("../outputs/lex_output.txt", "w");
+    if(!lex_output){
+        perror("Error: Unable to open lex_output.txt");
         fprintf(stderr, "Error: Unable to open lex_output.txt");
     }
 

@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -654,12 +654,12 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "readCode.l"
+#line 1 "../src/readCode.l"
 /*
     LEXER FOR OUR CSV DATA PROCESSING DSL (Raccoons)
     File extension: .rc
 */
-#line 7 "readCode.l"
+#line 7 "../src/readCode.l"
 #include <stdio.h>
 #include <stdlib.h>
 #include "symbol_table.hpp"
@@ -695,8 +695,8 @@ ST<int, SymbolInfo> symbolTable;
 // Counter for unique IDs
 int uniqueID = 1;
 
+#line 698 "lex.yy.c"
 #line 699 "lex.yy.c"
-#line 700 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -913,9 +913,9 @@ YY_DECL
 		}
 
 	{
-#line 46 "readCode.l"
+#line 46 "../src/readCode.l"
 
-#line 919 "lex.yy.c"
+#line 918 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -974,579 +974,579 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 47 "readCode.l"
+#line 47 "../src/readCode.l"
 {count(); yylval.str = strdup(yytext); std::string token_name = "DATAFRAME"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DATAFRAME", yylineno); return(DATAFRAME);}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 48 "readCode.l"
+#line 48 "../src/readCode.l"
 {count(); std::string token_name = "SEP"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SEP", yylineno); return(SEP);}
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 49 "readCode.l"
+#line 49 "../src/readCode.l"
 {count(); std::string token_name = "HEADER"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : HEADER", yylineno); return(HEADER);}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 50 "readCode.l"
+#line 50 "../src/readCode.l"
 {count(); std::string token_name = "INDEX_COL"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INDEX_COL", yylineno); return(INDEX_COL);}
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 51 "readCode.l"
+#line 51 "../src/readCode.l"
 {count(); std::string token_name = "INDEX"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INDEX", yylineno); return(INDEX);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 52 "readCode.l"
+#line 52 "../src/readCode.l"
 {count(); std::string token_name = "USECOLS"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : USECOLS", yylineno); return(USECOLS);}
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 53 "readCode.l"
+#line 53 "../src/readCode.l"
 {count(); std::string token_name = "DROP"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DROP", yylineno); return(DROP);}
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 54 "readCode.l"
+#line 54 "../src/readCode.l"
 {count(); std::string token_name = "SKIPNA"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SKIPNA", yylineno); return(SKIPNA);}
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 55 "readCode.l"
+#line 55 "../src/readCode.l"
 {count(); std::string token_name = "INPLACE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INPLACE", yylineno); return(INPLACE);}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 56 "readCode.l"
+#line 56 "../src/readCode.l"
 {count(); std::string token_name = "FFILL"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FFILL", yylineno); return(FFILL);}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 57 "readCode.l"
+#line 57 "../src/readCode.l"
 {count(); std::string token_name = "BFILL"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : BFILL", yylineno); return(BFILL);}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 58 "readCode.l"
+#line 58 "../src/readCode.l"
 {count(); std::string token_name = "FILL"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FILL", yylineno); return(FILL);}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 59 "readCode.l"
+#line 59 "../src/readCode.l"
 {count(); std::string token_name = "METHOD"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : METHOD", yylineno); return(METHOD);}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 60 "readCode.l"
+#line 60 "../src/readCode.l"
 {count(); std::string token_name = "INTERPOLATE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INTERPOLATE", yylineno); return(INTERPOLATE);}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 61 "readCode.l"
+#line 61 "../src/readCode.l"
 {count(); std::string token_name = "REGX"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : REGX", yylineno); return(REGX);}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 62 "readCode.l"
+#line 62 "../src/readCode.l"
 {count(); std::string token_name = "INNER"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INNER", yylineno); return(INNER);}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 63 "readCode.l"
+#line 63 "../src/readCode.l"
 {count(); std::string token_name = "OUTER"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : OUTER", yylineno); return(OUTER);}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 64 "readCode.l"
+#line 64 "../src/readCode.l"
 {count(); std::string token_name = "LEFT"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : LEFT", yylineno); return(LEFT);}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 65 "readCode.l"
+#line 65 "../src/readCode.l"
 {count(); std::string token_name = "RIGHT"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : RIGHT", yylineno); return(RIGHT);}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 66 "readCode.l"
+#line 66 "../src/readCode.l"
 {count(); std::string token_name = "FUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FUNC", yylineno); return(FUNC);}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 67 "readCode.l"
+#line 67 "../src/readCode.l"
 {count(); std::string token_name = "RTRN"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : RTRN", yylineno); return(RTRN);}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 68 "readCode.l"
+#line 68 "../src/readCode.l"
 {count(); std::string token_name = "LOOP"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : LOOP", yylineno); return(LOOP);}
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 69 "readCode.l"
+#line 69 "../src/readCode.l"
 {count(); std::string token_name = "IF"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : IF", yylineno); return(IF);}
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 70 "readCode.l"
+#line 70 "../src/readCode.l"
 {count(); std::string token_name = "ELSEIF"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ELSEIF", yylineno); return(ELSEIF);}
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 71 "readCode.l"
+#line 71 "../src/readCode.l"
 {count(); std::string token_name = "ELSE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ELSE", yylineno); return(ELSE);}
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 72 "readCode.l"
+#line 72 "../src/readCode.l"
 {count(); std::string token_name = "BREAK"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : BREAK", yylineno); return(BREAK);}
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 73 "readCode.l"
+#line 73 "../src/readCode.l"
 {count(); std::string token_name = "CONTINUE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : CONTINUE", yylineno); return(CONTINUE);}
 	YY_BREAK
 case 28:
 YY_RULE_SETUP
-#line 74 "readCode.l"
+#line 74 "../src/readCode.l"
 {count(); std::string token_name = "INT_TYPE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INT_TYPE", yylineno); return(INT_TYPE);}
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 75 "readCode.l"
+#line 75 "../src/readCode.l"
 {count(); std::string token_name = "FLOAT_TYPE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FLOAT_TYPE", yylineno); return(FLOAT_TYPE);}
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 76 "readCode.l"
+#line 76 "../src/readCode.l"
 {count(); std::string token_name = "STRING_TYPE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : STRING_TYPE", yylineno); return(STRING_TYPE);}
 	YY_BREAK
 case 31:
 YY_RULE_SETUP
-#line 77 "readCode.l"
+#line 77 "../src/readCode.l"
 {count(); yylval.bl = true; std::string token_name = "TRUE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : TRUE", yylineno); return(TRUE);}
 	YY_BREAK
 case 32:
 YY_RULE_SETUP
-#line 78 "readCode.l"
+#line 78 "../src/readCode.l"
 {count(); yylval.bl = false; std::string token_name = "FALSE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FALSE", yylineno); return(FALSE);}
 	YY_BREAK
 case 33:
 YY_RULE_SETUP
-#line 79 "readCode.l"
+#line 79 "../src/readCode.l"
 {count(); std::string token_name = "INPUT"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INPUT", yylineno); return(INPUT);}
 	YY_BREAK
 case 34:
 YY_RULE_SETUP
-#line 80 "readCode.l"
+#line 80 "../src/readCode.l"
 {count(); std::string token_name = "OUTPUT"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : OUTPUT", yylineno); return(OUTPUT);}
 	YY_BREAK
 case 35:
 YY_RULE_SETUP
-#line 81 "readCode.l"
+#line 81 "../src/readCode.l"
 {count(); std::string token_name = "PRINT"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : PRINT", yylineno); return(PRINT);}
 	YY_BREAK
 case 36:
 YY_RULE_SETUP
-#line 82 "readCode.l"
+#line 82 "../src/readCode.l"
 {count(); std::string token_name = "ADD_ASSIGN_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ADD_ASSIGN_OPERATOR", yylineno); return(ADD_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 37:
 YY_RULE_SETUP
-#line 83 "readCode.l"
+#line 83 "../src/readCode.l"
 {count(); std::string token_name = "SUB_ASSIGN_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SUB_ASSIGN_OPERATOR", yylineno); return(SUB_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 38:
 YY_RULE_SETUP
-#line 84 "readCode.l"
+#line 84 "../src/readCode.l"
 {count(); std::string token_name = "MUL_ASSIGN_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MUL_ASSIGN_OPERATOR", yylineno); return(MUL_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 39:
 YY_RULE_SETUP
-#line 85 "readCode.l"
+#line 85 "../src/readCode.l"
 {count(); std::string token_name = "DIV_ASSIGN_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DIV_ASSIGN_OPERATOR", yylineno); return(DIV_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 40:
 YY_RULE_SETUP
-#line 86 "readCode.l"
+#line 86 "../src/readCode.l"
 {count(); std::string token_name = "MOD_ASSIGN_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MOD_ASSIGN_OPERATOR", yylineno); return(MOD_ASSIGN_OPERATOR);}
 	YY_BREAK
 case 41:
 YY_RULE_SETUP
-#line 87 "readCode.l"
+#line 87 "../src/readCode.l"
 {count(); std::string token_name = "LE_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : LE_OPERATOR", yylineno); return(LE_OPERATOR);}
 	YY_BREAK
 case 42:
 YY_RULE_SETUP
-#line 88 "readCode.l"
+#line 88 "../src/readCode.l"
 {count(); std::string token_name = "GE_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : GE_OPERATOR", yylineno); return(GE_OPERATOR);}
 	YY_BREAK
 case 43:
 YY_RULE_SETUP
-#line 89 "readCode.l"
+#line 89 "../src/readCode.l"
 {count(); std::string token_name = "DEQ_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DEQ_OPERATOR", yylineno); return(DEQ_OPERATOR);}
 	YY_BREAK
 case 44:
 YY_RULE_SETUP
-#line 90 "readCode.l"
+#line 90 "../src/readCode.l"
 {count(); std::string token_name = "NE_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : NE_OPERATOR", yylineno); return(NE_OPERATOR);}
 	YY_BREAK
 case 45:
 YY_RULE_SETUP
-#line 91 "readCode.l"
+#line 91 "../src/readCode.l"
 {count(); std::string token_name = "NOT_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : NOT_OPERATOR", yylineno); return(NOT_OPERATOR);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
-#line 92 "readCode.l"
+#line 92 "../src/readCode.l"
 {count(); std::string token_name = "SEMICOLON"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SEMICOLON", yylineno); return(SEMICOLON);}
 	YY_BREAK
 case 47:
 YY_RULE_SETUP
-#line 93 "readCode.l"
+#line 93 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : +", yylineno); return('+');}
 	YY_BREAK
 case 48:
 YY_RULE_SETUP
-#line 94 "readCode.l"
+#line 94 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : -", yylineno); return('-');}
 	YY_BREAK
 case 49:
 YY_RULE_SETUP
-#line 95 "readCode.l"
+#line 95 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : *", yylineno); return('*');}
 	YY_BREAK
 case 50:
 YY_RULE_SETUP
-#line 96 "readCode.l"
+#line 96 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : /", yylineno); return('/');}
 	YY_BREAK
 case 51:
 YY_RULE_SETUP
-#line 97 "readCode.l"
+#line 97 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : %%", yylineno); return('%');}
 	YY_BREAK
 case 52:
 YY_RULE_SETUP
-#line 98 "readCode.l"
+#line 98 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : =", yylineno); return('=');}
 	YY_BREAK
 case 53:
 YY_RULE_SETUP
-#line 99 "readCode.l"
+#line 99 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : <", yylineno); return('<');}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
-#line 100 "readCode.l"
+#line 100 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : >", yylineno); return('>');}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
-#line 101 "readCode.l"
+#line 101 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : &", yylineno); return('&');}
 	YY_BREAK
 case 56:
 YY_RULE_SETUP
-#line 102 "readCode.l"
+#line 102 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ^", yylineno); return('^');}
 	YY_BREAK
 case 57:
 YY_RULE_SETUP
-#line 103 "readCode.l"
+#line 103 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : |", yylineno); return('|');}
 	YY_BREAK
 case 58:
 YY_RULE_SETUP
-#line 104 "readCode.l"
+#line 104 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ~", yylineno); return('~');}
 	YY_BREAK
 case 59:
 YY_RULE_SETUP
-#line 105 "readCode.l"
+#line 105 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : .", yylineno); return('.');}
 	YY_BREAK
 case 60:
 YY_RULE_SETUP
-#line 106 "readCode.l"
+#line 106 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : (", yylineno); return('(');}
 	YY_BREAK
 case 61:
 YY_RULE_SETUP
-#line 107 "readCode.l"
+#line 107 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : )", yylineno); return(')');}
 	YY_BREAK
 case 62:
 YY_RULE_SETUP
-#line 108 "readCode.l"
+#line 108 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : [", yylineno); return('[');}
 	YY_BREAK
 case 63:
 YY_RULE_SETUP
-#line 109 "readCode.l"
+#line 109 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ]", yylineno); return(']');}
 	YY_BREAK
 case 64:
 YY_RULE_SETUP
-#line 110 "readCode.l"
+#line 110 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : {", yylineno); return('{');}
 	YY_BREAK
 case 65:
 YY_RULE_SETUP
-#line 111 "readCode.l"
+#line 111 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : }", yylineno); return('}');}
 	YY_BREAK
 case 66:
 YY_RULE_SETUP
-#line 112 "readCode.l"
+#line 112 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ,", yylineno); return(',');}
 	YY_BREAK
 case 67:
 YY_RULE_SETUP
-#line 113 "readCode.l"
+#line 113 "../src/readCode.l"
 {count(); std::string token_name = yytext; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : :", yylineno); return(':');}
 	YY_BREAK
 case 68:
 YY_RULE_SETUP
-#line 114 "readCode.l"
+#line 114 "../src/readCode.l"
 {count(); std::string token_name = "AND_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : AND_OPERATOR", yylineno); return(AND_OPERATOR);}
 	YY_BREAK
 case 69:
 YY_RULE_SETUP
-#line 115 "readCode.l"
+#line 115 "../src/readCode.l"
 {count(); std::string token_name = "OR_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : OR_OPERATOR", yylineno); return(OR_OPERATOR);}
 	YY_BREAK
 case 70:
 YY_RULE_SETUP
-#line 116 "readCode.l"
+#line 116 "../src/readCode.l"
 {count(); std::string token_name = "INC_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INC_OPERATOR", yylineno); return(INC_OPERATOR);}
 	YY_BREAK
 case 71:
 YY_RULE_SETUP
-#line 117 "readCode.l"
+#line 117 "../src/readCode.l"
 {count(); std::string token_name = "DEC_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DEC_OPERATOR", yylineno); return(DEC_OPERATOR);}
 	YY_BREAK
 case 72:
 YY_RULE_SETUP
-#line 118 "readCode.l"
+#line 118 "../src/readCode.l"
 {count(); std::string token_name = "RIGHTSHIFT_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : RIGHTSHIFT_OPERATOR", yylineno); return(RIGHTSHIFT_OPERATOR);}
 	YY_BREAK
 case 73:
 YY_RULE_SETUP
-#line 119 "readCode.l"
+#line 119 "../src/readCode.l"
 {count(); std::string token_name = "LEFTSHIFT_OPERATOR"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : LEFTSHIFT_OPERATOR", yylineno); return(LEFTSHIFT_OPERATOR);}
 	YY_BREAK
 case 74:
 YY_RULE_SETUP
-#line 120 "readCode.l"
+#line 120 "../src/readCode.l"
 {count(); std::string token_name = "ELLIPSIS"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ELLIPSIS", yylineno); return(ELLIPSIS);}
 	YY_BREAK
 case 75:
 YY_RULE_SETUP
-#line 121 "readCode.l"
+#line 121 "../src/readCode.l"
 { count(); std::string token_name = "READCSVFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : READCSVFUNC", yylineno); return READCSVFUNC;}
 	YY_BREAK
 case 76:
 YY_RULE_SETUP
-#line 122 "readCode.l"
+#line 122 "../src/readCode.l"
 { count(); std::string token_name = "HEADFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : HEADFUNC", yylineno); return HEADFUNC;}
 	YY_BREAK
 case 77:
 YY_RULE_SETUP
-#line 123 "readCode.l"
+#line 123 "../src/readCode.l"
 { count(); std::string token_name = "TAILFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : TAILFUNC", yylineno); return TAILFUNC;}
 	YY_BREAK
 case 78:
 YY_RULE_SETUP
-#line 124 "readCode.l"
+#line 124 "../src/readCode.l"
 { count(); std::string token_name = "RESETINDEXFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : RESETINDEXFUNC", yylineno); return RESETINDEXFUNC;}
 	YY_BREAK
 case 79:
 YY_RULE_SETUP
-#line 125 "readCode.l"
+#line 125 "../src/readCode.l"
 { count(); std::string token_name = "TOCSVFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : TOCSVFUNC", yylineno); return TOCSVFUNC;}
 	YY_BREAK
 case 80:
 YY_RULE_SETUP
-#line 126 "readCode.l"
+#line 126 "../src/readCode.l"
 { count(); std::string token_name = "DESCRIBEFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : DESCRIBEFUNC", yylineno); return DESCRIBEFUNC;}
 	YY_BREAK
 case 81:
 YY_RULE_SETUP
-#line 127 "readCode.l"
+#line 127 "../src/readCode.l"
 { count(); std::string token_name = "MEANFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MEANFUNC", yylineno); return MEANFUNC;}
 	YY_BREAK
 case 82:
 YY_RULE_SETUP
-#line 128 "readCode.l"
+#line 128 "../src/readCode.l"
 { count(); std::string token_name = "MODEFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MODEFUNC", yylineno); return MODEFUNC;}
 	YY_BREAK
 case 83:
 YY_RULE_SETUP
-#line 129 "readCode.l"
+#line 129 "../src/readCode.l"
 { count(); std::string token_name = "MEDIANFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MEDIANFUNC", yylineno); return MEDIANFUNC;}
 	YY_BREAK
 case 84:
 YY_RULE_SETUP
-#line 130 "readCode.l"
+#line 130 "../src/readCode.l"
 { count(); std::string token_name = "SUMFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SUMFUNC", yylineno); return SUMFUNC;}
 	YY_BREAK
 case 85:
 YY_RULE_SETUP
-#line 131 "readCode.l"
+#line 131 "../src/readCode.l"
 { count(); std::string token_name = "MINFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MINFUNC", yylineno); return MINFUNC;}
 	YY_BREAK
 case 86:
 YY_RULE_SETUP
-#line 132 "readCode.l"
+#line 132 "../src/readCode.l"
 { count(); std::string token_name = "MAXFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MAXFUNC", yylineno); return MAXFUNC;}
 	YY_BREAK
 case 87:
 YY_RULE_SETUP
-#line 133 "readCode.l"
+#line 133 "../src/readCode.l"
 { count(); std::string token_name = "NUMERIC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : NUMERIC", yylineno); return NUMERIC;}
 	YY_BREAK
 case 88:
 YY_RULE_SETUP
-#line 134 "readCode.l"
+#line 134 "../src/readCode.l"
 { count(); std::string token_name = "AXIS"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : AXIS", yylineno); return AXIS;}
 	YY_BREAK
 case 89:
 YY_RULE_SETUP
-#line 135 "readCode.l"
+#line 135 "../src/readCode.l"
 { count(); std::string token_name = "MISSVALUEFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MISSVALUEFUNC", yylineno); return MISSVALUEFUNC;}
 	YY_BREAK
 case 90:
 YY_RULE_SETUP
-#line 136 "readCode.l"
+#line 136 "../src/readCode.l"
 { count(); std::string token_name = "EXCHANGEVALUEFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : EXCHANGEVALUEFUNC", yylineno); return EXCHANGEVALUEFUNC;}
 	YY_BREAK
 case 91:
 YY_RULE_SETUP
-#line 137 "readCode.l"
+#line 137 "../src/readCode.l"
 { count(); std::string token_name = "GROUPBYFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : GROUPBYFUNC", yylineno); return GROUPBYFUNC;}
 	YY_BREAK
 case 92:
 YY_RULE_SETUP
-#line 138 "readCode.l"
+#line 138 "../src/readCode.l"
 { count(); std::string token_name = "CONCATFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : CONCATFUNC", yylineno); return CONCATFUNC;}
 	YY_BREAK
 case 93:
 YY_RULE_SETUP
-#line 139 "readCode.l"
+#line 139 "../src/readCode.l"
 { count(); std::string token_name = "MERGEFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : MERGEFUNC", yylineno); return MERGEFUNC;}
 	YY_BREAK
 case 94:
 YY_RULE_SETUP
-#line 140 "readCode.l"
+#line 140 "../src/readCode.l"
 { count(); std::string token_name = "HOW_TOKEN"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : HOW_TOKEN", yylineno); return HOW_TOKEN;}
 	YY_BREAK
 case 95:
 YY_RULE_SETUP
-#line 141 "readCode.l"
+#line 141 "../src/readCode.l"
 { count(); std::string token_name = "ON_TOKEN"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : ON_TOKEN", yylineno); return ON_TOKEN;}
 	YY_BREAK
 case 96:
 YY_RULE_SETUP
-#line 142 "readCode.l"
+#line 142 "../src/readCode.l"
 { count(); std::string token_name = "SUFFIXES_TOKEN"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SUFFIXES_TOKEN", yylineno); return SUFFIXES_TOKEN;}
 	YY_BREAK
 case 97:
 YY_RULE_SETUP
-#line 143 "readCode.l"
+#line 143 "../src/readCode.l"
 { count(); std::string token_name = "JOINFUNC"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : JOINFUNC", yylineno); return JOINFUNC;}
 	YY_BREAK
 case 98:
 YY_RULE_SETUP
-#line 144 "readCode.l"
+#line 144 "../src/readCode.l"
 {count(); std::string token_name = "EXPONENTIAL"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : EXPONENTIAL", yylineno); return EXPONENTIAL;}
 	YY_BREAK
 case 99:
 YY_RULE_SETUP
-#line 145 "readCode.l"
+#line 145 "../src/readCode.l"
 {count(); std::string token_name = "PERCENTAGE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : PERCENTAGE", yylineno); return PERCENTAGE;}
 	YY_BREAK
 case 100:
 YY_RULE_SETUP
-#line 146 "readCode.l"
+#line 146 "../src/readCode.l"
 {count(); yylval.in = atof(yytext); std::string token_name = "FLOATNUM"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : FLOATNUM", yylineno); return FLOATNUM;}
 	YY_BREAK
 case 101:
 YY_RULE_SETUP
-#line 147 "readCode.l"
+#line 147 "../src/readCode.l"
 {count(); yylval.in = atoi(yytext); std::string token_name = "INTNUM"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : INTNUM", yylineno); return INTNUM;}
 	YY_BREAK
 case 102:
 YY_RULE_SETUP
-#line 148 "readCode.l"
+#line 148 "../src/readCode.l"
 {count(); yylval.str = strdup(yytext); std::string token_name = "CSVFILE"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : CSVFILE", yylineno); return CSVFILE;}
 	YY_BREAK
 case 103:
 /* rule 103 can match eol */
 YY_RULE_SETUP
-#line 149 "readCode.l"
+#line 149 "../src/readCode.l"
 {count(); std::string token_name = "SINGLE_QUOTED_STRING"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : SINGLE_QUOTED_STRING", yylineno); return SINGLE_QUOTED_STRING;}
 	YY_BREAK
 case 104:
 /* rule 104 can match eol */
 YY_RULE_SETUP
-#line 150 "readCode.l"
+#line 150 "../src/readCode.l"
 {count(); yylval.str = strdup(yytext); std::string token_name = "STRING"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : STRING", yylineno); return STRING;}
 	YY_BREAK
 case 105:
 YY_RULE_SETUP
-#line 151 "readCode.l"
+#line 151 "../src/readCode.l"
 {count(); yylval.str = strdup(yytext); std::string token_name = "IDENTIFIER"; SymbolInfo info(token_name, yylineno, column, " "); symbolTable.put(uniqueID, info); uniqueID++; fprintf(lex_output, "\n %d : IDENTIFIER", yylineno); return IDENTIFIER;}
 	YY_BREAK
 case 106:
 YY_RULE_SETUP
-#line 152 "readCode.l"
+#line 152 "../src/readCode.l"
 ;
 	YY_BREAK
 case 107:
 /* rule 107 can match eol */
 YY_RULE_SETUP
-#line 153 "readCode.l"
+#line 153 "../src/readCode.l"
 ;
 	YY_BREAK
 case 108:
 YY_RULE_SETUP
-#line 154 "readCode.l"
+#line 154 "../src/readCode.l"
 {count(); return '\'';}
 	YY_BREAK
 case 109:
 YY_RULE_SETUP
-#line 155 "readCode.l"
+#line 155 "../src/readCode.l"
 {count(); return '\"';}
 	YY_BREAK
 case 110:
 YY_RULE_SETUP
-#line 156 "readCode.l"
+#line 156 "../src/readCode.l"
 ;
 	YY_BREAK
 case 111:
 /* rule 111 can match eol */
 YY_RULE_SETUP
-#line 157 "readCode.l"
+#line 157 "../src/readCode.l"
 { count(); yylineno++;}
 	YY_BREAK
 case 112:
 YY_RULE_SETUP
-#line 158 "readCode.l"
+#line 158 "../src/readCode.l"
 { count();}
 	YY_BREAK
 case 113:
 YY_RULE_SETUP
-#line 159 "readCode.l"
+#line 159 "../src/readCode.l"
 {count();}
 	YY_BREAK
 case 114:
 YY_RULE_SETUP
-#line 160 "readCode.l"
+#line 160 "../src/readCode.l"
 ECHO;
 	YY_BREAK
-#line 1550 "lex.yy.c"
+#line 1549 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -2551,9 +2551,13 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 160 "readCode.l"
+#line 160 "../src/readCode.l"
 
 
+
+// consider modifying the CSVFILE regexp to 
+// "'"([A-Za-z_./\\]+)\\.csv"'"
+// to allow the path as well to be given in place of filename
 
 void count()
 {
@@ -2568,4 +2572,5 @@ void count()
         letter++;
     }
 }
+
 

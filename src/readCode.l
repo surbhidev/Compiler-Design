@@ -160,6 +160,10 @@ end \*\/
 %%
 
 
+// consider modifying the CSVFILE regexp to 
+// "'"([A-Za-z_./\\]+)\\.csv"'"
+// to allow the path as well to be given in place of filename
+
 void count()
 {
     // Tracking the column number in the current line
@@ -173,3 +177,4 @@ void count()
         letter++;
     }
 }
+
