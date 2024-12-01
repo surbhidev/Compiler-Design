@@ -38,17 +38,24 @@ class ST{
         }
 };
 
-
+// The value part of the symbol table for each symbol table entry is going to be of this struct type
 struct SymbolInfo {
-    std::string token_name;  // Name of the token
-    int line_number;         // Line number
-    int column_number;       // Column number
-    std::string type;        // Type of the token (e.g., keyword, identifier)
+    std::string token_name;
+    int line_number;         
+    int column_number;       
+    std::string type;        
 
-    // Constructor for easy initialization
-    SymbolInfo(std::string name, int line, int column, std::string token_type)
-        : token_name(std::move(name)), line_number(line), column_number(column), type(std::move(token_type)) {}
+    //constructor to create and initialize the struct 
+    SymbolInfo(std::string name, int line, int column)
+        : token_name(std::move(name)), line_number(line), column_number(column) {}
+
+
+    //we dont know the type during lex, so commenting this constructor for now
+    // SymbolInfo(std::string name, int line, int column, std::string token_type)
+    //     : token_name(std::move(name)), line_number(line), column_number(column), type(std::move(token_type)) {}
 };
+
+//Sample code of how the symbol table is going to be used
 
 // int main() {
 //     // Create a symbol table with string keys and SymbolInfo values
