@@ -132,3 +132,43 @@ public:
 }
 
 };
+
+int main() {
+    try {
+        // Define column types for semantic checks.
+        std::map<std::string, std::string> column_types = {
+            {"A", "numeric"},
+            {"B", "numeric"},
+            {"C", "string"},
+            {"D", "string"}
+        };
+
+        SemanticAnalyzer analyzer(column_types);
+
+        // Analyze read function.
+        analyzer.analyzeRead({
+            {"sep", ","},
+            {"header", "0"},
+            {"index_col", "0"},
+            {"usecols", "A,B"},
+            {"index", "0,1"},
+            {"csv_file", ""}
+        });
+
+        // Analyze aggregate functions.
+        analyzer.analyzeAggregateFunction("mean", "A");
+        analyzer.analyzeAggregateFunction("sum", "B");
+
+        // Analyze concatenation.
+        analyzer.analyzeConcat({"df1", "df2"}, 0);
+
+        // Analyze merge.
+        analyzer.analyzeMerge("df1", "inner");
+
+        std::cout << "Semantic analysis completed successfully!" << std::endl;
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    return 0;
+}
