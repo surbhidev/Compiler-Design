@@ -4,15 +4,15 @@ input 'weather_data.csv';
 df(df_1) = read('weather_data.csv');
 // Fills missing values with the median
 df(df_filled) = df(df_1).miss_value(fill,df(df_1).median());
-df(df_filled) = df(df_1).miss_value(fill , 1 , axis = 0 , inplace = true);
 df(df_filled) = df(df_1).miss_value(fill,method = ffill);
-df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
 df(df_1).exchange(regex'[0-9]',intro);
 // Calculate aggregate statistics
  mean_temp = df(df_filled)['Temperature'].mean();
  max_wind_speed = df(df_filled)['WindSpeed'].max();
  sum_precipitation = df(df_filled)['Precipitation'].sum();
  df(df1), df(df_2) = df(df2).groupby('Category');
+ concat([df(df1), df(df2)], axis=0);
+ merge(df(df_1),df(df_2),how = inner, on = 'ok', suffix = ['ok','ok']); 
 // Print results
 print(mean_temp);
 print("hi");
@@ -21,13 +21,10 @@ print("Max Wind Speed:" , max_wind_speed);
 print("Total Precipitation:" , sum_precipitation);
 df(df_filled).head(5);
 df(df_filled).tail(5);
-df(df_2).reset_index(drop = true , inplace = true);
 delhi = df(df_1)['sbhj','sadbk'].mean();
 column_mean = df(df_2).mean(axis = 0);
-hello = df(indenti).sum(axis=1, skip_na = false);
 concat([df(df1), df(df2)], axis=0);
-merge(df(df1), df(df2),how=left, on= 'jkndk', suffix=['1njnjk', 'bhjbj']);
-
+suvedh(a,b);
 if(suvedh==1)
 {
     print("super");
@@ -56,12 +53,12 @@ if(suvedh==1)
     }
     else if(suvedh == 2)
     {
-        df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+        df(df_filled) = df(df_1).miss_value(drop);
     }
 }
 else if(suvedh == 2)
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
 }
 
 if(suvedh==1)
@@ -70,23 +67,23 @@ if(suvedh==1)
 }
 else if(suvedh == 2)
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
 }
 else if(suvedh == 2)
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
 }
 else if(suvedh == 2)
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
 }
 else if(suvedh == 2)
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
 }
 else 
 {
-    df(df_filled) = df(df_1).miss_value(drop,usecols=['bjhbu','bikbhi']);
+    df(df_filled) = df(df_1).miss_value(drop);
     loop(i=0; i<10; i=i+1)
     {
         suvedh = suvedh+1;

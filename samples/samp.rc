@@ -1,0 +1,6 @@
+input 'weather_data.csv';
+// Converts CSV file into data frame
+
+df(df_1) = read('weather_data.csv');
+df(df_2) = read('weather_data.csv');
+print(df(df_1).head());

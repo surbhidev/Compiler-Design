@@ -145,65 +145,65 @@ extern int yydebug;
     IDENTIFIER = 260,              /* IDENTIFIER  */
     DATAFRAME = 261,               /* DATAFRAME  */
     CSVFILE = 262,                 /* CSVFILE  */
-    INT_TYPE = 263,                /* INT_TYPE  */
-    FLOAT_TYPE = 264,              /* FLOAT_TYPE  */
-    STRING_TYPE = 265,             /* STRING_TYPE  */
-    SKIPNA = 266,                  /* SKIPNA  */
-    FILL = 267,                    /* FILL  */
-    FFILL = 268,                   /* FFILL  */
-    BFILL = 269,                   /* BFILL  */
-    INTERPOLATE = 270,             /* INTERPOLATE  */
-    METHOD = 271,                  /* METHOD  */
-    REGX = 272,                    /* REGX  */
-    INNER = 273,                   /* INNER  */
-    LEFT = 274,                    /* LEFT  */
-    RIGHT = 275,                   /* RIGHT  */
-    OUTER = 276,                   /* OUTER  */
-    SEP = 277,                     /* SEP  */
-    HEADER = 278,                  /* HEADER  */
-    INDEX_COL = 279,               /* INDEX_COL  */
-    USECOLS = 280,                 /* USECOLS  */
-    INDEX = 281,                   /* INDEX  */
-    DROP = 282,                    /* DROP  */
-    INPLACE = 283,                 /* INPLACE  */
-    AXIS = 284,                    /* AXIS  */
-    NUMERIC = 285,                 /* NUMERIC  */
-    LOOP = 286,                    /* LOOP  */
-    IF = 287,                      /* IF  */
-    ELSE = 288,                    /* ELSE  */
-    ELSEIF = 289,                  /* ELSEIF  */
-    BREAK = 290,                   /* BREAK  */
-    CONTINUE = 291,                /* CONTINUE  */
-    RTRN = 292,                    /* RTRN  */
-    FUNC = 293,                    /* FUNC  */
-    FLOATNUM = 294,                /* FLOATNUM  */
-    STRING = 295,                  /* STRING  */
-    TRUE = 296,                    /* TRUE  */
-    FALSE = 297,                   /* FALSE  */
+    EXPONENTIAL = 263,             /* EXPONENTIAL  */
+    PERCENTAGE = 264,              /* PERCENTAGE  */
+    INNER = 265,                   /* INNER  */
+    LEFT = 266,                    /* LEFT  */
+    RIGHT = 267,                   /* RIGHT  */
+    OUTER = 268,                   /* OUTER  */
+    INT_TYPE = 269,                /* INT_TYPE  */
+    FLOAT_TYPE = 270,              /* FLOAT_TYPE  */
+    STRING_TYPE = 271,             /* STRING_TYPE  */
+    SKIPNA = 272,                  /* SKIPNA  */
+    FILL = 273,                    /* FILL  */
+    FFILL = 274,                   /* FFILL  */
+    BFILL = 275,                   /* BFILL  */
+    INTERPOLATE = 276,             /* INTERPOLATE  */
+    METHOD = 277,                  /* METHOD  */
+    REGX = 278,                    /* REGX  */
+    SEP = 279,                     /* SEP  */
+    HEADER = 280,                  /* HEADER  */
+    INDEX_COL = 281,               /* INDEX_COL  */
+    USECOLS = 282,                 /* USECOLS  */
+    INDEX = 283,                   /* INDEX  */
+    DROP = 284,                    /* DROP  */
+    INPLACE = 285,                 /* INPLACE  */
+    AXIS = 286,                    /* AXIS  */
+    NUMERIC = 287,                 /* NUMERIC  */
+    LOOP = 288,                    /* LOOP  */
+    IF = 289,                      /* IF  */
+    ELSE = 290,                    /* ELSE  */
+    ELSEIF = 291,                  /* ELSEIF  */
+    BREAK = 292,                   /* BREAK  */
+    CONTINUE = 293,                /* CONTINUE  */
+    RTRN = 294,                    /* RTRN  */
+    FUNC = 295,                    /* FUNC  */
+    FLOATNUM = 296,                /* FLOATNUM  */
+    STRING = 297,                  /* STRING  */
     SINGLE_QUOTED_STRING = 298,    /* SINGLE_QUOTED_STRING  */
-    INPUT = 299,                   /* INPUT  */
-    OUTPUT = 300,                  /* OUTPUT  */
-    ADD_ASSIGN_OPERATOR = 301,     /* ADD_ASSIGN_OPERATOR  */
-    SUB_ASSIGN_OPERATOR = 302,     /* SUB_ASSIGN_OPERATOR  */
-    MUL_ASSIGN_OPERATOR = 303,     /* MUL_ASSIGN_OPERATOR  */
-    DIV_ASSIGN_OPERATOR = 304,     /* DIV_ASSIGN_OPERATOR  */
-    MOD_ASSIGN_OPERATOR = 305,     /* MOD_ASSIGN_OPERATOR  */
-    LE_OPERATOR = 306,             /* LE_OPERATOR  */
-    GE_OPERATOR = 307,             /* GE_OPERATOR  */
-    DEQ_OPERATOR = 308,            /* DEQ_OPERATOR  */
-    NE_OPERATOR = 309,             /* NE_OPERATOR  */
-    PERCENTAGE = 310,              /* PERCENTAGE  */
-    INTEGER = 311,                 /* INTEGER  */
-    SEMICOLON = 312,               /* SEMICOLON  */
-    AND_OPERATOR = 313,            /* AND_OPERATOR  */
-    OR_OPERATOR = 314,             /* OR_OPERATOR  */
-    NOT_OPERATOR = 315,            /* NOT_OPERATOR  */
-    INC_OPERATOR = 316,            /* INC_OPERATOR  */
-    DEC_OPERATOR = 317,            /* DEC_OPERATOR  */
-    RIGHTSHIFT_OPERATOR = 318,     /* RIGHTSHIFT_OPERATOR  */
-    LEFTSHIFT_OPERATOR = 319,      /* LEFTSHIFT_OPERATOR  */
-    ELLIPSIS = 320,                /* ELLIPSIS  */
-    EXPONENTIAL = 321,             /* EXPONENTIAL  */
+    TRUE = 299,                    /* TRUE  */
+    FALSE = 300,                   /* FALSE  */
+    INPUT = 301,                   /* INPUT  */
+    OUTPUT = 302,                  /* OUTPUT  */
+    ADD_ASSIGN_OPERATOR = 303,     /* ADD_ASSIGN_OPERATOR  */
+    SUB_ASSIGN_OPERATOR = 304,     /* SUB_ASSIGN_OPERATOR  */
+    MUL_ASSIGN_OPERATOR = 305,     /* MUL_ASSIGN_OPERATOR  */
+    DIV_ASSIGN_OPERATOR = 306,     /* DIV_ASSIGN_OPERATOR  */
+    MOD_ASSIGN_OPERATOR = 307,     /* MOD_ASSIGN_OPERATOR  */
+    LE_OPERATOR = 308,             /* LE_OPERATOR  */
+    GE_OPERATOR = 309,             /* GE_OPERATOR  */
+    DEQ_OPERATOR = 310,            /* DEQ_OPERATOR  */
+    NE_OPERATOR = 311,             /* NE_OPERATOR  */
+    INTEGER = 312,                 /* INTEGER  */
+    SEMICOLON = 313,               /* SEMICOLON  */
+    AND_OPERATOR = 314,            /* AND_OPERATOR  */
+    OR_OPERATOR = 315,             /* OR_OPERATOR  */
+    NOT_OPERATOR = 316,            /* NOT_OPERATOR  */
+    INC_OPERATOR = 317,            /* INC_OPERATOR  */
+    DEC_OPERATOR = 318,            /* DEC_OPERATOR  */
+    RIGHTSHIFT_OPERATOR = 319,     /* RIGHTSHIFT_OPERATOR  */
+    LEFTSHIFT_OPERATOR = 320,      /* LEFTSHIFT_OPERATOR  */
+    ELLIPSIS = 321,                /* ELLIPSIS  */
     DUST = 322,                    /* DUST  */
     FUNCTIONCALL = 323,            /* FUNCTIONCALL  */
     PRINT = 324,                   /* PRINT  */
@@ -247,65 +247,65 @@ extern int yydebug;
 #define IDENTIFIER 260
 #define DATAFRAME 261
 #define CSVFILE 262
-#define INT_TYPE 263
-#define FLOAT_TYPE 264
-#define STRING_TYPE 265
-#define SKIPNA 266
-#define FILL 267
-#define FFILL 268
-#define BFILL 269
-#define INTERPOLATE 270
-#define METHOD 271
-#define REGX 272
-#define INNER 273
-#define LEFT 274
-#define RIGHT 275
-#define OUTER 276
-#define SEP 277
-#define HEADER 278
-#define INDEX_COL 279
-#define USECOLS 280
-#define INDEX 281
-#define DROP 282
-#define INPLACE 283
-#define AXIS 284
-#define NUMERIC 285
-#define LOOP 286
-#define IF 287
-#define ELSE 288
-#define ELSEIF 289
-#define BREAK 290
-#define CONTINUE 291
-#define RTRN 292
-#define FUNC 293
-#define FLOATNUM 294
-#define STRING 295
-#define TRUE 296
-#define FALSE 297
+#define EXPONENTIAL 263
+#define PERCENTAGE 264
+#define INNER 265
+#define LEFT 266
+#define RIGHT 267
+#define OUTER 268
+#define INT_TYPE 269
+#define FLOAT_TYPE 270
+#define STRING_TYPE 271
+#define SKIPNA 272
+#define FILL 273
+#define FFILL 274
+#define BFILL 275
+#define INTERPOLATE 276
+#define METHOD 277
+#define REGX 278
+#define SEP 279
+#define HEADER 280
+#define INDEX_COL 281
+#define USECOLS 282
+#define INDEX 283
+#define DROP 284
+#define INPLACE 285
+#define AXIS 286
+#define NUMERIC 287
+#define LOOP 288
+#define IF 289
+#define ELSE 290
+#define ELSEIF 291
+#define BREAK 292
+#define CONTINUE 293
+#define RTRN 294
+#define FUNC 295
+#define FLOATNUM 296
+#define STRING 297
 #define SINGLE_QUOTED_STRING 298
-#define INPUT 299
-#define OUTPUT 300
-#define ADD_ASSIGN_OPERATOR 301
-#define SUB_ASSIGN_OPERATOR 302
-#define MUL_ASSIGN_OPERATOR 303
-#define DIV_ASSIGN_OPERATOR 304
-#define MOD_ASSIGN_OPERATOR 305
-#define LE_OPERATOR 306
-#define GE_OPERATOR 307
-#define DEQ_OPERATOR 308
-#define NE_OPERATOR 309
-#define PERCENTAGE 310
-#define INTEGER 311
-#define SEMICOLON 312
-#define AND_OPERATOR 313
-#define OR_OPERATOR 314
-#define NOT_OPERATOR 315
-#define INC_OPERATOR 316
-#define DEC_OPERATOR 317
-#define RIGHTSHIFT_OPERATOR 318
-#define LEFTSHIFT_OPERATOR 319
-#define ELLIPSIS 320
-#define EXPONENTIAL 321
+#define TRUE 299
+#define FALSE 300
+#define INPUT 301
+#define OUTPUT 302
+#define ADD_ASSIGN_OPERATOR 303
+#define SUB_ASSIGN_OPERATOR 304
+#define MUL_ASSIGN_OPERATOR 305
+#define DIV_ASSIGN_OPERATOR 306
+#define MOD_ASSIGN_OPERATOR 307
+#define LE_OPERATOR 308
+#define GE_OPERATOR 309
+#define DEQ_OPERATOR 310
+#define NE_OPERATOR 311
+#define INTEGER 312
+#define SEMICOLON 313
+#define AND_OPERATOR 314
+#define OR_OPERATOR 315
+#define NOT_OPERATOR 316
+#define INC_OPERATOR 317
+#define DEC_OPERATOR 318
+#define RIGHTSHIFT_OPERATOR 319
+#define LEFTSHIFT_OPERATOR 320
+#define ELLIPSIS 321
 #define DUST 322
 #define FUNCTIONCALL 323
 #define PRINT 324
@@ -386,65 +386,65 @@ enum yysymbol_kind_t
   YYSYMBOL_IDENTIFIER = 15,                /* IDENTIFIER  */
   YYSYMBOL_DATAFRAME = 16,                 /* DATAFRAME  */
   YYSYMBOL_CSVFILE = 17,                   /* CSVFILE  */
-  YYSYMBOL_INT_TYPE = 18,                  /* INT_TYPE  */
-  YYSYMBOL_FLOAT_TYPE = 19,                /* FLOAT_TYPE  */
-  YYSYMBOL_STRING_TYPE = 20,               /* STRING_TYPE  */
-  YYSYMBOL_SKIPNA = 21,                    /* SKIPNA  */
-  YYSYMBOL_FILL = 22,                      /* FILL  */
-  YYSYMBOL_FFILL = 23,                     /* FFILL  */
-  YYSYMBOL_BFILL = 24,                     /* BFILL  */
-  YYSYMBOL_INTERPOLATE = 25,               /* INTERPOLATE  */
-  YYSYMBOL_METHOD = 26,                    /* METHOD  */
-  YYSYMBOL_REGX = 27,                      /* REGX  */
-  YYSYMBOL_INNER = 28,                     /* INNER  */
-  YYSYMBOL_LEFT = 29,                      /* LEFT  */
-  YYSYMBOL_RIGHT = 30,                     /* RIGHT  */
-  YYSYMBOL_OUTER = 31,                     /* OUTER  */
-  YYSYMBOL_SEP = 32,                       /* SEP  */
-  YYSYMBOL_HEADER = 33,                    /* HEADER  */
-  YYSYMBOL_INDEX_COL = 34,                 /* INDEX_COL  */
-  YYSYMBOL_USECOLS = 35,                   /* USECOLS  */
-  YYSYMBOL_INDEX = 36,                     /* INDEX  */
-  YYSYMBOL_DROP = 37,                      /* DROP  */
-  YYSYMBOL_INPLACE = 38,                   /* INPLACE  */
-  YYSYMBOL_AXIS = 39,                      /* AXIS  */
-  YYSYMBOL_NUMERIC = 40,                   /* NUMERIC  */
-  YYSYMBOL_LOOP = 41,                      /* LOOP  */
-  YYSYMBOL_IF = 42,                        /* IF  */
-  YYSYMBOL_ELSE = 43,                      /* ELSE  */
-  YYSYMBOL_ELSEIF = 44,                    /* ELSEIF  */
-  YYSYMBOL_BREAK = 45,                     /* BREAK  */
-  YYSYMBOL_CONTINUE = 46,                  /* CONTINUE  */
-  YYSYMBOL_RTRN = 47,                      /* RTRN  */
-  YYSYMBOL_FUNC = 48,                      /* FUNC  */
-  YYSYMBOL_FLOATNUM = 49,                  /* FLOATNUM  */
-  YYSYMBOL_STRING = 50,                    /* STRING  */
-  YYSYMBOL_TRUE = 51,                      /* TRUE  */
-  YYSYMBOL_FALSE = 52,                     /* FALSE  */
+  YYSYMBOL_EXPONENTIAL = 18,               /* EXPONENTIAL  */
+  YYSYMBOL_PERCENTAGE = 19,                /* PERCENTAGE  */
+  YYSYMBOL_INNER = 20,                     /* INNER  */
+  YYSYMBOL_LEFT = 21,                      /* LEFT  */
+  YYSYMBOL_RIGHT = 22,                     /* RIGHT  */
+  YYSYMBOL_OUTER = 23,                     /* OUTER  */
+  YYSYMBOL_INT_TYPE = 24,                  /* INT_TYPE  */
+  YYSYMBOL_FLOAT_TYPE = 25,                /* FLOAT_TYPE  */
+  YYSYMBOL_STRING_TYPE = 26,               /* STRING_TYPE  */
+  YYSYMBOL_SKIPNA = 27,                    /* SKIPNA  */
+  YYSYMBOL_FILL = 28,                      /* FILL  */
+  YYSYMBOL_FFILL = 29,                     /* FFILL  */
+  YYSYMBOL_BFILL = 30,                     /* BFILL  */
+  YYSYMBOL_INTERPOLATE = 31,               /* INTERPOLATE  */
+  YYSYMBOL_METHOD = 32,                    /* METHOD  */
+  YYSYMBOL_REGX = 33,                      /* REGX  */
+  YYSYMBOL_SEP = 34,                       /* SEP  */
+  YYSYMBOL_HEADER = 35,                    /* HEADER  */
+  YYSYMBOL_INDEX_COL = 36,                 /* INDEX_COL  */
+  YYSYMBOL_USECOLS = 37,                   /* USECOLS  */
+  YYSYMBOL_INDEX = 38,                     /* INDEX  */
+  YYSYMBOL_DROP = 39,                      /* DROP  */
+  YYSYMBOL_INPLACE = 40,                   /* INPLACE  */
+  YYSYMBOL_AXIS = 41,                      /* AXIS  */
+  YYSYMBOL_NUMERIC = 42,                   /* NUMERIC  */
+  YYSYMBOL_LOOP = 43,                      /* LOOP  */
+  YYSYMBOL_IF = 44,                        /* IF  */
+  YYSYMBOL_ELSE = 45,                      /* ELSE  */
+  YYSYMBOL_ELSEIF = 46,                    /* ELSEIF  */
+  YYSYMBOL_BREAK = 47,                     /* BREAK  */
+  YYSYMBOL_CONTINUE = 48,                  /* CONTINUE  */
+  YYSYMBOL_RTRN = 49,                      /* RTRN  */
+  YYSYMBOL_FUNC = 50,                      /* FUNC  */
+  YYSYMBOL_FLOATNUM = 51,                  /* FLOATNUM  */
+  YYSYMBOL_STRING = 52,                    /* STRING  */
   YYSYMBOL_SINGLE_QUOTED_STRING = 53,      /* SINGLE_QUOTED_STRING  */
-  YYSYMBOL_INPUT = 54,                     /* INPUT  */
-  YYSYMBOL_OUTPUT = 55,                    /* OUTPUT  */
-  YYSYMBOL_ADD_ASSIGN_OPERATOR = 56,       /* ADD_ASSIGN_OPERATOR  */
-  YYSYMBOL_SUB_ASSIGN_OPERATOR = 57,       /* SUB_ASSIGN_OPERATOR  */
-  YYSYMBOL_MUL_ASSIGN_OPERATOR = 58,       /* MUL_ASSIGN_OPERATOR  */
-  YYSYMBOL_DIV_ASSIGN_OPERATOR = 59,       /* DIV_ASSIGN_OPERATOR  */
-  YYSYMBOL_MOD_ASSIGN_OPERATOR = 60,       /* MOD_ASSIGN_OPERATOR  */
-  YYSYMBOL_LE_OPERATOR = 61,               /* LE_OPERATOR  */
-  YYSYMBOL_GE_OPERATOR = 62,               /* GE_OPERATOR  */
-  YYSYMBOL_DEQ_OPERATOR = 63,              /* DEQ_OPERATOR  */
-  YYSYMBOL_NE_OPERATOR = 64,               /* NE_OPERATOR  */
-  YYSYMBOL_PERCENTAGE = 65,                /* PERCENTAGE  */
-  YYSYMBOL_INTEGER = 66,                   /* INTEGER  */
-  YYSYMBOL_SEMICOLON = 67,                 /* SEMICOLON  */
-  YYSYMBOL_AND_OPERATOR = 68,              /* AND_OPERATOR  */
-  YYSYMBOL_OR_OPERATOR = 69,               /* OR_OPERATOR  */
-  YYSYMBOL_NOT_OPERATOR = 70,              /* NOT_OPERATOR  */
-  YYSYMBOL_INC_OPERATOR = 71,              /* INC_OPERATOR  */
-  YYSYMBOL_DEC_OPERATOR = 72,              /* DEC_OPERATOR  */
-  YYSYMBOL_RIGHTSHIFT_OPERATOR = 73,       /* RIGHTSHIFT_OPERATOR  */
-  YYSYMBOL_LEFTSHIFT_OPERATOR = 74,        /* LEFTSHIFT_OPERATOR  */
-  YYSYMBOL_ELLIPSIS = 75,                  /* ELLIPSIS  */
-  YYSYMBOL_EXPONENTIAL = 76,               /* EXPONENTIAL  */
+  YYSYMBOL_TRUE = 54,                      /* TRUE  */
+  YYSYMBOL_FALSE = 55,                     /* FALSE  */
+  YYSYMBOL_INPUT = 56,                     /* INPUT  */
+  YYSYMBOL_OUTPUT = 57,                    /* OUTPUT  */
+  YYSYMBOL_ADD_ASSIGN_OPERATOR = 58,       /* ADD_ASSIGN_OPERATOR  */
+  YYSYMBOL_SUB_ASSIGN_OPERATOR = 59,       /* SUB_ASSIGN_OPERATOR  */
+  YYSYMBOL_MUL_ASSIGN_OPERATOR = 60,       /* MUL_ASSIGN_OPERATOR  */
+  YYSYMBOL_DIV_ASSIGN_OPERATOR = 61,       /* DIV_ASSIGN_OPERATOR  */
+  YYSYMBOL_MOD_ASSIGN_OPERATOR = 62,       /* MOD_ASSIGN_OPERATOR  */
+  YYSYMBOL_LE_OPERATOR = 63,               /* LE_OPERATOR  */
+  YYSYMBOL_GE_OPERATOR = 64,               /* GE_OPERATOR  */
+  YYSYMBOL_DEQ_OPERATOR = 65,              /* DEQ_OPERATOR  */
+  YYSYMBOL_NE_OPERATOR = 66,               /* NE_OPERATOR  */
+  YYSYMBOL_INTEGER = 67,                   /* INTEGER  */
+  YYSYMBOL_SEMICOLON = 68,                 /* SEMICOLON  */
+  YYSYMBOL_AND_OPERATOR = 69,              /* AND_OPERATOR  */
+  YYSYMBOL_OR_OPERATOR = 70,               /* OR_OPERATOR  */
+  YYSYMBOL_NOT_OPERATOR = 71,              /* NOT_OPERATOR  */
+  YYSYMBOL_INC_OPERATOR = 72,              /* INC_OPERATOR  */
+  YYSYMBOL_DEC_OPERATOR = 73,              /* DEC_OPERATOR  */
+  YYSYMBOL_RIGHTSHIFT_OPERATOR = 74,       /* RIGHTSHIFT_OPERATOR  */
+  YYSYMBOL_LEFTSHIFT_OPERATOR = 75,        /* LEFTSHIFT_OPERATOR  */
+  YYSYMBOL_ELLIPSIS = 76,                  /* ELLIPSIS  */
   YYSYMBOL_DUST = 77,                      /* DUST  */
   YYSYMBOL_FUNCTIONCALL = 78,              /* FUNCTIONCALL  */
   YYSYMBOL_PRINT = 79,                     /* PRINT  */
@@ -491,62 +491,63 @@ enum yysymbol_kind_t
   YYSYMBOL_declaration_statement = 120,    /* declaration_statement  */
   YYSYMBOL_input_statement = 121,          /* input_statement  */
   YYSYMBOL_assignment_statement = 122,     /* assignment_statement  */
-  YYSYMBOL_dataframe = 123,                /* dataframe  */
-  YYSYMBOL_expressions = 124,              /* expressions  */
-  YYSYMBOL_Function_Declaration = 125,     /* Function_Declaration  */
-  YYSYMBOL_argument_list = 126,            /* argument_list  */
-  YYSYMBOL_function_body = 127,            /* function_body  */
-  YYSYMBOL_return_statement = 128,         /* return_statement  */
-  YYSYMBOL_Function_Print_Statement = 129, /* Function_Print_Statement  */
-  YYSYMBOL_print_expressions = 130,        /* print_expressions  */
-  YYSYMBOL_strings_list = 131,             /* strings_list  */
-  YYSYMBOL_Function_Loop_Statement = 132,  /* Function_Loop_Statement  */
-  YYSYMBOL_Print_Statement = 133,          /* Print_Statement  */
-  YYSYMBOL_aggregate_function_calls = 134, /* aggregate_function_calls  */
-  YYSYMBOL_function_call_statement = 135,  /* function_call_statement  */
-  YYSYMBOL_concat_body = 136,              /* concat_body  */
-  YYSYMBOL_dataframe_list = 137,           /* dataframe_list  */
-  YYSYMBOL_to_exchange = 138,              /* to_exchange  */
-  YYSYMBOL_exchange_value = 139,           /* exchange_value  */
-  YYSYMBOL_exchange_body_optional = 140,   /* exchange_body_optional  */
-  YYSYMBOL_missing_value_body_confirm = 141, /* missing_value_body_confirm  */
-  YYSYMBOL_missing_value_body = 142,       /* missing_value_body  */
-  YYSYMBOL_mean_body = 143,                /* mean_body  */
-  YYSYMBOL_axis_bit = 144,                 /* axis_bit  */
-  YYSYMBOL_mean_numerical = 145,           /* mean_numerical  */
-  YYSYMBOL_reset_index_body_drop = 146,    /* reset_index_body_drop  */
-  YYSYMBOL_BOOL = 147,                     /* BOOL  */
-  YYSYMBOL_reset_index_body_implace = 148, /* reset_index_body_implace  */
-  YYSYMBOL_head_tail_body = 149,           /* head_tail_body  */
-  YYSYMBOL_readcsv_body = 150,             /* readcsv_body  */
-  YYSYMBOL_single_quoted_string_list = 151, /* single_quoted_string_list  */
-  YYSYMBOL_actual_parameters = 152,        /* actual_parameters  */
-  YYSYMBOL_grouping = 153,                 /* grouping  */
-  YYSYMBOL_operators = 154,                /* operators  */
-  YYSYMBOL_Loop_Statement = 155,           /* Loop_Statement  */
-  YYSYMBOL_Sub_Loop_Statement = 156,       /* Sub_Loop_Statement  */
-  YYSYMBOL_initializtion = 157,            /* initializtion  */
-  YYSYMBOL_Identifier_List = 158,          /* Identifier_List  */
-  YYSYMBOL_update = 159,                   /* update  */
-  YYSYMBOL_loop_body = 160,                /* loop_body  */
-  YYSYMBOL_statment_list = 161,            /* statment_list  */
-  YYSYMBOL_statement = 162,                /* statement  */
-  YYSYMBOL_Function_Assignment_Statement = 163, /* Function_Assignment_Statement  */
-  YYSYMBOL_predicate_list = 164,           /* predicate_list  */
-  YYSYMBOL_predicate = 165,                /* predicate  */
-  YYSYMBOL_logical_operators = 166,        /* logical_operators  */
-  YYSYMBOL_comparison_operators = 167,     /* comparison_operators  */
-  YYSYMBOL_how_clause = 168,               /* how_clause  */
-  YYSYMBOL_how_list = 169,                 /* how_list  */
-  YYSYMBOL_on_clause = 170,                /* on_clause  */
-  YYSYMBOL_suffixes_clause = 171,          /* suffixes_clause  */
-  YYSYMBOL_Conditional_Statements = 172,   /* Conditional_Statements  */
-  YYSYMBOL_Conditional_Statements_1 = 173, /* Conditional_Statements_1  */
-  YYSYMBOL_Conditional_Statements_2 = 174, /* Conditional_Statements_2  */
-  YYSYMBOL_Conditional_Statements_3 = 175, /* Conditional_Statements_3  */
-  YYSYMBOL_Conditional_Statements_4 = 176, /* Conditional_Statements_4  */
-  YYSYMBOL_else_if_loop = 177,             /* else_if_loop  */
-  YYSYMBOL_conditional_body = 178          /* conditional_body  */
+  YYSYMBOL_123_1 = 123,                    /* $@1  */
+  YYSYMBOL_dataframe = 124,                /* dataframe  */
+  YYSYMBOL_expressions = 125,              /* expressions  */
+  YYSYMBOL_Function_Declaration = 126,     /* Function_Declaration  */
+  YYSYMBOL_argument_list = 127,            /* argument_list  */
+  YYSYMBOL_function_body = 128,            /* function_body  */
+  YYSYMBOL_return_statement = 129,         /* return_statement  */
+  YYSYMBOL_Function_Print_Statement = 130, /* Function_Print_Statement  */
+  YYSYMBOL_print_expressions = 131,        /* print_expressions  */
+  YYSYMBOL_strings_list = 132,             /* strings_list  */
+  YYSYMBOL_Function_Loop_Statement = 133,  /* Function_Loop_Statement  */
+  YYSYMBOL_Print_Statement = 134,          /* Print_Statement  */
+  YYSYMBOL_aggregate_function_calls = 135, /* aggregate_function_calls  */
+  YYSYMBOL_function_call_statement = 136,  /* function_call_statement  */
+  YYSYMBOL_concat_body = 137,              /* concat_body  */
+  YYSYMBOL_dataframe_list = 138,           /* dataframe_list  */
+  YYSYMBOL_to_exchange = 139,              /* to_exchange  */
+  YYSYMBOL_exchange_value = 140,           /* exchange_value  */
+  YYSYMBOL_exchange_body_optional = 141,   /* exchange_body_optional  */
+  YYSYMBOL_missing_value_body_confirm = 142, /* missing_value_body_confirm  */
+  YYSYMBOL_missing_value_body = 143,       /* missing_value_body  */
+  YYSYMBOL_mean_body = 144,                /* mean_body  */
+  YYSYMBOL_axis_bit = 145,                 /* axis_bit  */
+  YYSYMBOL_mean_numerical = 146,           /* mean_numerical  */
+  YYSYMBOL_reset_index_body_drop = 147,    /* reset_index_body_drop  */
+  YYSYMBOL_BOOL = 148,                     /* BOOL  */
+  YYSYMBOL_reset_index_body_implace = 149, /* reset_index_body_implace  */
+  YYSYMBOL_head_tail_body = 150,           /* head_tail_body  */
+  YYSYMBOL_readcsv_body = 151,             /* readcsv_body  */
+  YYSYMBOL_single_quoted_string_list = 152, /* single_quoted_string_list  */
+  YYSYMBOL_actual_parameters = 153,        /* actual_parameters  */
+  YYSYMBOL_grouping = 154,                 /* grouping  */
+  YYSYMBOL_operators = 155,                /* operators  */
+  YYSYMBOL_Loop_Statement = 156,           /* Loop_Statement  */
+  YYSYMBOL_Sub_Loop_Statement = 157,       /* Sub_Loop_Statement  */
+  YYSYMBOL_initializtion = 158,            /* initializtion  */
+  YYSYMBOL_Identifier_List = 159,          /* Identifier_List  */
+  YYSYMBOL_update = 160,                   /* update  */
+  YYSYMBOL_loop_body = 161,                /* loop_body  */
+  YYSYMBOL_statment_list = 162,            /* statment_list  */
+  YYSYMBOL_statement = 163,                /* statement  */
+  YYSYMBOL_Function_Assignment_Statement = 164, /* Function_Assignment_Statement  */
+  YYSYMBOL_predicate_list = 165,           /* predicate_list  */
+  YYSYMBOL_predicate = 166,                /* predicate  */
+  YYSYMBOL_logical_operators = 167,        /* logical_operators  */
+  YYSYMBOL_comparison_operators = 168,     /* comparison_operators  */
+  YYSYMBOL_how_clause = 169,               /* how_clause  */
+  YYSYMBOL_how_list = 170,                 /* how_list  */
+  YYSYMBOL_on_clause = 171,                /* on_clause  */
+  YYSYMBOL_suffixes_clause = 172,          /* suffixes_clause  */
+  YYSYMBOL_Conditional_Statements = 173,   /* Conditional_Statements  */
+  YYSYMBOL_Conditional_Statements_1 = 174, /* Conditional_Statements_1  */
+  YYSYMBOL_Conditional_Statements_2 = 175, /* Conditional_Statements_2  */
+  YYSYMBOL_Conditional_Statements_3 = 176, /* Conditional_Statements_3  */
+  YYSYMBOL_Conditional_Statements_4 = 177, /* Conditional_Statements_4  */
+  YYSYMBOL_else_if_loop = 178,             /* else_if_loop  */
+  YYSYMBOL_conditional_body = 179          /* conditional_body  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -874,16 +875,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  38
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   590
+#define YYLAST   571
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  118
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  61
+#define YYNNTS  62
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  182
+#define YYNRULES  180
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  454
+#define YYNSTATES  442
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   351
@@ -942,25 +943,25 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int16 yyrline[] =
 {
-       0,    72,    72,    73,    77,    78,    79,    80,    81,    82,
-      83,    87,   106,   107,   122,   126,   134,   135,   136,   137,
-     138,   139,   140,   141,   142,   143,   144,   145,   149,   154,
-     155,   156,   160,   161,   162,   164,   165,   169,   173,   177,
-     178,   179,   180,   184,   188,   192,   200,   201,   202,   203,
-     204,   205,   206,   207,   208,   209,   210,   211,   215,   216,
-     217,   218,   219,   220,   221,   222,   223,   224,   225,   229,
-     233,   236,   244,   248,   249,   250,   251,   252,   256,   257,
-     258,   259,   263,   264,   265,   266,   267,   268,   272,   273,
-     274,   275,   279,   280,   284,   298,   299,   300,   301,   305,
-     306,   310,   311,   315,   316,   320,   321,   325,   326,   327,
-     328,   329,   330,   334,   335,   340,   341,   345,   349,   350,
-     351,   352,   353,   354,   355,   356,   357,   361,   365,   370,
-     374,   375,   376,   377,   378,   379,   383,   387,   391,   392,
-     396,   397,   398,   399,   400,   401,   402,   403,   408,   409,
-     410,   414,   415,   416,   420,   421,   422,   426,   427,   431,
-     432,   433,   434,   435,   436,   440,   444,   445,   446,   447,
-     451,   455,   459,   460,   461,   462,   466,   472,   477,   482,
-     486,   487,   491
+       0,    73,    73,    74,    78,    79,    80,    81,    82,    83,
+      84,    88,   107,   109,   108,   126,   130,   138,   143,   149,
+     155,   160,   166,   172,   173,   179,   185,   191,   197,   206,
+     211,   212,   213,   217,   218,   219,   221,   222,   226,   230,
+     234,   235,   236,   237,   241,   245,   249,   257,   291,   325,
+     359,   393,   427,   461,   495,   529,   563,   597,   631,   668,
+     673,   705,   737,   796,   827,   857,   894,   925,   929,   987,
+     994,  1003,  1033,  1067,  1076,  1082,  1088,  1093,  1098,  1106,
+    1112,  1118,  1126,  1132,  1138,  1144,  1150,  1156,  1165,  1171,
+    1178,  1186,  1193,  1201,  1215,  1221,  1226,  1233,  1241,  1247,
+    1256,  1257,  1261,  1267,  1275,  1281,  1289,  1295,  1301,  1307,
+    1313,  1320,  1328,  1329,  1339,  1345,  1354,  1363,  1364,  1365,
+    1366,  1367,  1368,  1369,  1370,  1371,  1375,  1379,  1384,  1388,
+    1389,  1390,  1391,  1392,  1393,  1397,  1401,  1405,  1406,  1410,
+    1411,  1412,  1413,  1414,  1415,  1416,  1417,  1422,  1423,  1424,
+    1428,  1429,  1430,  1434,  1435,  1436,  1440,  1441,  1445,  1446,
+    1447,  1448,  1449,  1450,  1454,  1463,  1468,  1473,  1481,  1489,
+    1497,  1498,  1499,  1500,  1504,  1510,  1515,  1520,  1524,  1525,
+    1529
 };
 #endif
 
@@ -978,28 +979,28 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "'+'", "'-'", "'\\\\'",
   "'.'", "'*'", "'/'", "'%'", "'='", "'<'", "'>'", "LOWER_THAN_ELSE",
-  "INTNUM", "IDENTIFIER", "DATAFRAME", "CSVFILE", "INT_TYPE", "FLOAT_TYPE",
-  "STRING_TYPE", "SKIPNA", "FILL", "FFILL", "BFILL", "INTERPOLATE",
-  "METHOD", "REGX", "INNER", "LEFT", "RIGHT", "OUTER", "SEP", "HEADER",
-  "INDEX_COL", "USECOLS", "INDEX", "DROP", "INPLACE", "AXIS", "NUMERIC",
-  "LOOP", "IF", "ELSE", "ELSEIF", "BREAK", "CONTINUE", "RTRN", "FUNC",
-  "FLOATNUM", "STRING", "TRUE", "FALSE", "SINGLE_QUOTED_STRING", "INPUT",
-  "OUTPUT", "ADD_ASSIGN_OPERATOR", "SUB_ASSIGN_OPERATOR",
-  "MUL_ASSIGN_OPERATOR", "DIV_ASSIGN_OPERATOR", "MOD_ASSIGN_OPERATOR",
-  "LE_OPERATOR", "GE_OPERATOR", "DEQ_OPERATOR", "NE_OPERATOR",
-  "PERCENTAGE", "INTEGER", "SEMICOLON", "AND_OPERATOR", "OR_OPERATOR",
-  "NOT_OPERATOR", "INC_OPERATOR", "DEC_OPERATOR", "RIGHTSHIFT_OPERATOR",
-  "LEFTSHIFT_OPERATOR", "ELLIPSIS", "EXPONENTIAL", "DUST", "FUNCTIONCALL",
-  "PRINT", "CONSTANT", "READCSVFUNC", "HEADFUNC", "TAILFUNC",
-  "RESETINDEXFUNC", "TOCSVFUNC", "DESCRIBEFUNC", "MEANFUNC", "MODEFUNC",
-  "MEDIANFUNC", "SUMFUNC", "MINFUNC", "MAXFUNC", "MISSVALUEFUNC",
-  "EXCHANGEVALUEFUNC", "GROUPBYFUNC", "CONCATFUNC", "MERGEFUNC",
-  "JOINFUNC", "AXIS_TOKEN", "DROP_TOKEN", "INPLACE_TOKEN", "METHOD_TOKEN",
-  "HOW_TOKEN", "ON_TOKEN", "SUFFIXES_TOKEN", "FILL_TOKEN", "'('", "')'",
-  "'{'", "'}'", "','", "'['", "']'", "'&'", "'|'", "'^'", "'~'", "$accept",
-  "translation_unit", "declaration_statement", "input_statement",
-  "assignment_statement", "dataframe", "expressions",
-  "Function_Declaration", "argument_list", "function_body",
+  "INTNUM", "IDENTIFIER", "DATAFRAME", "CSVFILE", "EXPONENTIAL",
+  "PERCENTAGE", "INNER", "LEFT", "RIGHT", "OUTER", "INT_TYPE",
+  "FLOAT_TYPE", "STRING_TYPE", "SKIPNA", "FILL", "FFILL", "BFILL",
+  "INTERPOLATE", "METHOD", "REGX", "SEP", "HEADER", "INDEX_COL", "USECOLS",
+  "INDEX", "DROP", "INPLACE", "AXIS", "NUMERIC", "LOOP", "IF", "ELSE",
+  "ELSEIF", "BREAK", "CONTINUE", "RTRN", "FUNC", "FLOATNUM", "STRING",
+  "SINGLE_QUOTED_STRING", "TRUE", "FALSE", "INPUT", "OUTPUT",
+  "ADD_ASSIGN_OPERATOR", "SUB_ASSIGN_OPERATOR", "MUL_ASSIGN_OPERATOR",
+  "DIV_ASSIGN_OPERATOR", "MOD_ASSIGN_OPERATOR", "LE_OPERATOR",
+  "GE_OPERATOR", "DEQ_OPERATOR", "NE_OPERATOR", "INTEGER", "SEMICOLON",
+  "AND_OPERATOR", "OR_OPERATOR", "NOT_OPERATOR", "INC_OPERATOR",
+  "DEC_OPERATOR", "RIGHTSHIFT_OPERATOR", "LEFTSHIFT_OPERATOR", "ELLIPSIS",
+  "DUST", "FUNCTIONCALL", "PRINT", "CONSTANT", "READCSVFUNC", "HEADFUNC",
+  "TAILFUNC", "RESETINDEXFUNC", "TOCSVFUNC", "DESCRIBEFUNC", "MEANFUNC",
+  "MODEFUNC", "MEDIANFUNC", "SUMFUNC", "MINFUNC", "MAXFUNC",
+  "MISSVALUEFUNC", "EXCHANGEVALUEFUNC", "GROUPBYFUNC", "CONCATFUNC",
+  "MERGEFUNC", "JOINFUNC", "AXIS_TOKEN", "DROP_TOKEN", "INPLACE_TOKEN",
+  "METHOD_TOKEN", "HOW_TOKEN", "ON_TOKEN", "SUFFIXES_TOKEN", "FILL_TOKEN",
+  "'('", "')'", "'{'", "'}'", "','", "'['", "']'", "'&'", "'|'", "'^'",
+  "'~'", "$accept", "translation_unit", "declaration_statement",
+  "input_statement", "assignment_statement", "$@1", "dataframe",
+  "expressions", "Function_Declaration", "argument_list", "function_body",
   "return_statement", "Function_Print_Statement", "print_expressions",
   "strings_list", "Function_Loop_Statement", "Print_Statement",
   "aggregate_function_calls", "function_call_statement", "concat_body",
@@ -1026,7 +1027,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-344)
+#define YYPACT_NINF (-332)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -1040,52 +1041,51 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int16 yypact[] =
 {
-     283,    22,   -48,   -23,   -17,    82,    96,     8,    37,    43,
-      50,   149,  -344,  -344,   104,   131,  -344,  -344,   127,    17,
-    -344,  -344,  -344,  -344,  -344,  -344,  -344,   162,   162,   148,
-     185,   271,   110,   160,   247,   225,   140,   221,  -344,  -344,
-    -344,   326,  -344,    70,   221,  -344,   161,  -344,   162,    12,
-      31,  -344,  -344,  -344,    31,   -30,   176,   284,   233,   159,
-     162,    58,   171,  -344,   292,  -344,  -344,    31,     3,  -344,
-     210,   221,   219,   229,   244,   250,   253,   256,   262,   266,
-     161,   334,  -344,  -344,    45,   364,   324,  -344,  -344,  -344,
-    -344,  -344,  -344,  -344,  -344,  -344,   274,  -344,   162,  -344,
-      33,   271,   372,    31,  -344,  -344,  -344,  -344,  -344,  -344,
-    -344,  -344,   162,   162,   279,   271,   271,  -344,    90,   325,
-     247,   371,   305,  -344,    -6,   221,   377,   377,   393,   384,
-     306,    35,   405,   220,  -344,   327,   328,   329,   330,   331,
-     332,  -344,   125,  -344,   161,  -344,  -344,  -344,  -344,    31,
-    -344,  -344,   354,   430,    31,    31,   293,  -344,  -344,   333,
-     426,  -344,    31,  -344,   434,   449,   450,   451,   452,  -344,
-     352,   353,  -344,   357,   358,   457,   359,   210,  -344,   360,
-    -344,   361,   415,   362,   367,   436,   436,   436,   436,   436,
-     436,   416,   470,    48,    46,    36,   410,   411,   373,   412,
-    -344,    23,  -344,  -344,   293,  -344,   414,  -344,   374,    76,
-    -344,   429,   469,   471,   375,   128,   447,   385,  -344,  -344,
-     222,   453,   381,   382,    61,   157,   386,  -344,   277,   324,
-     482,   387,   387,   387,   387,   387,   387,  -344,   258,   483,
-     388,  -344,  -344,  -344,   162,  -344,  -344,   247,  -344,    70,
-    -344,  -344,   237,   162,   293,   389,   428,    76,  -344,   433,
-     210,   210,   210,   324,  -344,  -344,   210,   487,   394,   491,
-     392,  -344,   395,   494,  -344,  -344,  -344,   495,    20,  -344,
-     497,   498,   361,  -344,  -344,  -344,  -344,  -344,  -344,   398,
-      97,   496,    59,   403,   404,   406,   407,   408,   409,   413,
-     417,   418,   419,   420,   421,   422,    31,   108,   507,  -344,
-     423,   427,   289,    31,   454,   425,  -344,    76,  -344,    76,
-    -344,  -344,  -344,   137,  -344,   496,  -344,   368,   432,   484,
-     128,   164,   337,   431,   128,  -344,   183,   437,  -344,  -344,
-    -344,   508,   512,   513,  -344,  -344,  -344,  -344,  -344,  -344,
-     438,   439,   440,   441,   442,   443,   293,  -344,   300,   293,
-     271,   424,   435,  -344,  -344,  -344,  -344,   210,  -344,  -344,
-    -344,  -344,  -344,  -344,   519,   444,   520,  -344,  -344,  -344,
-    -344,   324,   361,   527,   528,   398,  -344,   128,   445,   128,
-    -344,  -344,  -344,  -344,  -344,  -344,   446,   455,   448,   203,
-     293,   271,  -344,   486,   456,   458,   142,  -344,   459,   128,
-    -344,   387,   324,   387,  -344,   324,  -344,   460,   462,   214,
-    -344,   530,   465,   324,   361,   324,   398,  -344,   182,  -344,
-     136,   293,  -344,   466,   464,  -344,   199,  -344,   205,  -344,
-     387,  -344,   467,   293,   324,  -344,   398,  -344,  -344,   468,
-     216,  -344,  -344,  -344
+     335,    19,   -69,   -61,   -44,    53,    55,   -22,   -17,   -12,
+       9,   183,  -332,  -332,     8,   130,  -332,  -332,    59,    -3,
+    -332,  -332,  -332,  -332,  -332,  -332,  -332,   280,   280,   137,
+     141,   267,    64,   119,   273,   160,   100,   224,  -332,  -332,
+    -332,   385,  -332,   138,   224,  -332,   142,  -332,   280,    34,
+      58,  -332,  -332,  -332,    58,   -31,   155,   283,   222,   187,
+     280,    48,    37,  -332,   293,  -332,  -332,    58,    12,  -332,
+     203,   224,   204,   209,   213,   214,   216,   221,   223,   225,
+     142,   316,  -332,  -332,    23,   372,   276,  -332,  -332,  -332,
+    -332,  -332,  -332,  -332,  -332,  -332,   285,  -332,   280,  -332,
+      28,   267,   318,    58,  -332,  -332,  -332,  -332,  -332,  -332,
+    -332,  -332,   280,   280,   226,   267,   267,  -332,    71,   266,
+     273,   166,   229,  -332,    80,   224,   332,   332,   308,   339,
+     241,    42,   326,   344,  -332,  -332,   255,   258,   260,   261,
+     265,   268,  -332,    84,  -332,   142,  -332,  -332,  -332,  -332,
+      58,  -332,  -332,   341,   361,    58,    58,   230,  -332,  -332,
+     274,   369,  -332,    58,  -332,   363,   376,   378,   379,   380,
+    -332,   282,   284,  -332,   286,   289,   389,   290,   203,  -332,
+     291,  -332,   292,   347,   297,   305,   374,   374,   374,   374,
+     374,   374,   360,   418,   245,    33,    43,   366,   368,   338,
+     381,  -332,    18,  -332,  -332,   230,  -332,   382,  -332,   336,
+     106,  -332,   394,   434,   458,   362,   168,   432,   373,  -332,
+    -332,   215,   435,   375,   377,   144,   235,   383,  -332,   288,
+     276,   467,   370,   370,   370,   370,   370,   370,  -332,   253,
+     470,   384,  -332,  -332,  -332,   280,  -332,  -332,   273,  -332,
+     138,  -332,  -332,   239,   280,   230,   386,   414,   106,  -332,
+     416,   203,   203,   203,   276,  -332,  -332,   203,   476,   387,
+     477,   388,  -332,   390,   478,  -332,  -332,  -332,   479,    35,
+    -332,   480,   292,  -332,  -332,  -332,  -332,  -332,  -332,   391,
+     109,   483,    27,   392,   395,   396,   397,   398,   399,   401,
+     402,   403,   404,   405,   406,   407,    58,   120,   487,  -332,
+     408,   411,   246,    58,   426,   409,  -332,   106,  -332,   106,
+    -332,  -332,  -332,    95,  -332,   483,  -332,   146,   410,   461,
+     168,   207,   330,   168,  -332,   264,   412,  -332,  -332,  -332,
+     505,   511,   512,  -332,  -332,  -332,  -332,  -332,  -332,   415,
+     417,   419,   420,   421,   422,   230,  -332,   358,   230,   267,
+     423,   424,  -332,  -332,  -332,  -332,   203,  -332,  -332,  -332,
+    -332,  -332,   514,   425,   516,  -332,  -332,  -332,  -332,   292,
+     523,   391,  -332,   168,   427,   168,  -332,  -332,  -332,  -332,
+    -332,  -332,   428,   430,   431,   178,   230,   267,  -332,   481,
+     437,   433,  -332,   168,  -332,   370,   276,   370,  -332,   276,
+    -332,   438,   436,   202,  -332,   525,   440,   276,   391,  -332,
+     105,  -332,   121,   230,  -332,   441,   439,  -332,   140,  -332,
+     370,  -332,   442,   230,   276,  -332,  -332,  -332,   443,   143,
+    -332,  -332
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -1094,75 +1094,74 @@ static const yytype_int16 yypact[] =
 static const yytype_uint8 yydefact[] =
 {
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     2,     6,     0,    70,     5,     7,     0,     0,
-       8,   127,    10,   172,   173,   174,   175,     0,     0,     0,
+       0,     0,     2,     6,     0,    71,     5,     7,     0,     0,
+       8,   126,    10,   170,   171,   172,   173,     0,     0,     0,
        0,     0,     0,     0,     0,     0,     0,     0,     1,     3,
-       4,     0,     9,     0,     0,    23,    22,    24,     0,     0,
-      12,    27,    26,    25,   115,     0,     0,   132,     0,   129,
-       0,     0,     0,   151,    31,    11,    43,    39,     0,    40,
-     112,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,    13,    71,     0,     0,     0,   118,   119,   120,
-     121,   122,   123,   124,   125,   126,     0,    68,     0,    15,
-       0,     0,     0,   156,   159,   160,   161,   162,   164,   163,
-     157,   158,     0,     0,     0,     0,     0,    29,     0,     0,
-       0,     0,     0,    70,     0,     0,   106,   106,     0,     0,
-       0,     0,     0,     0,   117,     0,     0,     0,     0,     0,
-       0,   113,     0,    17,    16,    18,    21,    20,    19,   116,
-     130,   131,     0,   133,   155,   154,     0,   152,   153,     0,
-       0,    45,    42,    41,     0,     0,     0,     0,     0,    58,
-       0,     0,   105,     0,     0,     0,   104,   112,    63,     0,
-      87,    91,     0,     0,     0,    93,    93,    93,    93,    93,
-      93,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-     146,     0,   143,   182,   137,   138,   147,   142,     0,     0,
-      30,     0,     0,     0,     0,     0,     0,     0,    59,    60,
-       0,     0,     0,     0,     0,    93,     0,    72,     0,     0,
-       0,    98,    98,    98,    98,    98,    98,   114,     0,     0,
-       0,   136,   134,   135,     0,   144,   145,     0,   141,     0,
-     139,   140,   179,     0,     0,     0,     0,     0,    44,     0,
-     112,   112,   112,     0,   101,   102,   112,     0,     0,     0,
-       0,    99,     0,     0,    61,    62,    82,     0,     0,    83,
-       0,     0,    91,    64,    73,    77,    74,    76,    75,    81,
+       4,     0,     9,     0,     0,    24,    23,    25,     0,     0,
+      12,    28,    27,    26,   114,     0,     0,   131,     0,   128,
+       0,     0,     0,   150,    32,    11,    44,    40,     0,    41,
+     111,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,     0,    13,    72,     0,     0,     0,   117,   118,   119,
+     120,   121,   122,   123,   124,   125,     0,    69,     0,    16,
+       0,     0,     0,   155,   158,   159,   160,   161,   163,   162,
+     156,   157,     0,     0,     0,     0,     0,    30,     0,     0,
+       0,     0,     0,    71,     0,     0,   105,   105,     0,     0,
+       0,     0,     0,     0,    14,   116,     0,     0,     0,     0,
+       0,     0,   112,     0,    18,    17,    19,    22,    21,    20,
+     115,   129,   130,     0,   132,   154,   153,     0,   151,   152,
+       0,     0,    46,    43,    42,     0,     0,     0,     0,     0,
+      59,     0,     0,   104,     0,     0,     0,   103,   111,    64,
+       0,    87,    90,     0,     0,     0,    92,    92,    92,    92,
+      92,    92,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,   145,     0,   142,   180,   136,   137,   146,   141,     0,
+       0,    31,     0,     0,     0,     0,     0,     0,     0,    60,
+      61,     0,     0,     0,     0,     0,    92,     0,    73,     0,
+       0,     0,    97,    97,    97,    97,    97,    97,   113,     0,
+       0,     0,   135,   133,   134,     0,   143,   144,     0,   140,
+       0,   138,   139,   177,     0,     0,     0,     0,     0,    45,
+       0,   111,   111,   111,     0,   100,   101,   111,     0,     0,
+       0,     0,    98,     0,     0,    62,    63,    82,     0,     0,
+      83,     0,    90,    65,    74,    78,    76,    77,    75,    81,
        0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
-       0,     0,     0,     0,     0,     0,   148,     0,     0,   149,
-       0,     0,   177,    37,     0,     0,    28,     0,    34,     0,
-     107,   108,   109,     0,   110,     0,    66,     0,     0,     0,
-       0,     0,     0,     0,     0,    90,    93,     0,    14,    94,
-      92,     0,     0,     0,    52,    53,    54,    55,    56,    57,
-       0,     0,     0,     0,     0,     0,     0,    38,     0,     0,
-       0,     0,     0,    36,    32,    35,    33,   112,    69,   166,
-     167,   168,   169,   165,     0,     0,     0,   103,    84,    85,
-      86,     0,    91,     0,     0,    81,    65,     0,     0,     0,
-      46,    47,    48,    49,    50,    51,     0,     0,     0,     0,
-       0,     0,   111,     0,     0,     0,     0,    88,     0,     0,
-      80,    98,     0,    98,   128,     0,   178,     0,     0,     0,
-     170,     0,     0,     0,    91,     0,    81,    96,     0,    95,
-       0,     0,   176,     0,     0,    67,     0,    89,     0,    78,
-      98,   150,     0,     0,     0,   100,    81,    97,   180,     0,
-       0,    79,   181,   171
+       0,     0,     0,     0,     0,     0,   147,     0,     0,   148,
+       0,     0,   175,    38,     0,     0,    29,     0,    35,     0,
+     106,   107,   108,     0,   109,     0,    67,     0,     0,     0,
+       0,     0,     0,     0,    89,    92,     0,    15,    93,    91,
+       0,     0,     0,    53,    54,    55,    56,    57,    58,     0,
+       0,     0,     0,     0,     0,     0,    39,     0,     0,     0,
+       0,     0,    37,    33,    36,    34,   111,    70,   165,   166,
+     167,   164,     0,     0,     0,   102,    84,    85,    86,    90,
+       0,    81,    66,     0,     0,     0,    47,    48,    49,    50,
+      51,    52,     0,     0,     0,     0,     0,     0,   110,     0,
+       0,     0,    88,     0,    80,    97,     0,    97,   127,     0,
+     176,     0,     0,     0,   168,     0,     0,     0,    81,    95,
+       0,    94,     0,     0,   174,     0,     0,    68,     0,    79,
+      97,   149,     0,     0,     0,    99,    96,   178,     0,     0,
+     179,   169
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int16 yypgoto[] =
 {
-    -344,  -344,   533,  -344,  -344,     0,   -24,  -344,  -344,  -201,
-    -344,  -184,   294,   461,  -344,  -344,   -82,     2,  -344,   170,
-    -344,  -344,  -343,  -344,  -270,  -167,   227,  -227,  -344,  -279,
-    -344,   463,  -160,  -213,  -344,   472,  -344,    30,  -181,  -344,
-    -344,  -344,  -225,  -344,   349,  -178,  -100,   260,   493,   499,
-    -344,  -344,  -344,  -344,    93,  -344,  -344,  -344,  -344,  -344,
-    -291
+    -332,  -332,   529,  -332,  -332,  -332,     0,   -24,  -332,  -332,
+    -139,  -332,  -176,   295,   429,  -332,  -332,   -90,     2,  -332,
+      99,  -332,  -332,  -331,  -332,  -270,  -168,   219,  -219,  -332,
+    -255,  -332,   444,  -170,  -225,  -332,   459,  -332,    94,  -175,
+    -332,  -332,  -332,  -222,  -332,   349,  -185,  -100,   197,   495,
+     496,  -332,  -332,  -332,  -332,   104,  -332,  -332,  -332,  -332,
+    -332,  -272
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int16 yydefgoto[] =
 {
-       0,    11,    12,    13,    14,    49,    61,    16,   118,   255,
-     314,   199,    68,    69,   257,    17,    51,    52,   268,   201,
-     183,   289,   337,   181,   226,   231,   340,   293,   176,   266,
-     222,   173,   122,   142,    55,    53,    96,   202,    21,    58,
-      59,   240,   203,   204,   205,   206,    62,    63,   115,   116,
-     270,   373,   375,   422,   207,    23,    24,    25,    26,   312,
-     208
+       0,    11,    12,    13,    14,   134,    49,    61,    16,   118,
+     256,   314,   200,    68,    69,   258,    17,    51,    52,   269,
+     202,   184,   289,   336,   182,   227,   232,   339,   293,   177,
+     267,   223,   174,   122,   143,    55,    53,    96,   203,    21,
+      58,    59,   241,   204,   205,   206,   207,    62,    63,   115,
+     116,   271,   371,   373,   416,   208,    23,    24,    25,    26,
+     312,   209
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -1170,230 +1169,225 @@ static const yytype_int16 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int16 yytable[] =
 {
-      15,   152,    18,    50,    54,   294,   295,   296,   297,   298,
-      67,    15,   335,    18,   146,   241,   290,   223,    85,   232,
-     233,   234,   235,   236,    84,   256,   332,    43,   258,   315,
-      20,   259,    27,   249,    87,    88,   103,    72,    89,    90,
-      91,    20,   410,    81,    83,    82,   244,   150,    87,    88,
-     323,   377,    89,    90,    91,   382,   318,   179,   282,    29,
-     242,    87,    88,   239,     2,    89,    90,    91,   398,   104,
-     105,   123,   180,   256,   149,   276,   258,     2,    97,   259,
-     341,    98,   151,   439,    30,    80,     2,   277,   154,   155,
-      31,   239,     2,    22,   342,   243,   162,    32,   147,   343,
-     320,   321,   322,   451,    22,    44,   324,   170,   411,   418,
-     413,   119,   407,    33,   120,    34,   365,     3,   366,   106,
-     107,   108,   109,   253,    86,   171,   110,   111,    44,    28,
-     426,   396,    86,   256,    44,   256,   258,    41,   258,   259,
-     442,   259,   279,    28,    35,    92,    93,    94,    95,    38,
-      36,     8,   449,   134,   437,   198,    15,    37,   200,    92,
-      93,    94,    95,    56,     1,     2,     9,    10,   406,   385,
-      19,    40,    92,    93,    94,    95,    45,    46,     2,   264,
-     265,    19,   104,   105,   427,   254,   429,   378,   379,   380,
-       3,     4,   280,   123,    42,   281,   230,     5,   159,   428,
-      57,   160,   430,     6,    15,   338,   200,   402,   191,   123,
-     436,    47,   438,   447,   104,   105,   357,    64,   383,   120,
-     306,   384,   230,    67,   278,   104,   105,    65,     7,   313,
-       8,   450,   106,   107,   108,   109,   191,     2,   192,   110,
-     111,   124,    70,     8,   441,     9,    10,   191,   191,   308,
-     367,   309,    71,   191,    15,   424,   200,   123,     9,    10,
-     399,    45,    46,     2,   106,   107,   108,   109,    28,    48,
-     102,   110,   111,   271,   272,   106,   107,   108,   109,   114,
-     310,   311,   110,   111,    99,    45,    46,     2,   143,   144,
-       2,   284,   285,   191,   100,   440,    47,    66,     1,     2,
-     101,   419,    73,    74,    75,    76,    77,   117,   195,     2,
-     191,   417,   445,    78,    79,   184,   191,   123,   446,   123,
-      47,   121,   433,   145,     3,     4,   286,   191,     8,   453,
-     125,     5,   361,   362,     3,     4,   126,     6,   196,   197,
-     133,    60,   287,     9,    10,   299,   300,   301,   302,   303,
-     304,   127,     8,   288,    48,     8,    15,   128,   200,    15,
-     129,   200,     7,   130,     8,   104,   105,     9,    10,   131,
-       9,    10,   198,   132,     8,   157,   158,   141,    48,     9,
-      10,    48,    73,    74,    75,    76,    77,   153,   156,     9,
-      10,   172,   161,    78,    79,   397,   369,   370,   371,   372,
-      15,   177,   200,   164,   165,   166,   167,   168,    73,    74,
-      75,    76,    77,   169,   178,   106,   107,   108,   109,    78,
-      79,   193,   110,   111,   135,   136,   137,   138,   139,   140,
-     175,    15,   182,   200,   185,   186,   187,   188,   189,   190,
-     194,   210,   209,    15,   211,   200,    73,    74,    75,    76,
-      77,   135,   136,   137,   138,   139,   140,    78,    79,   212,
-     213,   214,   215,   216,   217,   218,   219,   220,   227,   237,
-     221,   224,   225,   228,   229,   230,   238,   245,   246,   248,
-     247,   251,   260,   261,   252,   262,   267,   263,   269,   274,
-     275,   273,   291,   244,   283,   317,   305,   325,   292,   316,
-     319,   327,   326,   328,   330,   331,   329,   333,   334,   336,
-     339,   344,   345,   358,   346,   347,   348,   349,   387,   376,
-     350,   363,   388,   389,   351,   352,   353,   354,   355,   403,
-     405,   356,   359,   400,   360,   364,   374,   408,   409,   420,
-     434,   307,   401,   381,    39,   386,   390,   391,   392,   393,
-     394,   395,   368,   250,   112,   404,   414,   412,   416,     0,
-     113,   421,   415,     0,     0,     0,     0,     0,   148,   431,
-     423,   425,   432,   435,     0,   443,   444,   448,   452,     0,
-       0,   163,     0,     0,     0,     0,     0,     0,     0,     0,
-     174
+      15,   153,    18,    50,    54,   290,   147,    43,   224,   242,
+      67,    15,   334,    18,   294,   295,   296,   297,   298,   233,
+     234,   235,   236,   237,    84,   260,    87,    88,   250,    27,
+      89,    90,    91,   315,   257,   259,   103,    72,    29,   323,
+      85,   332,   151,    81,    83,    82,    30,   243,   104,   105,
+     404,    87,    88,   245,   340,    89,    90,    91,   282,   104,
+     105,    87,    88,    31,   341,    89,    90,    91,    32,   342,
+     180,   123,    33,   260,   150,   375,    40,    97,   379,   152,
+      98,   181,   257,   259,   244,    34,   394,   429,   155,   156,
+      35,   320,   321,   322,    20,    36,   163,   324,   148,    19,
+     106,   107,   108,   109,    22,    20,   110,   111,    44,   402,
+      19,   106,   107,   108,   109,    22,    37,   110,   111,   318,
+     119,   240,     2,   120,   412,   172,    28,    42,   405,    44,
+     407,   135,   260,   392,   260,   280,    41,    92,    93,    94,
+      95,   257,   259,   257,   259,   114,    86,    86,   418,     3,
+      28,   432,    56,    80,     2,   254,    57,    15,   277,   201,
+       2,   438,    92,    93,    94,    95,   368,   381,   369,   370,
+     124,    64,    92,    93,    94,    95,   278,    70,   364,   160,
+     365,   420,   161,    38,   422,   199,   419,    65,   421,   104,
+     105,    44,   428,   171,   123,   192,   398,   193,     1,     2,
+     165,   166,   167,   168,   169,    15,   192,   201,   366,   439,
+     123,   436,    71,   104,   105,   255,   192,   337,   430,     8,
+     192,   306,   265,   266,    67,   279,     3,     4,   356,   431,
+     313,   120,   192,     5,     9,    10,   376,   377,   378,     6,
+       2,   106,   107,   108,   109,   196,     2,   110,   111,    28,
+     308,   192,   309,   435,   192,    15,   441,   201,   123,   395,
+     240,     2,     7,    99,     8,   106,   107,   108,   109,   272,
+     273,   110,   111,     3,     4,   281,   231,   197,   198,     9,
+      10,    45,    46,     2,   310,   311,   411,    45,    46,     2,
+     101,   360,   361,   100,    45,    46,     2,   413,   102,   144,
+     145,     2,   284,   285,   380,   231,   286,   287,   117,   199,
+     425,     8,   158,   159,   121,   125,   126,   123,    47,   123,
+     127,   128,   133,   129,    47,    66,     9,    10,   130,   142,
+     131,    47,   132,   154,   162,   157,   146,   170,    60,   288,
+     299,   300,   301,   302,   303,   304,   173,   176,     8,   179,
+       1,     2,   104,   105,     8,    15,   178,   201,    15,   183,
+     201,     8,   186,     9,    10,   187,     8,   188,   189,     9,
+      10,   195,   190,   212,    48,   191,     9,    10,     3,     4,
+      48,     9,    10,   210,   211,     5,   213,    48,   214,   215,
+     216,     6,    48,   217,   219,   218,    15,   220,   201,   221,
+     228,   222,   225,   226,   106,   107,   108,   109,   229,   194,
+     110,   111,   230,   238,     7,   231,     8,   136,   137,   138,
+     139,   140,   141,    15,   239,   201,    73,    74,    75,    76,
+      77,     9,    10,    15,   246,   201,   247,    78,    79,   185,
+      73,    74,    75,    76,    77,   248,   253,   261,   262,   249,
+     252,    78,    79,   393,    73,    74,    75,    76,    77,   136,
+     137,   138,   139,   140,   141,    78,    79,    73,    74,    75,
+      76,    77,   263,   268,   264,   274,   270,   291,    78,    79,
+     245,   292,   317,   275,   319,   276,   325,   327,   330,   331,
+     333,   283,   305,   357,   362,   326,   316,   338,   374,   328,
+     343,   329,   335,   344,   345,   346,   347,   348,   349,   350,
+     351,   352,   353,   354,   372,   383,   355,   358,   359,   363,
+     382,   384,   385,   386,   399,   387,   401,   388,   389,   390,
+     391,   397,   396,   403,   414,   426,   400,   409,   408,   406,
+      39,   410,   415,   307,   367,   417,   424,   423,   427,   164,
+     433,   434,   437,   440,   251,   149,   112,   113,     0,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,     0,     0,
+       0,   175
 };
 
 static const yytype_int16 yycheck[] =
 {
-       0,   101,     0,    27,    28,   232,   233,   234,   235,   236,
-      34,    11,   282,    11,    96,   193,   229,   177,     6,   186,
-     187,   188,   189,   190,    48,   209,     6,    10,   209,   254,
-       0,   209,    10,    10,     3,     4,    60,    37,     7,     8,
-       9,    11,   385,    43,    44,    43,    10,    14,     3,     4,
-     263,   330,     7,     8,     9,   334,   257,    22,   225,   107,
-      14,     3,     4,    15,    16,     7,     8,     9,   359,    11,
-      12,    71,    37,   257,    98,    14,   257,    16,   108,   257,
-      21,   111,    49,   426,   107,    15,    16,    26,   112,   113,
-     107,    15,    16,     0,    35,    49,   120,    15,    96,    40,
-     260,   261,   262,   446,    11,   111,   266,   113,   387,   400,
-     389,   108,   382,    17,   111,   107,   317,    41,   319,    61,
-      62,    63,    64,    47,   112,   125,    68,    69,   111,   107,
-     409,   356,   112,   317,   111,   319,   317,     6,   319,   317,
-     431,   319,   224,   107,   107,   114,   115,   116,   117,     0,
-     107,    81,   443,   108,   424,    79,   156,   107,   156,   114,
-     115,   116,   117,    15,    15,    16,    96,    97,   381,   336,
-       0,    67,   114,   115,   116,   117,    14,    15,    16,    51,
-      52,    11,    11,    12,   411,   109,   413,    23,    24,    25,
-      41,    42,    35,   193,    67,    38,    39,    48,   108,   412,
-      15,   111,   415,    54,   204,   108,   204,   367,   111,   209,
-     423,    49,   425,   440,    11,    12,   108,   107,    35,   111,
-     244,    38,    39,   247,   224,    11,    12,    67,    79,   253,
-      81,   444,    61,    62,    63,    64,   111,    16,   113,    68,
-      69,    71,    17,    81,   108,    96,    97,   111,   111,   249,
-     113,   249,   112,   111,   254,   113,   254,   257,    96,    97,
-     360,    14,    15,    16,    61,    62,    63,    64,   107,   107,
-     111,    68,    69,    51,    52,    61,    62,    63,    64,   108,
-      43,    44,    68,    69,   108,    14,    15,    16,    14,    15,
-      16,    14,    15,   111,    10,   113,    49,    50,    15,    16,
-      67,   401,    82,    83,    84,    85,    86,    15,    15,    16,
-     111,   108,   113,    93,    94,    95,   111,   317,   113,   319,
-      49,   111,   108,    49,    41,    42,    49,   111,    81,   113,
-     111,    48,    43,    44,    41,    42,   107,    54,    45,    46,
-       6,    70,    65,    96,    97,    87,    88,    89,    90,    91,
-      92,   107,    81,    76,   107,    81,   356,   107,   356,   359,
-     107,   359,    79,   107,    81,    11,    12,    96,    97,   107,
-      96,    97,    79,   107,    81,   115,   116,    53,   107,    96,
-      97,   107,    82,    83,    84,    85,    86,    15,   109,    96,
-      97,    14,    67,    93,    94,    95,    28,    29,    30,    31,
-     400,    17,   400,    32,    33,    34,    35,    36,    82,    83,
-      84,    85,    86,   108,   108,    61,    62,    63,    64,    93,
-      94,    67,    68,    69,    87,    88,    89,    90,    91,    92,
-      37,   431,    27,   431,   107,   107,   107,   107,   107,   107,
-      10,    15,   109,   443,    10,   443,    82,    83,    84,    85,
-      86,    87,    88,    89,    90,    91,    92,    93,    94,    10,
-      10,    10,    10,   111,   111,   108,   108,    10,    53,    53,
-     111,   111,   111,   111,   107,    39,     6,    67,    67,    67,
-     107,    67,    53,    14,   110,    14,    39,   112,   103,   108,
-     108,    38,    10,    10,   108,    67,   108,    10,   111,   110,
-      67,    10,   108,   111,    10,    10,   111,    10,    10,   111,
-      14,   108,   108,     6,   108,   108,   108,   108,    10,    35,
-     107,    67,    10,    10,   107,   107,   107,   107,   107,    10,
-      10,   109,   109,   109,   107,   110,   104,    10,    10,    53,
-      10,   247,   107,   112,    11,   108,   108,   108,   108,   108,
-     108,   108,   325,   204,    61,   111,   110,   112,   110,    -1,
-      61,   105,   107,    -1,    -1,    -1,    -1,    -1,    96,   109,
-     112,   112,   110,   108,    -1,   109,   112,   110,   110,    -1,
-      -1,   120,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
-     127
+       0,   101,     0,    27,    28,   230,    96,    10,   178,   194,
+      34,    11,   282,    11,   233,   234,   235,   236,   237,   187,
+     188,   189,   190,   191,    48,   210,     3,     4,    10,    10,
+       7,     8,     9,   255,   210,   210,    60,    37,   107,   264,
+       6,     6,    14,    43,    44,    43,   107,    14,    11,    12,
+     381,     3,     4,    10,    27,     7,     8,     9,   226,    11,
+      12,     3,     4,   107,    37,     7,     8,     9,    15,    42,
+      28,    71,    17,   258,    98,   330,    68,   108,   333,    51,
+     111,    39,   258,   258,    51,   107,   358,   418,   112,   113,
+     107,   261,   262,   263,     0,   107,   120,   267,    96,     0,
+      63,    64,    65,    66,     0,    11,    69,    70,   111,   379,
+      11,    63,    64,    65,    66,    11,   107,    69,    70,   258,
+     108,    15,    16,   111,   396,   125,   107,    68,   383,   111,
+     385,   108,   317,   355,   319,   225,     6,   114,   115,   116,
+     117,   317,   317,   319,   319,   108,   112,   112,   403,    43,
+     107,   423,    15,    15,    16,    49,    15,   157,    14,   157,
+      16,   433,   114,   115,   116,   117,    20,   335,    22,    23,
+      71,   107,   114,   115,   116,   117,    32,    17,   317,   108,
+     319,   406,   111,     0,   409,    79,   405,    68,   407,    11,
+      12,   111,   417,   113,   194,   111,   366,   113,    15,    16,
+      34,    35,    36,    37,    38,   205,   111,   205,   113,   434,
+     210,   430,   112,    11,    12,   109,   111,   108,   113,    81,
+     111,   245,    54,    55,   248,   225,    43,    44,   108,   108,
+     254,   111,   111,    50,    96,    97,    29,    30,    31,    56,
+      16,    63,    64,    65,    66,    15,    16,    69,    70,   107,
+     250,   111,   250,   113,   111,   255,   113,   255,   258,   359,
+      15,    16,    79,   108,    81,    63,    64,    65,    66,    54,
+      55,    69,    70,    43,    44,    40,    41,    47,    48,    96,
+      97,    14,    15,    16,    45,    46,   108,    14,    15,    16,
+      68,    45,    46,    10,    14,    15,    16,   397,   111,    14,
+      15,    16,    14,    15,    40,    41,    18,    19,    15,    79,
+     108,    81,   115,   116,   111,   111,   107,   317,    51,   319,
+     107,   107,     6,   107,    51,    52,    96,    97,   107,    53,
+     107,    51,   107,    15,    68,   109,    51,   108,    71,    51,
+      87,    88,    89,    90,    91,    92,    14,    39,    81,   108,
+      15,    16,    11,    12,    81,   355,    17,   355,   358,    33,
+     358,    81,   107,    96,    97,   107,    81,   107,   107,    96,
+      97,    10,   107,    10,   107,   107,    96,    97,    43,    44,
+     107,    96,    97,   109,    15,    50,    10,   107,    10,    10,
+      10,    56,   107,   111,   108,   111,   396,   108,   396,    10,
+      53,   111,   111,   111,    63,    64,    65,    66,   111,    68,
+      69,    70,   107,    53,    79,    41,    81,    87,    88,    89,
+      90,    91,    92,   423,     6,   423,    82,    83,    84,    85,
+      86,    96,    97,   433,    68,   433,    68,    93,    94,    95,
+      82,    83,    84,    85,    86,   107,   110,    53,    14,    68,
+      68,    93,    94,    95,    82,    83,    84,    85,    86,    87,
+      88,    89,    90,    91,    92,    93,    94,    82,    83,    84,
+      85,    86,    14,    41,   112,    40,   103,    10,    93,    94,
+      10,   111,    68,   108,    68,   108,    10,    10,    10,    10,
+      10,   108,   108,     6,    68,   108,   110,    14,    37,   111,
+     108,   111,   111,   108,   108,   108,   108,   108,   107,   107,
+     107,   107,   107,   107,   104,    10,   109,   109,   107,   110,
+     108,    10,    10,   108,    10,   108,    10,   108,   108,   108,
+     108,   107,   109,    10,    53,    10,   111,   107,   110,   112,
+      11,   110,   105,   248,   325,   112,   110,   109,   108,   120,
+     109,   112,   110,   110,   205,    96,    61,    61,    -1,    -1,
+      -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,    -1,
+      -1,   127
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,    15,    16,    41,    42,    48,    54,    79,    81,    96,
-      97,   119,   120,   121,   122,   123,   125,   133,   135,   137,
-     155,   156,   172,   173,   174,   175,   176,    10,   107,   107,
+       0,    15,    16,    43,    44,    50,    56,    79,    81,    96,
+      97,   119,   120,   121,   122,   124,   126,   134,   136,   138,
+     156,   157,   173,   174,   175,   176,   177,    10,   107,   107,
      107,   107,    15,    17,   107,   107,   107,   107,     0,   120,
-      67,     6,    67,    10,   111,    14,    15,    49,   107,   123,
-     124,   134,   135,   153,   124,   152,    15,    15,   157,   158,
-      70,   124,   164,   165,   107,    67,    50,   124,   130,   131,
-      17,   112,   123,    82,    83,    84,    85,    86,    93,    94,
-      15,   123,   135,   123,   124,     6,   112,     3,     4,     7,
-       8,     9,   114,   115,   116,   117,   154,   108,   111,   108,
-      10,    67,   111,   124,    11,    12,    61,    62,    63,    64,
-      68,    69,   166,   167,   108,   166,   167,    15,   126,   108,
-     111,   111,   150,   123,   137,   111,   107,   107,   107,   107,
-     107,   107,   107,     6,   108,    87,    88,    89,    90,    91,
-      92,    53,   151,    14,    15,    49,   134,   135,   153,   124,
-      14,    49,   164,    15,   124,   124,   109,   165,   165,   108,
-     111,    67,   124,   131,    32,    33,    34,    35,    36,   108,
-     113,   123,    14,   149,   149,    37,   146,    17,   108,    22,
-      37,   141,    27,   138,    95,   107,   107,   107,   107,   107,
-     107,   111,   113,    67,    10,    15,    45,    46,    79,   129,
-     135,   137,   155,   160,   161,   162,   163,   172,   178,   109,
-      15,    10,    10,    10,    10,    10,   111,   111,   108,   108,
-      10,   111,   148,   150,   111,   111,   142,    53,   111,   107,
-      39,   143,   143,   143,   143,   143,   143,    53,     6,    15,
-     159,   163,    14,    49,    10,    67,    67,   107,    67,    10,
-     162,    67,   110,    47,   109,   127,   129,   132,   156,   163,
-      53,    14,    14,   112,    51,    52,   147,    39,   136,   103,
-     168,    51,    52,    38,   108,   108,    14,    26,   123,   134,
-      35,    38,   143,   108,    14,    15,    49,    65,    76,   139,
-     151,    10,   111,   145,   145,   145,   145,   145,   145,    87,
-      88,    89,    90,    91,    92,   108,   124,   130,   123,   135,
-      43,    44,   177,   124,   128,   160,   110,    67,   127,    67,
-     150,   150,   150,   151,   150,    10,   108,    10,   111,   111,
-      10,    10,     6,    10,    10,   142,   111,   140,   108,    14,
-     144,    21,    35,    40,   108,   108,   108,   108,   108,   108,
-     107,   107,   107,   107,   107,   107,   109,   108,     6,   109,
-     107,    43,    44,    67,   110,   127,   127,   113,   144,    28,
-      29,    30,    31,   169,   104,   170,    35,   147,    23,    24,
-      25,   112,   147,    35,    38,   143,   108,    10,    10,    10,
-     108,   108,   108,   108,   108,   108,   160,    95,   178,   164,
-     109,   107,   150,    10,   111,    10,   151,   142,    10,    10,
-     140,   147,   112,   147,   110,   107,   110,   108,   178,   164,
-      53,   105,   171,   112,   113,   112,   147,   145,   151,   145,
-     151,   109,   110,   108,    10,   108,   151,   142,   151,   140,
-     113,   108,   178,   109,   112,   113,   113,   145,   110,   178,
-     151,   140,   110,   113
+      68,     6,    68,    10,   111,    14,    15,    51,   107,   124,
+     125,   135,   136,   154,   125,   153,    15,    15,   158,   159,
+      71,   125,   165,   166,   107,    68,    52,   125,   131,   132,
+      17,   112,   124,    82,    83,    84,    85,    86,    93,    94,
+      15,   124,   136,   124,   125,     6,   112,     3,     4,     7,
+       8,     9,   114,   115,   116,   117,   155,   108,   111,   108,
+      10,    68,   111,   125,    11,    12,    63,    64,    65,    66,
+      69,    70,   167,   168,   108,   167,   168,    15,   127,   108,
+     111,   111,   151,   124,   138,   111,   107,   107,   107,   107,
+     107,   107,   107,     6,   123,   108,    87,    88,    89,    90,
+      91,    92,    53,   152,    14,    15,    51,   135,   136,   154,
+     125,    14,    51,   165,    15,   125,   125,   109,   166,   166,
+     108,   111,    68,   125,   132,    34,    35,    36,    37,    38,
+     108,   113,   124,    14,   150,   150,    39,   147,    17,   108,
+      28,    39,   142,    33,   139,    95,   107,   107,   107,   107,
+     107,   107,   111,   113,    68,    10,    15,    47,    48,    79,
+     130,   136,   138,   156,   161,   162,   163,   164,   173,   179,
+     109,    15,    10,    10,    10,    10,    10,   111,   111,   108,
+     108,    10,   111,   149,   151,   111,   111,   143,    53,   111,
+     107,    41,   144,   144,   144,   144,   144,   144,    53,     6,
+      15,   160,   164,    14,    51,    10,    68,    68,   107,    68,
+      10,   163,    68,   110,    49,   109,   128,   130,   133,   157,
+     164,    53,    14,    14,   112,    54,    55,   148,    41,   137,
+     103,   169,    54,    55,    40,   108,   108,    14,    32,   124,
+     135,    40,   144,   108,    14,    15,    18,    19,    51,   140,
+     152,    10,   111,   146,   146,   146,   146,   146,   146,    87,
+      88,    89,    90,    91,    92,   108,   125,   131,   124,   136,
+      45,    46,   178,   125,   129,   161,   110,    68,   128,    68,
+     151,   151,   151,   152,   151,    10,   108,    10,   111,   111,
+      10,    10,     6,    10,   143,   111,   141,   108,    14,   145,
+      27,    37,    42,   108,   108,   108,   108,   108,   108,   107,
+     107,   107,   107,   107,   107,   109,   108,     6,   109,   107,
+      45,    46,    68,   110,   128,   128,   113,   145,    20,    22,
+      23,   170,   104,   171,    37,   148,    29,    30,    31,   148,
+      40,   144,   108,    10,    10,    10,   108,   108,   108,   108,
+     108,   108,   161,    95,   179,   165,   109,   107,   151,    10,
+     111,    10,   143,    10,   141,   148,   112,   148,   110,   107,
+     110,   108,   179,   165,    53,   105,   172,   112,   148,   146,
+     152,   146,   152,   109,   110,   108,    10,   108,   152,   141,
+     113,   108,   179,   109,   112,   113,   146,   110,   179,   152,
+     110,   113
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_uint8 yyr1[] =
 {
        0,   118,   119,   119,   120,   120,   120,   120,   120,   120,
-     120,   121,   122,   122,   122,   123,   124,   124,   124,   124,
-     124,   124,   124,   124,   124,   124,   124,   124,   125,   126,
-     126,   126,   127,   127,   127,   127,   127,   128,   129,   130,
-     130,   130,   130,   131,   132,   133,   134,   134,   134,   134,
-     134,   134,   134,   134,   134,   134,   134,   134,   135,   135,
+     120,   121,   122,   123,   122,   122,   124,   125,   125,   125,
+     125,   125,   125,   125,   125,   125,   125,   125,   125,   126,
+     127,   127,   127,   128,   128,   128,   128,   128,   129,   130,
+     131,   131,   131,   131,   132,   133,   134,   135,   135,   135,
      135,   135,   135,   135,   135,   135,   135,   135,   135,   136,
-     137,   137,   138,   139,   139,   139,   139,   139,   140,   140,
-     140,   140,   141,   141,   141,   141,   141,   141,   142,   142,
-     142,   142,   143,   143,   144,   145,   145,   145,   145,   146,
-     146,   147,   147,   148,   148,   149,   149,   150,   150,   150,
-     150,   150,   150,   151,   151,   152,   152,   153,   154,   154,
-     154,   154,   154,   154,   154,   154,   154,   155,   156,   157,
-     158,   158,   158,   158,   158,   158,   159,   160,   161,   161,
-     162,   162,   162,   162,   162,   162,   162,   162,   163,   163,
-     163,   164,   164,   164,   165,   165,   165,   166,   166,   167,
-     167,   167,   167,   167,   167,   168,   169,   169,   169,   169,
-     170,   171,   172,   172,   172,   172,   173,   174,   175,   176,
-     177,   177,   178
+     136,   136,   136,   136,   136,   136,   136,   136,   136,   136,
+     137,   138,   138,   139,   140,   140,   140,   140,   140,   141,
+     141,   141,   142,   142,   142,   142,   142,   142,   143,   143,
+     143,   144,   144,   145,   146,   146,   146,   146,   147,   147,
+     148,   148,   149,   149,   150,   150,   151,   151,   151,   151,
+     151,   151,   152,   152,   153,   153,   154,   155,   155,   155,
+     155,   155,   155,   155,   155,   155,   156,   157,   158,   159,
+     159,   159,   159,   159,   159,   160,   161,   162,   162,   163,
+     163,   163,   163,   163,   163,   163,   163,   164,   164,   164,
+     165,   165,   165,   166,   166,   166,   167,   167,   168,   168,
+     168,   168,   168,   168,   169,   170,   170,   170,   171,   172,
+     173,   173,   173,   173,   174,   175,   176,   177,   178,   178,
+     179
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     1,     2,     2,     1,     1,     1,     1,     2,
-       1,     3,     3,     3,     8,     4,     3,     3,     3,     3,
-       3,     3,     1,     1,     1,     1,     1,     1,     8,     1,
-       3,     0,     3,     3,     2,     3,     3,     1,     4,     1,
-       1,     3,     3,     1,     1,     5,     8,     8,     8,     8,
-       8,     8,     7,     7,     7,     7,     7,     7,     5,     6,
-       6,     7,     7,     5,     7,     9,     8,    12,     4,     3,
-       1,     3,     2,     1,     1,     1,     1,     1,     5,     7,
-       3,     0,     3,     3,     5,     5,     5,     1,     5,     7,
-       3,     0,     3,     0,     1,     5,     5,     7,     0,     3,
-       9,     1,     1,     4,     0,     1,     0,     5,     5,     5,
-       5,     7,     0,     1,     3,     1,     3,     3,     1,     1,
-       1,     1,     1,     1,     1,     1,     1,     1,    11,     1,
-       3,     3,     1,     3,     5,     5,     1,     1,     1,     2,
-       2,     2,     1,     1,     2,     2,     1,     1,     3,     3,
-       8,     1,     3,     3,     3,     3,     2,     1,     1,     1,
-       1,     1,     1,     1,     1,     3,     1,     1,     1,     1,
-       3,     5,     1,     1,     1,     1,    12,     8,    11,     7,
-       7,     8,     1
+       1,     3,     3,     0,     4,     8,     4,     3,     3,     3,
+       3,     3,     3,     1,     1,     1,     1,     1,     1,     8,
+       1,     3,     0,     3,     3,     2,     3,     3,     1,     4,
+       1,     1,     3,     3,     1,     1,     5,     8,     8,     8,
+       8,     8,     8,     7,     7,     7,     7,     7,     7,     5,
+       6,     6,     7,     7,     5,     7,     9,     8,    12,     4,
+       3,     1,     3,     2,     1,     1,     1,     1,     1,     5,
+       3,     0,     3,     3,     5,     5,     5,     1,     5,     3,
+       0,     3,     0,     1,     5,     5,     7,     0,     3,     9,
+       1,     1,     4,     0,     1,     0,     5,     5,     5,     5,
+       7,     0,     1,     3,     1,     3,     3,     1,     1,     1,
+       1,     1,     1,     1,     1,     1,     1,    11,     1,     3,
+       3,     1,     3,     5,     5,     1,     1,     1,     2,     2,
+       2,     1,     1,     2,     2,     1,     1,     3,     3,     8,
+       1,     3,     3,     3,     3,     2,     1,     1,     1,     1,
+       1,     1,     1,     1,     3,     1,     1,     1,     3,     5,
+       1,     1,     1,     1,    12,     8,    11,     7,     7,     8,
+       1
 };
 
 
@@ -1856,8 +1850,50 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
+  case 4: /* declaration_statement: assignment_statement SEMICOLON  */
+#line 78 "../src/rc_parser.y"
+                                   {fprintf(yacc_output,"\n");}
+#line 1857 "y.tab.c"
+    break;
+
+  case 5: /* declaration_statement: Function_Declaration  */
+#line 79 "../src/rc_parser.y"
+                           {fprintf(yacc_output,"\n");}
+#line 1863 "y.tab.c"
+    break;
+
+  case 6: /* declaration_statement: input_statement  */
+#line 80 "../src/rc_parser.y"
+                      {fprintf(yacc_output,"\n");}
+#line 1869 "y.tab.c"
+    break;
+
+  case 7: /* declaration_statement: Print_Statement  */
+#line 81 "../src/rc_parser.y"
+                      {fprintf(yacc_output,"\n");}
+#line 1875 "y.tab.c"
+    break;
+
+  case 8: /* declaration_statement: Loop_Statement  */
+#line 82 "../src/rc_parser.y"
+                     {fprintf(yacc_output,"\n");}
+#line 1881 "y.tab.c"
+    break;
+
+  case 9: /* declaration_statement: function_call_statement SEMICOLON  */
+#line 83 "../src/rc_parser.y"
+                                        {fprintf(yacc_output,"\n");}
+#line 1887 "y.tab.c"
+    break;
+
+  case 10: /* declaration_statement: Conditional_Statements  */
+#line 84 "../src/rc_parser.y"
+                             {fprintf(yacc_output,"\n");}
+#line 1893 "y.tab.c"
+    break;
+
   case 11: /* input_statement: INPUT CSVFILE SEMICOLON  */
-#line 88 "../src/rc_parser.y"
+#line 89 "../src/rc_parser.y"
     {
         char *cleaned_filename = double_quote_remover((yyvsp[-1].str));  // remove quotes from filename
         FILE *file = fopen(cleaned_filename, "r");
@@ -1873,11 +1909,11 @@ yyreduce:
 
         free(cleaned_filename); */
     }
-#line 1877 "y.tab.c"
+#line 1913 "y.tab.c"
     break;
 
-  case 13: /* assignment_statement: dataframe_list '=' function_call_statement  */
-#line 108 "../src/rc_parser.y"
+  case 13: /* $@1: %empty  */
+#line 109 "../src/rc_parser.y"
                                                             {
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen((yyvsp[-2].str)); i++){
@@ -1891,39 +1927,1247 @@ yyreduce:
                                                                     return 0;
                                                                 }
                                                             }
-#line 1895 "y.tab.c"
+#line 1931 "y.tab.c"
     break;
 
-  case 15: /* dataframe: DATAFRAME '(' IDENTIFIER ')'  */
-#line 126 "../src/rc_parser.y"
+  case 14: /* assignment_statement: dataframe_list '=' function_call_statement $@1  */
+#line 122 "../src/rc_parser.y"
+                                                            {
+                                                                fprintf(yacc_output, "%s = %s", (yyvsp[-3].str), (yyvsp[-1].str));
+                                                            }
+#line 1939 "y.tab.c"
+    break;
+
+  case 16: /* dataframe: DATAFRAME '(' IDENTIFIER ')'  */
+#line 130 "../src/rc_parser.y"
                                                             {
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", (yyvsp[-3].str), (yyvsp[-1].str));
                                                                 (yyval.str) = strdup(buffer);
                                                             }
-#line 1905 "y.tab.c"
+#line 1949 "y.tab.c"
     break;
 
-  case 70: /* dataframe_list: dataframe  */
-#line 233 "../src/rc_parser.y"
-                                                            {
-                                                                (yyval.str) = (yyvsp[0].str);
-                                                            }
-#line 1913 "y.tab.c"
+  case 17: /* expressions: expressions operators IDENTIFIER  */
+#line 138 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%s", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 1959 "y.tab.c"
     break;
 
-  case 71: /* dataframe_list: dataframe_list ',' dataframe  */
-#line 236 "../src/rc_parser.y"
-                                                            {
-                                                                char buffer[256];
-                                                                snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str), (yyvsp[0].str));
+  case 18: /* expressions: expressions operators INTNUM  */
+#line 144 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%d", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 1969 "y.tab.c"
+    break;
+
+  case 19: /* expressions: expressions operators FLOATNUM  */
+#line 150 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%f", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].flt));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 1979 "y.tab.c"
+    break;
+
+  case 20: /* expressions: expressions operators grouping  */
+#line 155 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%s", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 1989 "y.tab.c"
+    break;
+
+  case 21: /* expressions: expressions operators function_call_statement  */
+#line 161 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%s", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 1999 "y.tab.c"
+    break;
+
+  case 22: /* expressions: expressions operators aggregate_function_calls  */
+#line 167 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s%s%s", (yyvsp[-2].str),(yyvsp[-1].str),(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2009 "y.tab.c"
+    break;
+
+  case 23: /* expressions: IDENTIFIER  */
+#line 172 "../src/rc_parser.y"
+                                                                            {(yyval.str)=(yyvsp[0].str);}
+#line 2015 "y.tab.c"
+    break;
+
+  case 24: /* expressions: INTNUM  */
+#line 174 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%d",(yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2025 "y.tab.c"
+    break;
+
+  case 25: /* expressions: FLOATNUM  */
+#line 180 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%f",(yyvsp[0].flt));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2035 "y.tab.c"
+    break;
+
+  case 26: /* expressions: grouping  */
+#line 186 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s",(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2045 "y.tab.c"
+    break;
+
+  case 27: /* expressions: function_call_statement  */
+#line 192 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s",(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2055 "y.tab.c"
+    break;
+
+  case 28: /* expressions: aggregate_function_calls  */
+#line 198 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s",(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2065 "y.tab.c"
+    break;
+
+  case 47: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' MEANFUNC '(' ')'  */
+#line 258 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].mean()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2103 "y.tab.c"
+    break;
+
+  case 48: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' MODEFUNC '(' ')'  */
+#line 292 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].mode()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2141 "y.tab.c"
+    break;
+
+  case 49: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' MEDIANFUNC '(' ')'  */
+#line 326 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].median()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2179 "y.tab.c"
+    break;
+
+  case 50: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' SUMFUNC '(' ')'  */
+#line 360 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].sum()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2217 "y.tab.c"
+    break;
+
+  case 51: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' MINFUNC '(' ')'  */
+#line 394 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].min()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2255 "y.tab.c"
+    break;
+
+  case 52: /* aggregate_function_calls: dataframe '[' single_quoted_string_list ']' '.' MAXFUNC '(' ')'  */
+#line 428 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s[%s].max()", identifier,(yyvsp[-5].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2293 "y.tab.c"
+    break;
+
+  case 53: /* aggregate_function_calls: dataframe '.' MEANFUNC '(' mean_body mean_numerical ')'  */
+#line 462 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier,(yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2331 "y.tab.c"
+    break;
+
+  case 54: /* aggregate_function_calls: dataframe '.' MODEFUNC '(' mean_body mean_numerical ')'  */
+#line 496 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier, (yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2369 "y.tab.c"
+    break;
+
+  case 55: /* aggregate_function_calls: dataframe '.' MEDIANFUNC '(' mean_body mean_numerical ')'  */
+#line 530 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier, (yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2407 "y.tab.c"
+    break;
+
+  case 56: /* aggregate_function_calls: dataframe '.' SUMFUNC '(' mean_body mean_numerical ')'  */
+#line 564 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier, (yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2445 "y.tab.c"
+    break;
+
+  case 57: /* aggregate_function_calls: dataframe '.' MINFUNC '(' mean_body mean_numerical ')'  */
+#line 598 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier, (yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2483 "y.tab.c"
+    break;
+
+  case 58: /* aggregate_function_calls: dataframe '.' MAXFUNC '(' mean_body mean_numerical ')'  */
+#line 632 "../src/rc_parser.y"
+                                                                        { 
+                                                                                    
+                                                                                    char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.mean(%s%s)", identifier, (yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                    (yyval.str) = strdup(buffer);
+                                                                                    
+                                                                        }
+#line 2521 "y.tab.c"
+    break;
+
+  case 59: /* function_call_statement: READCSVFUNC '(' CSVFILE readcsv_body ')'  */
+#line 668 "../src/rc_parser.y"
+                                                    { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "pd.read_csv(%s)\n", (yyvsp[-2].str));
                                                                 (yyval.str) = strdup(buffer);
-                                                            }
-#line 1923 "y.tab.c"
+                                                    }
+#line 2531 "y.tab.c"
     break;
 
-  case 94: /* axis_bit: INTNUM  */
-#line 285 "../src/rc_parser.y"
+  case 60: /* function_call_statement: dataframe '.' HEADFUNC '(' head_tail_body ')'  */
+#line 674 "../src/rc_parser.y"
+                                                    { 
+                                                                
+                                                                char *input = (yyvsp[-5].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+
+    
+                                                                fprintf(yacc_output,"%s.head(%s)\n", identifier, (yyvsp[-1].str));
+                                                    }
+#line 2567 "y.tab.c"
+    break;
+
+  case 61: /* function_call_statement: dataframe '.' TAILFUNC '(' head_tail_body ')'  */
+#line 706 "../src/rc_parser.y"
+                                                    { 
+                                                                
+                                                                char *input = (yyvsp[-5].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+
+    
+                                                                fprintf(yacc_output,"%s.tail(%s)\n", identifier, (yyvsp[-1].str));
+                                                    }
+#line 2603 "y.tab.c"
+    break;
+
+  case 62: /* function_call_statement: dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'  */
+#line 738 "../src/rc_parser.y"
+                                                                    { 
+                                                                        char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                        char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                        // Find the opening parenthesis
+                                                                        char *start = strchr(input, '(');
+                                                                        if (start == NULL) {
+                                                                            yyerror("Invalid format: no opening parenthesis found");
+                                                                            YYABORT;
+                                                                        }
+
+                                                                        // Find the closing parenthesis
+                                                                        char *end = strchr(start, ')');
+                                                                        if (end == NULL) {
+                                                                            yyerror("Invalid format: no closing parenthesis found");
+                                                                            YYABORT;
+                                                                        }
+
+                                                                        // Copy the content between parentheses into the identifier buffer
+                                                                        size_t length = end - start - 1;
+                                                                        if (length <= 0 || length >= sizeof(identifier)) {
+                                                                            yyerror("Invalid identifier length");
+                                                                            YYABORT;
+                                                                        }
+                                                                        strncpy(identifier, start + 1, length);
+                                                                        identifier[length] = '\0'; // Null-terminate the string
+
+                                                                        if(!strcmp((yyvsp[-1].str), "inplace = False"))
+                                                                        {
+                                                                            if(!strcmp((yyvsp[-2].str),"drop = True"))
+                                                                            {
+                                                                                
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s.reset_index(%s %s)\n",identifier,(yyvsp[-2].str),(yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                
+                                                                                
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s.set_index(%s)\n",identifier,(yyvsp[-2].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            if(!strcmp((yyvsp[-2].str),"drop = True"))
+                                                                            {
+                                                                                fprintf(yacc_output, "%s.reset_index(%s %s)\n",identifier,(yyvsp[-2].str),(yyvsp[-1].str));
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                
+                                                                                fprintf(yacc_output, "%s.set_index(%s, inplace = True)\n",identifier,(yyvsp[-2].str));
+                                                                            }
+                                                                        }
+                                                                    }
+#line 2666 "y.tab.c"
+    break;
+
+  case 63: /* function_call_statement: dataframe '.' TOCSVFUNC '(' CSVFILE readcsv_body ')'  */
+#line 797 "../src/rc_parser.y"
+                                                    { 
+                                                                char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+
+                                                                char buffer[256]; 
+                                                                fprintf(yacc_output, "identifier.to_csv(%s)\n", (yyvsp[-1].str));
+                                                    }
+#line 2701 "y.tab.c"
+    break;
+
+  case 64: /* function_call_statement: dataframe '.' DESCRIBEFUNC '(' ')'  */
+#line 828 "../src/rc_parser.y"
+                                                    {
+                                                                char *input = (yyvsp[-4].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+
+                                                                fprintf(yacc_output,"%s.describe()\n",identifier);
+                                                    }
+#line 2735 "y.tab.c"
+    break;
+
+  case 65: /* function_call_statement: dataframe '.' MISSVALUEFUNC '(' missing_value_body_confirm missing_value_body ')'  */
+#line 858 "../src/rc_parser.y"
+                                                    { 
+                                                                
+                                                                char *input = (yyvsp[-6].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+    
+                                                
+
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s.%s%s)\n", identifier, (yyvsp[-2].str), (yyvsp[-1].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                                
+
+                                                    }
+#line 2776 "y.tab.c"
+    break;
+
+  case 66: /* function_call_statement: dataframe '.' EXCHANGEVALUEFUNC '(' to_exchange ',' exchange_value exchange_body_optional ')'  */
+#line 895 "../src/rc_parser.y"
+                                                            { 
+                                                                char *input = (yyvsp[-8].str); // $1 is the string passed from the 'dataframe' rule
+                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                // Find the opening parenthesis
+                                                                char *start = strchr(input, '(');
+                                                                if (start == NULL) {
+                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Find the closing parenthesis
+                                                                char *end = strchr(start, ')');
+                                                                if (end == NULL) {
+                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                    YYABORT;
+                                                                }
+
+                                                                // Copy the content between parentheses into the identifier buffer
+                                                                size_t length = end - start - 1;
+                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                    yyerror("Invalid identifier length");
+                                                                    YYABORT;
+                                                                }
+                                                                strncpy(identifier, start + 1, length);
+                                                                identifier[length] = '\0'; // Null-terminate the string
+
+                                                                char buffer[256]; 
+                                                                fprintf(yacc_output, "%s.replace(%s,%s%s)", identifier,(yyvsp[-4].str),(yyvsp[-2].str),(yyvsp[-1].str));
+                                                            }
+#line 2811 "y.tab.c"
+    break;
+
+  case 67: /* function_call_statement: CONCATFUNC '(' '[' dataframe_list ']' ',' concat_body ')'  */
+#line 926 "../src/rc_parser.y"
+                                                                            { 
+                                                                                fprintf(yacc_output,"pd.concat([%s],%s)", (yyvsp[-4].str),(yyvsp[-1].str));
+                                                                            }
+#line 2819 "y.tab.c"
+    break;
+
+  case 68: /* function_call_statement: MERGEFUNC '(' dataframe ',' dataframe ',' how_clause ',' on_clause ',' suffixes_clause ')'  */
+#line 930 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char *input = (yyvsp[-9].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                // Find the opening parenthesis
+                                                                                char *start = strchr(input, '(');
+                                                                                if (start == NULL) {
+                                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                                    YYABORT;
+                                                                                }
+
+                                                                                // Find the closing parenthesis
+                                                                                char *end = strchr(start, ')');
+                                                                                if (end == NULL) {
+                                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                                    YYABORT;
+                                                                                }
+
+                                                                                // Copy the content between parentheses into the identifier buffer
+                                                                                size_t length = end - start - 1;
+                                                                                if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                    yyerror("Invalid identifier length");
+                                                                                    YYABORT;
+                                                                                }
+                                                                                strncpy(identifier, start + 1, length);
+                                                                                identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                char *input2 = (yyvsp[-7].str); // $1 is the string passed from the 'dataframe' rule
+                                                                                char identifier2[100]; // Buffer to store the extracted identifier
+
+                                                                                // Find the opening parenthesis
+                                                                                char *start2 = strchr(input2, '(');
+                                                                                if (start == NULL) {
+                                                                                    yyerror("Invalid format: no opening parenthesis found");
+                                                                                    YYABORT;
+                                                                                }
+
+                                                                                // Find the closing parenthesis
+                                                                                char *end2 = strchr(start2, ')');
+                                                                                if (end == NULL) {
+                                                                                    yyerror("Invalid format: no closing parenthesis found");
+                                                                                    YYABORT;
+                                                                                }
+
+                                                                                // Copy the content between parentheses into the identifier buffer
+                                                                                size_t length2 = end2 - start2 - 1;
+                                                                                if (length2 <= 0 || length2 >= sizeof(identifier2)) {
+                                                                                    yyerror("Invalid identifier length");
+                                                                                    YYABORT;
+                                                                                }
+                                                                                strncpy(identifier2, start2 + 1, length2);
+                                                                                identifier2[length2] = '\0'; // Null-terminate the string
+
+                                                                            
+                                                                                fprintf(yacc_output,"pd.merge(%s,%s,%s,%s,%s)",identifier, identifier2, (yyvsp[-5].str),(yyvsp[-3].str),(yyvsp[-1].str));
+                                                                            }
+#line 2880 "y.tab.c"
+    break;
+
+  case 69: /* function_call_statement: IDENTIFIER '(' actual_parameters ')'  */
+#line 988 "../src/rc_parser.y"
+                                                                            { 
+                                                                                fprintf(yacc_output, "%s(%s)",(yyvsp[-3].str), (yyvsp[-1].str));
+                                                                            }
+#line 2888 "y.tab.c"
+    break;
+
+  case 70: /* concat_body: AXIS '=' axis_bit  */
+#line 995 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "axis = %d", (yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2898 "y.tab.c"
+    break;
+
+  case 71: /* dataframe_list: dataframe  */
+#line 1003 "../src/rc_parser.y"
+              {
+        char *input = (yyvsp[0].str); // $1 is the string passed from the 'dataframe' rule
+        char identifier[100]; // Buffer to store the extracted identifier
+
+        // Find the opening parenthesis
+        char *start = strchr(input, '(');
+        if (start == NULL) {
+            yyerror("Invalid format: no opening parenthesis found");
+            YYABORT;
+        }
+
+        // Find the closing parenthesis
+        char *end = strchr(start, ')');
+        if (end == NULL) {
+            yyerror("Invalid format: no closing parenthesis found");
+            YYABORT;
+        }
+
+        // Copy the content between parentheses into the identifier buffer
+        size_t length = end - start - 1;
+        if (length <= 0 || length >= sizeof(identifier)) {
+            yyerror("Invalid identifier length");
+            YYABORT;
+        }
+        strncpy(identifier, start + 1, length);
+        identifier[length] = '\0'; // Null-terminate the string
+
+        (yyval.str) = strdup(identifier); // Store the extracted identifier in $$
+    }
+#line 2932 "y.tab.c"
+    break;
+
+  case 72: /* dataframe_list: dataframe_list ',' dataframe  */
+#line 1033 "../src/rc_parser.y"
+                                     {
+            char *input = (yyvsp[0].str); // $1 is the string passed from the 'dataframe' rule
+        char identifier[100]; // Buffer to store the extracted identifier
+
+        // Find the opening parenthesis
+        char *start = strchr(input, '(');
+        if (start == NULL) {
+            yyerror("Invalid format: no opening parenthesis found");
+            YYABORT;
+        }
+
+        // Find the closing parenthesis
+        char *end = strchr(start, ')');
+        if (end == NULL) {
+            yyerror("Invalid format: no closing parenthesis found");
+            YYABORT;
+        }
+
+        // Copy the content between parentheses into the identifier buffer
+        size_t length = end - start - 1;
+        if (length <= 0 || length >= sizeof(identifier)) {
+            yyerror("Invalid identifier length");
+            YYABORT;
+        }
+        strncpy(identifier, start + 1, length);
+        identifier[length] = '\0'; // Null-terminate the string
+        char buffer[256]; // Buffer to combine identifiers with a comma
+        snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str), identifier);
+        (yyval.str) = strdup(buffer); // Store the concatenated string in $$
+    }
+#line 2967 "y.tab.c"
+    break;
+
+  case 73: /* to_exchange: REGX SINGLE_QUOTED_STRING  */
+#line 1068 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "to_replace=r%s", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2977 "y.tab.c"
+    break;
+
+  case 74: /* exchange_value: INTNUM  */
+#line 1077 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "value = %d", (yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2987 "y.tab.c"
+    break;
+
+  case 75: /* exchange_value: FLOATNUM  */
+#line 1083 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "value = %f", (yyvsp[0].flt));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 2997 "y.tab.c"
+    break;
+
+  case 76: /* exchange_value: EXPONENTIAL  */
+#line 1088 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "value = %s", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3007 "y.tab.c"
+    break;
+
+  case 77: /* exchange_value: PERCENTAGE  */
+#line 1093 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "value = %s", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3017 "y.tab.c"
+    break;
+
+  case 78: /* exchange_value: IDENTIFIER  */
+#line 1098 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "value = '%s'", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3027 "y.tab.c"
+    break;
+
+  case 79: /* exchange_body_optional: ',' INPLACE '=' BOOL exchange_body_optional  */
+#line 1107 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s", (yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3037 "y.tab.c"
+    break;
+
+  case 80: /* exchange_body_optional: ',' mean_body exchange_body_optional  */
+#line 1113 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",%s", (yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3047 "y.tab.c"
+    break;
+
+  case 81: /* exchange_body_optional: %empty  */
+#line 1118 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3057 "y.tab.c"
+    break;
+
+  case 82: /* missing_value_body_confirm: FILL ',' INTNUM  */
+#line 1127 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "fillna(value = %d", (yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3067 "y.tab.c"
+    break;
+
+  case 83: /* missing_value_body_confirm: FILL ',' aggregate_function_calls  */
+#line 1133 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "fillna(value = %s", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3077 "y.tab.c"
+    break;
+
+  case 84: /* missing_value_body_confirm: FILL ',' METHOD '=' FFILL  */
+#line 1139 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "fillna(method = 'ffill'");
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3087 "y.tab.c"
+    break;
+
+  case 85: /* missing_value_body_confirm: FILL ',' METHOD '=' BFILL  */
+#line 1145 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "fillna(method = 'bfill'");
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3097 "y.tab.c"
+    break;
+
+  case 86: /* missing_value_body_confirm: FILL ',' METHOD '=' INTERPOLATE  */
+#line 1151 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "fillna(method = 'interpolate'");
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3107 "y.tab.c"
+    break;
+
+  case 87: /* missing_value_body_confirm: DROP  */
+#line 1157 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "dropna(");
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3117 "y.tab.c"
+    break;
+
+  case 88: /* missing_value_body: ',' INPLACE '=' BOOL missing_value_body  */
+#line 1166 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s", (yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3127 "y.tab.c"
+    break;
+
+  case 89: /* missing_value_body: ',' mean_body missing_value_body  */
+#line 1172 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",%s", (yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3137 "y.tab.c"
+    break;
+
+  case 90: /* missing_value_body: %empty  */
+#line 1178 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3147 "y.tab.c"
+    break;
+
+  case 91: /* mean_body: AXIS '=' axis_bit  */
+#line 1187 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "axis = %d",(yyvsp[0].in));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3157 "y.tab.c"
+    break;
+
+  case 92: /* mean_body: %empty  */
+#line 1193 "../src/rc_parser.y"
+                                                                           { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3167 "y.tab.c"
+    break;
+
+  case 93: /* axis_bit: INTNUM  */
+#line 1202 "../src/rc_parser.y"
     {
         if((yyvsp[0].in) == 0)
         {
@@ -1934,11 +3178,343 @@ yyreduce:
             (yyval.in) = 1;
         }
     }
-#line 1938 "y.tab.c"
+#line 3182 "y.tab.c"
+    break;
+
+  case 94: /* mean_numerical: ',' NUMERIC '=' BOOL mean_numerical  */
+#line 1216 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ", numeric_only = %s",(yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3192 "y.tab.c"
+    break;
+
+  case 95: /* mean_numerical: ',' SKIPNA '=' BOOL mean_numerical  */
+#line 1221 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ", skip_na = %s",(yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3202 "y.tab.c"
+    break;
+
+  case 96: /* mean_numerical: ',' USECOLS '=' '[' single_quoted_string_list ']' mean_numerical  */
+#line 1227 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3212 "y.tab.c"
+    break;
+
+  case 97: /* mean_numerical: %empty  */
+#line 1233 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3222 "y.tab.c"
+    break;
+
+  case 98: /* reset_index_body_drop: DROP '=' TRUE  */
+#line 1242 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "drop = True");
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3232 "y.tab.c"
+    break;
+
+  case 99: /* reset_index_body_drop: DROP '=' FALSE ',' USECOLS '=' '[' single_quoted_string_list ']'  */
+#line 1248 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "[%s]",(yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3242 "y.tab.c"
+    break;
+
+  case 100: /* BOOL: TRUE  */
+#line 1256 "../src/rc_parser.y"
+                { (yyval.str) = (yyvsp[0].str); }
+#line 3248 "y.tab.c"
+    break;
+
+  case 101: /* BOOL: FALSE  */
+#line 1257 "../src/rc_parser.y"
+                { (yyval.str) = (yyvsp[0].str); }
+#line 3254 "y.tab.c"
+    break;
+
+  case 102: /* reset_index_body_implace: ',' INPLACE '=' BOOL  */
+#line 1261 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s",(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3264 "y.tab.c"
+    break;
+
+  case 103: /* reset_index_body_implace: %empty  */
+#line 1267 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                buffer[0] = '\0';
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3274 "y.tab.c"
+    break;
+
+  case 104: /* head_tail_body: INTNUM  */
+#line 1275 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%d", (yyvsp[0].in));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3284 "y.tab.c"
+    break;
+
+  case 105: /* head_tail_body: %empty  */
+#line 1281 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                buffer[0] = '\0';
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3294 "y.tab.c"
+    break;
+
+  case 106: /* readcsv_body: ',' SEP '=' SINGLE_QUOTED_STRING readcsv_body  */
+#line 1290 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), ", sep = %s\n", (yyvsp[-1].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3304 "y.tab.c"
+    break;
+
+  case 107: /* readcsv_body: ',' HEADER '=' INTNUM readcsv_body  */
+#line 1296 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), ", header = %d\n", (yyvsp[-1].in));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3314 "y.tab.c"
+    break;
+
+  case 108: /* readcsv_body: ',' INDEX_COL '=' INTNUM readcsv_body  */
+#line 1302 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), ", index_col = %d\n", (yyvsp[-1].in));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3324 "y.tab.c"
+    break;
+
+  case 109: /* readcsv_body: ',' INDEX '=' BOOL readcsv_body  */
+#line 1308 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), ", index = %s\n", (yyvsp[-1].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3334 "y.tab.c"
+    break;
+
+  case 110: /* readcsv_body: ',' USECOLS '=' '[' single_quoted_string_list ']' readcsv_body  */
+#line 1314 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), ", usecols = [%s]\n", (yyvsp[-2].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3344 "y.tab.c"
+    break;
+
+  case 111: /* readcsv_body: %empty  */
+#line 1320 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                buffer[0] = '\0';
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3354 "y.tab.c"
+    break;
+
+  case 112: /* single_quoted_string_list: SINGLE_QUOTED_STRING  */
+#line 1328 "../src/rc_parser.y"
+                                                           { (yyval.str) = (yyvsp[0].str); }
+#line 3360 "y.tab.c"
+    break;
+
+  case 113: /* single_quoted_string_list: single_quoted_string_list ',' SINGLE_QUOTED_STRING  */
+#line 1330 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s , %s", (yyvsp[-2].str),(yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3370 "y.tab.c"
+    break;
+
+  case 114: /* actual_parameters: expressions  */
+#line 1340 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s", (yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3380 "y.tab.c"
+    break;
+
+  case 115: /* actual_parameters: actual_parameters ',' expressions  */
+#line 1346 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "%s,%s", (yyvsp[-2].str),(yyvsp[0].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3390 "y.tab.c"
+    break;
+
+  case 116: /* grouping: '(' expressions ')'  */
+#line 1355 "../src/rc_parser.y"
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "(%s)", (yyvsp[-1].str));
+                                                                                (yyval.str) = strdup(buffer);
+                                                                            }
+#line 3400 "y.tab.c"
+    break;
+
+  case 117: /* operators: '+'  */
+#line 1363 "../src/rc_parser.y"
+          { (yyval.str) = strdup("+"); }
+#line 3406 "y.tab.c"
+    break;
+
+  case 118: /* operators: '-'  */
+#line 1364 "../src/rc_parser.y"
+          { (yyval.str) = strdup("-"); }
+#line 3412 "y.tab.c"
+    break;
+
+  case 119: /* operators: '*'  */
+#line 1365 "../src/rc_parser.y"
+          { (yyval.str) = strdup("*"); }
+#line 3418 "y.tab.c"
+    break;
+
+  case 120: /* operators: '/'  */
+#line 1366 "../src/rc_parser.y"
+          { (yyval.str) = strdup("/"); }
+#line 3424 "y.tab.c"
+    break;
+
+  case 121: /* operators: '%'  */
+#line 1367 "../src/rc_parser.y"
+          { (yyval.str) = strdup("%"); }
+#line 3430 "y.tab.c"
+    break;
+
+  case 122: /* operators: '&'  */
+#line 1368 "../src/rc_parser.y"
+          { (yyval.str) = strdup("&"); }
+#line 3436 "y.tab.c"
+    break;
+
+  case 123: /* operators: '|'  */
+#line 1369 "../src/rc_parser.y"
+          { (yyval.str) = strdup("|"); }
+#line 3442 "y.tab.c"
+    break;
+
+  case 124: /* operators: '^'  */
+#line 1370 "../src/rc_parser.y"
+          { (yyval.str) = strdup("^"); }
+#line 3448 "y.tab.c"
+    break;
+
+  case 125: /* operators: '~'  */
+#line 1371 "../src/rc_parser.y"
+          { (yyval.str) = strdup("~"); }
+#line 3454 "y.tab.c"
+    break;
+
+  case 164: /* how_clause: HOW_TOKEN '=' how_list  */
+#line 1455 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "how = %s", (yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3464 "y.tab.c"
+    break;
+
+  case 165: /* how_list: INNER  */
+#line 1463 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "'%s'", (yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3474 "y.tab.c"
+    break;
+
+  case 166: /* how_list: RIGHT  */
+#line 1468 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "'%s'", (yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3484 "y.tab.c"
+    break;
+
+  case 167: /* how_list: OUTER  */
+#line 1473 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "'%s'", (yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3494 "y.tab.c"
+    break;
+
+  case 168: /* on_clause: ON_TOKEN '=' SINGLE_QUOTED_STRING  */
+#line 1481 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "on = %s", (yyvsp[0].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3504 "y.tab.c"
+    break;
+
+  case 169: /* suffixes_clause: SUFFIXES_TOKEN '=' '[' single_quoted_string_list ']'  */
+#line 1489 "../src/rc_parser.y"
+                                                            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "suffixes = [%s]", (yyvsp[-1].str));
+                                                                (yyval.str) = strdup(buffer);
+                                                            }
+#line 3514 "y.tab.c"
     break;
 
 
-#line 1942 "y.tab.c"
+#line 3518 "y.tab.c"
 
       default: break;
     }
@@ -2131,7 +3707,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 494 "../src/rc_parser.y"
+#line 1532 "../src/rc_parser.y"
 
 
 void yyerror(const char *s) {
@@ -2154,7 +3730,8 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    yacc_output = fopen("../outputs/yacc_output.txt", "w");
+    yacc_output = fopen("../outputs/yacc_output.py", "w");
+    fprintf(yacc_output, "import pandas as pd \nimport numpy as np \n \n");
     if(!yacc_output){
         perror("Error: Unable to open yacc_output.txt");
         fprintf(stderr, "Error: Unable to open yacc_output.txt");
@@ -2169,5 +3746,14 @@ int main(int argc, char **argv) {
     yyparse();
     // Clean up
     fclose(yyin);
+
+    int runStatus = system("python3 ../outputs/yacc_output.py > ../outputs/printed1.cpp");
+
+    // Check if the script executed successfully
+    if (runStatus != 0) {
+        fprintf(stderr, "Error running the Python script\n");
+        return 1; // Exit with an error code
+    }
+
     return 0;
 }

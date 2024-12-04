@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "symbol_table.hpp"
 #include "y.tab.h"
+extern FILE *tokensFile;
 
 FILE* lex_output;
 extern FILE* yacc_output;
@@ -61,10 +62,10 @@ end \*\/
 "method"        {count(); std::string token_name = "METHOD"; handle_token(token_name, yylineno, column, uniqueID); return(METHOD);}
 "interpolate"   {count(); std::string token_name = "INTERPOLATE"; handle_token(token_name, yylineno, column, uniqueID); return(INTERPOLATE);}
 "regex"         {count(); std::string token_name = "REGX"; handle_token(token_name, yylineno, column, uniqueID); return(REGX);}
-"inner"         {count(); std::string token_name = "INNER"; handle_token(token_name, yylineno, column, uniqueID); return(INNER);}
-"outer"         {count(); std::string token_name = "OUTER"; handle_token(token_name, yylineno, column, uniqueID); return(OUTER);}
-"left"          {count(); std::string token_name = "LEFT"; handle_token(token_name, yylineno, column, uniqueID); return(LEFT);}
-"right"         {count(); std::string token_name = "RIGHT"; handle_token(token_name, yylineno, column, uniqueID); return(RIGHT);}
+"inner"         {count(); yylval.str = strdup(yytext);std::string token_name = "INNER"; handle_token(token_name, yylineno, column, uniqueID); return(INNER);}
+"outer"         {count(); yylval.str = strdup(yytext);std::string token_name = "OUTER"; handle_token(token_name, yylineno, column, uniqueID); return(OUTER);}
+"left"          {count(); yylval.str = strdup(yytext);std::string token_name = "LEFT"; handle_token(token_name, yylineno, column, uniqueID); return(LEFT);}
+"right"         {count(); yylval.str = strdup(yytext);std::string token_name = "RIGHT"; handle_token(token_name, yylineno, column, uniqueID); return(RIGHT);}
 "function"      {count(); std::string token_name = "FUNC"; handle_token(token_name, yylineno, column, uniqueID); return(FUNC);}
 "return"        {count(); std::string token_name = "RTRN"; handle_token(token_name, yylineno, column, uniqueID); return(RTRN);}
 "loop"          {count(); std::string token_name = "LOOP"; handle_token(token_name, yylineno, column, uniqueID); return(LOOP);}
@@ -76,8 +77,8 @@ end \*\/
 "int"           {count(); std::string token_name = "INT_TYPE"; handle_token(token_name, yylineno, column, uniqueID); return(INT_TYPE);}
 "float"         {count(); std::string token_name = "FLOAT_TYPE"; handle_token(token_name, yylineno, column, uniqueID); return(FLOAT_TYPE);}
 "string"        {count(); std::string token_name = "STRING_TYPE"; handle_token(token_name, yylineno, column, uniqueID); return(STRING_TYPE);}
-"true"          {count(); yylval.bl = true; std::string token_name = "TRUE"; handle_token(token_name, yylineno, column, uniqueID); return(TRUE);}
-"false"         {count(); yylval.bl = false; std::string token_name = "FALSE"; handle_token(token_name, yylineno, column, uniqueID); return(FALSE);}
+"True"          {count(); yylval.str = strdup(yytext); std::string token_name = "TRUE"; handle_token(token_name, yylineno, column, uniqueID); return(TRUE);}
+"False"         {count(); yylval.str = strdup(yytext); std::string token_name = "FALSE"; handle_token(token_name, yylineno, column, uniqueID); return(FALSE);}
 "input"         {count(); std::string token_name = "INPUT"; handle_token(token_name, yylineno, column, uniqueID); return(INPUT);}
 "output"        {count(); std::string token_name = "OUTPUT"; handle_token(token_name, yylineno, column, uniqueID); return(OUTPUT);}
 "print"         {count(); std::string token_name = "PRINT"; handle_token(token_name, yylineno, column, uniqueID); return(PRINT);}
@@ -143,12 +144,12 @@ end \*\/
 "on"            { count(); std::string token_name = "ON_TOKEN"; handle_token(token_name, yylineno, column, uniqueID); return ON_TOKEN;}
 "suffix"        { count(); std::string token_name = "SUFFIXES_TOKEN"; handle_token(token_name, yylineno, column, uniqueID); return SUFFIXES_TOKEN;}
 "join"          { count(); std::string token_name = "JOINFUNC"; handle_token(token_name, yylineno, column, uniqueID); return JOINFUNC;}
-[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); std::string token_name = "EXPONENTIAL"; handle_token(token_name, yylineno, column, uniqueID); return EXPONENTIAL;}
-[0-9]+(\.[0-9]+)?%                     {count(); std::string token_name = "PERCENTAGE"; handle_token(token_name, yylineno, column, uniqueID); return PERCENTAGE;}
-[0-9]+(\.[0-9]+)                       {count(); yylval.in = atof(yytext); std::string token_name = "FLOATNUM"; handle_token(token_name, yylineno, column, uniqueID); return FLOATNUM;}
+[0-9]+(\.[0-9]+)?([eE][+-]?[0-9]+)     {count(); yylval.str = strdup(yytext);std::string token_name = "EXPONENTIAL"; handle_token(token_name, yylineno, column, uniqueID); return EXPONENTIAL;}
+[0-9]+(\.[0-9]+)?%                     {count(); yylval.str = strdup(yytext);std::string token_name = "PERCENTAGE"; handle_token(token_name, yylineno, column, uniqueID); return PERCENTAGE;}
+[0-9]+(\.[0-9]+)                       {count(); yylval.flt = atof(yytext); std::string token_name = "FLOATNUM"; handle_token(token_name, yylineno, column, uniqueID); return FLOATNUM;}
 [0-9]+                                 {count(); yylval.in = atoi(yytext); std::string token_name = "INTNUM"; handle_token(token_name, yylineno, column, uniqueID); return INTNUM;}
 "'"[A-Za-z_]+\.csv"'"                  {count(); yylval.str = strdup(yytext); std::string token_name = "CSVFILE"; handle_token(token_name, yylineno, column, uniqueID); return CSVFILE;}
-"'"([^'\\]|\\.)*"'"                    {count(); std::string token_name = "SINGLE_QUOTED_STRING"; handle_token(token_name, yylineno, column, uniqueID); return SINGLE_QUOTED_STRING;}
+"'"([^'\\]|\\.)*"'"                    {count(); yylval.str = strdup(yytext); std::string token_name = "SINGLE_QUOTED_STRING"; handle_token(token_name, yylineno, column, uniqueID); return SINGLE_QUOTED_STRING;}
 \"([^\"\\]|\\.)*\"                     {count(); yylval.str = strdup(yytext); std::string token_name = "STRING"; handle_token(token_name, yylineno, column, uniqueID); return STRING;}
 [A-Za-z][A-Za-z0-9_]*                  {count(); yylval.str = strdup(yytext); std::string token_name = "IDENTIFIER"; handle_token(token_name, yylineno, column, uniqueID); return IDENTIFIER;}
 \/\/[^\n]*                             ;

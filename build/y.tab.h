@@ -59,65 +59,65 @@ extern int yydebug;
     IDENTIFIER = 260,              /* IDENTIFIER  */
     DATAFRAME = 261,               /* DATAFRAME  */
     CSVFILE = 262,                 /* CSVFILE  */
-    INT_TYPE = 263,                /* INT_TYPE  */
-    FLOAT_TYPE = 264,              /* FLOAT_TYPE  */
-    STRING_TYPE = 265,             /* STRING_TYPE  */
-    SKIPNA = 266,                  /* SKIPNA  */
-    FILL = 267,                    /* FILL  */
-    FFILL = 268,                   /* FFILL  */
-    BFILL = 269,                   /* BFILL  */
-    INTERPOLATE = 270,             /* INTERPOLATE  */
-    METHOD = 271,                  /* METHOD  */
-    REGX = 272,                    /* REGX  */
-    INNER = 273,                   /* INNER  */
-    LEFT = 274,                    /* LEFT  */
-    RIGHT = 275,                   /* RIGHT  */
-    OUTER = 276,                   /* OUTER  */
-    SEP = 277,                     /* SEP  */
-    HEADER = 278,                  /* HEADER  */
-    INDEX_COL = 279,               /* INDEX_COL  */
-    USECOLS = 280,                 /* USECOLS  */
-    INDEX = 281,                   /* INDEX  */
-    DROP = 282,                    /* DROP  */
-    INPLACE = 283,                 /* INPLACE  */
-    AXIS = 284,                    /* AXIS  */
-    NUMERIC = 285,                 /* NUMERIC  */
-    LOOP = 286,                    /* LOOP  */
-    IF = 287,                      /* IF  */
-    ELSE = 288,                    /* ELSE  */
-    ELSEIF = 289,                  /* ELSEIF  */
-    BREAK = 290,                   /* BREAK  */
-    CONTINUE = 291,                /* CONTINUE  */
-    RTRN = 292,                    /* RTRN  */
-    FUNC = 293,                    /* FUNC  */
-    FLOATNUM = 294,                /* FLOATNUM  */
-    STRING = 295,                  /* STRING  */
-    TRUE = 296,                    /* TRUE  */
-    FALSE = 297,                   /* FALSE  */
+    EXPONENTIAL = 263,             /* EXPONENTIAL  */
+    PERCENTAGE = 264,              /* PERCENTAGE  */
+    INNER = 265,                   /* INNER  */
+    LEFT = 266,                    /* LEFT  */
+    RIGHT = 267,                   /* RIGHT  */
+    OUTER = 268,                   /* OUTER  */
+    INT_TYPE = 269,                /* INT_TYPE  */
+    FLOAT_TYPE = 270,              /* FLOAT_TYPE  */
+    STRING_TYPE = 271,             /* STRING_TYPE  */
+    SKIPNA = 272,                  /* SKIPNA  */
+    FILL = 273,                    /* FILL  */
+    FFILL = 274,                   /* FFILL  */
+    BFILL = 275,                   /* BFILL  */
+    INTERPOLATE = 276,             /* INTERPOLATE  */
+    METHOD = 277,                  /* METHOD  */
+    REGX = 278,                    /* REGX  */
+    SEP = 279,                     /* SEP  */
+    HEADER = 280,                  /* HEADER  */
+    INDEX_COL = 281,               /* INDEX_COL  */
+    USECOLS = 282,                 /* USECOLS  */
+    INDEX = 283,                   /* INDEX  */
+    DROP = 284,                    /* DROP  */
+    INPLACE = 285,                 /* INPLACE  */
+    AXIS = 286,                    /* AXIS  */
+    NUMERIC = 287,                 /* NUMERIC  */
+    LOOP = 288,                    /* LOOP  */
+    IF = 289,                      /* IF  */
+    ELSE = 290,                    /* ELSE  */
+    ELSEIF = 291,                  /* ELSEIF  */
+    BREAK = 292,                   /* BREAK  */
+    CONTINUE = 293,                /* CONTINUE  */
+    RTRN = 294,                    /* RTRN  */
+    FUNC = 295,                    /* FUNC  */
+    FLOATNUM = 296,                /* FLOATNUM  */
+    STRING = 297,                  /* STRING  */
     SINGLE_QUOTED_STRING = 298,    /* SINGLE_QUOTED_STRING  */
-    INPUT = 299,                   /* INPUT  */
-    OUTPUT = 300,                  /* OUTPUT  */
-    ADD_ASSIGN_OPERATOR = 301,     /* ADD_ASSIGN_OPERATOR  */
-    SUB_ASSIGN_OPERATOR = 302,     /* SUB_ASSIGN_OPERATOR  */
-    MUL_ASSIGN_OPERATOR = 303,     /* MUL_ASSIGN_OPERATOR  */
-    DIV_ASSIGN_OPERATOR = 304,     /* DIV_ASSIGN_OPERATOR  */
-    MOD_ASSIGN_OPERATOR = 305,     /* MOD_ASSIGN_OPERATOR  */
-    LE_OPERATOR = 306,             /* LE_OPERATOR  */
-    GE_OPERATOR = 307,             /* GE_OPERATOR  */
-    DEQ_OPERATOR = 308,            /* DEQ_OPERATOR  */
-    NE_OPERATOR = 309,             /* NE_OPERATOR  */
-    PERCENTAGE = 310,              /* PERCENTAGE  */
-    INTEGER = 311,                 /* INTEGER  */
-    SEMICOLON = 312,               /* SEMICOLON  */
-    AND_OPERATOR = 313,            /* AND_OPERATOR  */
-    OR_OPERATOR = 314,             /* OR_OPERATOR  */
-    NOT_OPERATOR = 315,            /* NOT_OPERATOR  */
-    INC_OPERATOR = 316,            /* INC_OPERATOR  */
-    DEC_OPERATOR = 317,            /* DEC_OPERATOR  */
-    RIGHTSHIFT_OPERATOR = 318,     /* RIGHTSHIFT_OPERATOR  */
-    LEFTSHIFT_OPERATOR = 319,      /* LEFTSHIFT_OPERATOR  */
-    ELLIPSIS = 320,                /* ELLIPSIS  */
-    EXPONENTIAL = 321,             /* EXPONENTIAL  */
+    TRUE = 299,                    /* TRUE  */
+    FALSE = 300,                   /* FALSE  */
+    INPUT = 301,                   /* INPUT  */
+    OUTPUT = 302,                  /* OUTPUT  */
+    ADD_ASSIGN_OPERATOR = 303,     /* ADD_ASSIGN_OPERATOR  */
+    SUB_ASSIGN_OPERATOR = 304,     /* SUB_ASSIGN_OPERATOR  */
+    MUL_ASSIGN_OPERATOR = 305,     /* MUL_ASSIGN_OPERATOR  */
+    DIV_ASSIGN_OPERATOR = 306,     /* DIV_ASSIGN_OPERATOR  */
+    MOD_ASSIGN_OPERATOR = 307,     /* MOD_ASSIGN_OPERATOR  */
+    LE_OPERATOR = 308,             /* LE_OPERATOR  */
+    GE_OPERATOR = 309,             /* GE_OPERATOR  */
+    DEQ_OPERATOR = 310,            /* DEQ_OPERATOR  */
+    NE_OPERATOR = 311,             /* NE_OPERATOR  */
+    INTEGER = 312,                 /* INTEGER  */
+    SEMICOLON = 313,               /* SEMICOLON  */
+    AND_OPERATOR = 314,            /* AND_OPERATOR  */
+    OR_OPERATOR = 315,             /* OR_OPERATOR  */
+    NOT_OPERATOR = 316,            /* NOT_OPERATOR  */
+    INC_OPERATOR = 317,            /* INC_OPERATOR  */
+    DEC_OPERATOR = 318,            /* DEC_OPERATOR  */
+    RIGHTSHIFT_OPERATOR = 319,     /* RIGHTSHIFT_OPERATOR  */
+    LEFTSHIFT_OPERATOR = 320,      /* LEFTSHIFT_OPERATOR  */
+    ELLIPSIS = 321,                /* ELLIPSIS  */
     DUST = 322,                    /* DUST  */
     FUNCTIONCALL = 323,            /* FUNCTIONCALL  */
     PRINT = 324,                   /* PRINT  */
@@ -161,65 +161,65 @@ extern int yydebug;
 #define IDENTIFIER 260
 #define DATAFRAME 261
 #define CSVFILE 262
-#define INT_TYPE 263
-#define FLOAT_TYPE 264
-#define STRING_TYPE 265
-#define SKIPNA 266
-#define FILL 267
-#define FFILL 268
-#define BFILL 269
-#define INTERPOLATE 270
-#define METHOD 271
-#define REGX 272
-#define INNER 273
-#define LEFT 274
-#define RIGHT 275
-#define OUTER 276
-#define SEP 277
-#define HEADER 278
-#define INDEX_COL 279
-#define USECOLS 280
-#define INDEX 281
-#define DROP 282
-#define INPLACE 283
-#define AXIS 284
-#define NUMERIC 285
-#define LOOP 286
-#define IF 287
-#define ELSE 288
-#define ELSEIF 289
-#define BREAK 290
-#define CONTINUE 291
-#define RTRN 292
-#define FUNC 293
-#define FLOATNUM 294
-#define STRING 295
-#define TRUE 296
-#define FALSE 297
+#define EXPONENTIAL 263
+#define PERCENTAGE 264
+#define INNER 265
+#define LEFT 266
+#define RIGHT 267
+#define OUTER 268
+#define INT_TYPE 269
+#define FLOAT_TYPE 270
+#define STRING_TYPE 271
+#define SKIPNA 272
+#define FILL 273
+#define FFILL 274
+#define BFILL 275
+#define INTERPOLATE 276
+#define METHOD 277
+#define REGX 278
+#define SEP 279
+#define HEADER 280
+#define INDEX_COL 281
+#define USECOLS 282
+#define INDEX 283
+#define DROP 284
+#define INPLACE 285
+#define AXIS 286
+#define NUMERIC 287
+#define LOOP 288
+#define IF 289
+#define ELSE 290
+#define ELSEIF 291
+#define BREAK 292
+#define CONTINUE 293
+#define RTRN 294
+#define FUNC 295
+#define FLOATNUM 296
+#define STRING 297
 #define SINGLE_QUOTED_STRING 298
-#define INPUT 299
-#define OUTPUT 300
-#define ADD_ASSIGN_OPERATOR 301
-#define SUB_ASSIGN_OPERATOR 302
-#define MUL_ASSIGN_OPERATOR 303
-#define DIV_ASSIGN_OPERATOR 304
-#define MOD_ASSIGN_OPERATOR 305
-#define LE_OPERATOR 306
-#define GE_OPERATOR 307
-#define DEQ_OPERATOR 308
-#define NE_OPERATOR 309
-#define PERCENTAGE 310
-#define INTEGER 311
-#define SEMICOLON 312
-#define AND_OPERATOR 313
-#define OR_OPERATOR 314
-#define NOT_OPERATOR 315
-#define INC_OPERATOR 316
-#define DEC_OPERATOR 317
-#define RIGHTSHIFT_OPERATOR 318
-#define LEFTSHIFT_OPERATOR 319
-#define ELLIPSIS 320
-#define EXPONENTIAL 321
+#define TRUE 299
+#define FALSE 300
+#define INPUT 301
+#define OUTPUT 302
+#define ADD_ASSIGN_OPERATOR 303
+#define SUB_ASSIGN_OPERATOR 304
+#define MUL_ASSIGN_OPERATOR 305
+#define DIV_ASSIGN_OPERATOR 306
+#define MOD_ASSIGN_OPERATOR 307
+#define LE_OPERATOR 308
+#define GE_OPERATOR 309
+#define DEQ_OPERATOR 310
+#define NE_OPERATOR 311
+#define INTEGER 312
+#define SEMICOLON 313
+#define AND_OPERATOR 314
+#define OR_OPERATOR 315
+#define NOT_OPERATOR 316
+#define INC_OPERATOR 317
+#define DEC_OPERATOR 318
+#define RIGHTSHIFT_OPERATOR 319
+#define LEFTSHIFT_OPERATOR 320
+#define ELLIPSIS 321
 #define DUST 322
 #define FUNCTIONCALL 323
 #define PRINT 324
