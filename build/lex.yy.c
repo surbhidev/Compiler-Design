@@ -1,5 +1,5 @@
 
-#line 3 "lex.yy.c"
+#line 2 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -702,8 +702,8 @@ ST<int, SymbolInfo> symbolTable;
 // Counter for unique IDs
 int uniqueID = 1;
 
+#line 705 "lex.yy.c"
 #line 706 "lex.yy.c"
-#line 707 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -922,7 +922,7 @@ YY_DECL
 	{
 #line 49 "../src/readCode.l"
 
-#line 926 "lex.yy.c"
+#line 925 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1202,7 +1202,7 @@ YY_RULE_SETUP
 case 45:
 YY_RULE_SETUP
 #line 94 "../src/readCode.l"
-{count(); std::string token_name = "NOT_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(NOT_OPERATOR);}
+{count(); yylval.str = strdup(yytext); std::string token_name = "NOT_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(NOT_OPERATOR);}
 	YY_BREAK
 case 46:
 YY_RULE_SETUP
@@ -1242,12 +1242,12 @@ YY_RULE_SETUP
 case 53:
 YY_RULE_SETUP
 #line 102 "../src/readCode.l"
-{count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('<');}
+{count(); yylval.str = strdup(yytext); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('<');}
 	YY_BREAK
 case 54:
 YY_RULE_SETUP
 #line 103 "../src/readCode.l"
-{count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('>');}
+{count(); yylval.str = strdup(yytext); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('>');}
 	YY_BREAK
 case 55:
 YY_RULE_SETUP
@@ -1553,7 +1553,7 @@ YY_RULE_SETUP
 #line 163 "../src/readCode.l"
 ECHO;
 	YY_BREAK
-#line 1557 "lex.yy.c"
+#line 1556 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

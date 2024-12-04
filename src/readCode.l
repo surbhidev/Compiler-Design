@@ -91,7 +91,7 @@ end \*\/
 ">="            {count(); std::string token_name = "GE_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(GE_OPERATOR);}
 "=="            {count(); std::string token_name = "DEQ_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(DEQ_OPERATOR);}
 "!="            {count(); std::string token_name = "NE_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(NE_OPERATOR);}
-"!"             {count(); std::string token_name = "NOT_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(NOT_OPERATOR);}
+"!"             {count(); yylval.str = strdup(yytext); std::string token_name = "NOT_OPERATOR"; handle_token(token_name, yylineno, column, uniqueID); return(NOT_OPERATOR);}
 ";"             {count(); std::string token_name = "SEMICOLON"; handle_token(token_name, yylineno, column, uniqueID); return(SEMICOLON);}
 "+"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('+');}
 "-"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('-');}
@@ -99,8 +99,8 @@ end \*\/
 "/"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('/');}
 "%"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('%');}
 "="             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('=');}
-"<"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('<');}
-">"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('>');}
+"<"             {count(); yylval.str = strdup(yytext); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('<');}
+">"             {count(); yylval.str = strdup(yytext); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('>');}
 "&"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('&');}
 "^"			    {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('^');}
 "|"             {count(); std::string token_name = yytext; handle_token(token_name, yylineno, column, uniqueID); return('|');}

@@ -97,22 +97,22 @@ extern int yydebug;
     SINGLE_QUOTED_STRING = 298,    /* SINGLE_QUOTED_STRING  */
     TRUE = 299,                    /* TRUE  */
     FALSE = 300,                   /* FALSE  */
-    INPUT = 301,                   /* INPUT  */
-    OUTPUT = 302,                  /* OUTPUT  */
-    ADD_ASSIGN_OPERATOR = 303,     /* ADD_ASSIGN_OPERATOR  */
-    SUB_ASSIGN_OPERATOR = 304,     /* SUB_ASSIGN_OPERATOR  */
-    MUL_ASSIGN_OPERATOR = 305,     /* MUL_ASSIGN_OPERATOR  */
-    DIV_ASSIGN_OPERATOR = 306,     /* DIV_ASSIGN_OPERATOR  */
-    MOD_ASSIGN_OPERATOR = 307,     /* MOD_ASSIGN_OPERATOR  */
-    LE_OPERATOR = 308,             /* LE_OPERATOR  */
-    GE_OPERATOR = 309,             /* GE_OPERATOR  */
-    DEQ_OPERATOR = 310,            /* DEQ_OPERATOR  */
-    NE_OPERATOR = 311,             /* NE_OPERATOR  */
-    INTEGER = 312,                 /* INTEGER  */
-    SEMICOLON = 313,               /* SEMICOLON  */
-    AND_OPERATOR = 314,            /* AND_OPERATOR  */
-    OR_OPERATOR = 315,             /* OR_OPERATOR  */
-    NOT_OPERATOR = 316,            /* NOT_OPERATOR  */
+    NOT_OPERATOR = 301,            /* NOT_OPERATOR  */
+    INPUT = 302,                   /* INPUT  */
+    OUTPUT = 303,                  /* OUTPUT  */
+    ADD_ASSIGN_OPERATOR = 304,     /* ADD_ASSIGN_OPERATOR  */
+    SUB_ASSIGN_OPERATOR = 305,     /* SUB_ASSIGN_OPERATOR  */
+    MUL_ASSIGN_OPERATOR = 306,     /* MUL_ASSIGN_OPERATOR  */
+    DIV_ASSIGN_OPERATOR = 307,     /* DIV_ASSIGN_OPERATOR  */
+    MOD_ASSIGN_OPERATOR = 308,     /* MOD_ASSIGN_OPERATOR  */
+    LE_OPERATOR = 309,             /* LE_OPERATOR  */
+    GE_OPERATOR = 310,             /* GE_OPERATOR  */
+    DEQ_OPERATOR = 311,            /* DEQ_OPERATOR  */
+    NE_OPERATOR = 312,             /* NE_OPERATOR  */
+    INTEGER = 313,                 /* INTEGER  */
+    SEMICOLON = 314,               /* SEMICOLON  */
+    AND_OPERATOR = 315,            /* AND_OPERATOR  */
+    OR_OPERATOR = 316,             /* OR_OPERATOR  */
     INC_OPERATOR = 317,            /* INC_OPERATOR  */
     DEC_OPERATOR = 318,            /* DEC_OPERATOR  */
     RIGHTSHIFT_OPERATOR = 319,     /* RIGHTSHIFT_OPERATOR  */
@@ -199,22 +199,22 @@ extern int yydebug;
 #define SINGLE_QUOTED_STRING 298
 #define TRUE 299
 #define FALSE 300
-#define INPUT 301
-#define OUTPUT 302
-#define ADD_ASSIGN_OPERATOR 303
-#define SUB_ASSIGN_OPERATOR 304
-#define MUL_ASSIGN_OPERATOR 305
-#define DIV_ASSIGN_OPERATOR 306
-#define MOD_ASSIGN_OPERATOR 307
-#define LE_OPERATOR 308
-#define GE_OPERATOR 309
-#define DEQ_OPERATOR 310
-#define NE_OPERATOR 311
-#define INTEGER 312
-#define SEMICOLON 313
-#define AND_OPERATOR 314
-#define OR_OPERATOR 315
-#define NOT_OPERATOR 316
+#define NOT_OPERATOR 301
+#define INPUT 302
+#define OUTPUT 303
+#define ADD_ASSIGN_OPERATOR 304
+#define SUB_ASSIGN_OPERATOR 305
+#define MUL_ASSIGN_OPERATOR 306
+#define DIV_ASSIGN_OPERATOR 307
+#define MOD_ASSIGN_OPERATOR 308
+#define LE_OPERATOR 309
+#define GE_OPERATOR 310
+#define DEQ_OPERATOR 311
+#define NE_OPERATOR 312
+#define INTEGER 313
+#define SEMICOLON 314
+#define AND_OPERATOR 315
+#define OR_OPERATOR 316
 #define INC_OPERATOR 317
 #define DEC_OPERATOR 318
 #define RIGHTSHIFT_OPERATOR 319
@@ -255,7 +255,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 30 "../src/rc_parser.y"
+#line 33 "../src/rc_parser.y"
 
     int in;
     float flt;

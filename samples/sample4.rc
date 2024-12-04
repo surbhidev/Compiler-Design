@@ -1,0 +1,17 @@
+input 'weather_data.csv';
+df(df_1) = read('weather_data.csv');
+
+if(suvedh==1)
+{
+    print("super");
+}
+else
+{
+    print("not wow");
+}
+
+loop(i=0; i<10; i=i+1)
+{
+    suvedh = suvedh+1;
+    suvedh = 100;
+}

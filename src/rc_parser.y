@@ -15,6 +15,9 @@ int yylex();
 int yyparse();
 int yywrap();
 
+// Global var for indentation of loop body
+int indent = 0;
+
 #ifdef __cplusplus
 }
 #endif
@@ -50,6 +53,11 @@ extern FILE* lex_output;
 %type <str> mean_numerical mean_body missing_value_body missing_value_body_confirm aggregate_function_calls
 %type <str> exchange_body_optional exchange_value to_exchange concat_body
 %type <str> suffixes_clause on_clause how_list how_clause operators grouping actual_parameters expressions
+%type <str> Function_Declaration argument_list print_expressions Loop_Statement Sub_Loop_Statement conditional_body
+%type <str> initializtion Identifier_List update loop_body statment_list statement Function_Assignment_Statement
+%type <str> predicate_list predicate logical_operators comparison_operators Conditional_Statements else_if_loop 
+%type <str> function_body Function_Loop_Statement return_statement Function_Print_Statement strings_list
+%type <str> Conditional_Statements_1 Conditional_Statements_2 Conditional_Statements_3 Conditional_Statements_4
 %token INT_TYPE FLOAT_TYPE STRING_TYPE SKIPNA
 %token FILL FFILL BFILL INTERPOLATE METHOD REGX
 %token SEP HEADER INDEX_COL USECOLS INDEX
@@ -57,11 +65,11 @@ extern FILE* lex_output;
 %token LOOP IF ELSE ELSEIF BREAK CONTINUE RTRN FUNC
 %token <flt> FLOATNUM 
 %token <str> STRING SINGLE_QUOTED_STRING
-%token <str> TRUE FALSE 
+%token <str> TRUE FALSE NOT_OPERATOR
 %token INPUT OUTPUT ADD_ASSIGN_OPERATOR SUB_ASSIGN_OPERATOR
 %token MUL_ASSIGN_OPERATOR DIV_ASSIGN_OPERATOR MOD_ASSIGN_OPERATOR
 %token LE_OPERATOR GE_OPERATOR DEQ_OPERATOR NE_OPERATOR
-%token INTEGER SEMICOLON AND_OPERATOR OR_OPERATOR NOT_OPERATOR
+%token INTEGER SEMICOLON AND_OPERATOR OR_OPERATOR
 %token INC_OPERATOR DEC_OPERATOR RIGHTSHIFT_OPERATOR LEFTSHIFT_OPERATOR
 %token ELLIPSIS DUST FUNCTIONCALL PRINT CONSTANT
 %token READCSVFUNC HEADFUNC TAILFUNC RESETINDEXFUNC TOCSVFUNC DESCRIBEFUNC MEANFUNC MODEFUNC MEDIANFUNC SUMFUNC MINFUNC MAXFUNC MISSVALUEFUNC EXCHANGEVALUEFUNC GROUPBYFUNC CONCATFUNC MERGEFUNC JOINFUNC
@@ -79,7 +87,7 @@ declaration_statement:
     | Function_Declaration {fprintf(yacc_output,"\n");}
     | input_statement {fprintf(yacc_output,"\n");}
     | Print_Statement {fprintf(yacc_output,"\n");}
-    | Loop_Statement {fprintf(yacc_output,"\n");}
+    | Loop_Statement {fprintf(yacc_output,"%s\n", $1);}
     | function_call_statement SEMICOLON {fprintf(yacc_output,"\n");}
     | Conditional_Statements {fprintf(yacc_output,"\n");}
     ;
@@ -203,7 +211,6 @@ expressions:
 Function_Declaration:
     FUNC IDENTIFIER '(' argument_list ')'
     '{' function_body '}'
-
     {
         fprintf(yacc_output,"def %s(%s):\n\t%s",$2,$4,$7);
     }
@@ -214,51 +221,65 @@ argument_list:
                                                         $$ = $1;
                                                     }
     | argument_list ',' IDENTIFIER
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "%s,%s",$1,$3);
-                                                                                $$ = strdup(buffer);
-                                                                            }
-    |
+                                                    { 
+                                                        char buffer[256]; 
+                                                        snprintf(buffer, sizeof(buffer), "%s,%s",$1,$3);
+                                                        $$ = strdup(buffer);
+                                                    }
+    | {$$ = strdup("");}
     ;
 
 function_body:
     '{' loop_body '}'
-                                                                            {
-
-                                                                            }
-    | Function_Assignment_Statement SEMICOLON function_body
-    | Function_Loop_Statement function_body
+                                                    {
+                                                        $$ = $2;
+                                                    }
+    | Function_Assignment_Statement SEMICOLON function_body  {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s\n%s", $1,$3);
+                                        $$ = strdup(buffer);}
+    | Function_Loop_Statement function_body {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s\n%s", $1,$2);
+                                        $$ = strdup(buffer);}
     // | Identifier_List SEMICOLON function_body
-    | Function_Print_Statement SEMICOLON function_body
-    | RTRN return_statement SEMICOLON
+    | Function_Print_Statement SEMICOLON function_body  {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s\n%s", $1,$3);
+                                        $$ = strdup(buffer);}
+    | RTRN return_statement SEMICOLON  {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "return %s\n", $2);
+                                        $$ = strdup(buffer);}
     ;
 
 return_statement:
-    expressions
+    expressions {$$ = $1;}
     ;
 
 Function_Print_Statement:
-    PRINT '(' print_expressions ')'
+    PRINT '(' print_expressions ')' {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "print(%s)\n", $3);
+                                        $$ = strdup(buffer);}
     ;
 
 print_expressions:
-    expressions
-    | strings_list
-    | print_expressions ',' strings_list    //expr , string
-    | print_expressions ',' expressions // string or expr, expr
+    expressions {$$ = $1;}
+    | strings_list {$$ = $1;}
+    | print_expressions ',' strings_list {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s, %s", $1,$3);
+                                        $$ = strdup(buffer);}
+    | print_expressions ',' expressions {char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s, %s", $1,$3);
+                                        $$ = strdup(buffer);}
     ;
 
 strings_list:
-    STRING
+    STRING  {$$ = $1;}
     ;
 
 Function_Loop_Statement:
-    Sub_Loop_Statement
+    Sub_Loop_Statement {$$ = $1;}
     ;
 
 Print_Statement:
-    PRINT '(' print_expressions ')' SEMICOLON
+    PRINT '(' print_expressions ')' SEMICOLON { fprintf(yacc_output, "print(%s)", $3);}
     ;
 
 // function_call_statement:
@@ -268,7 +289,6 @@ Print_Statement:
 aggregate_function_calls:
     dataframe'[' single_quoted_string_list ']' '.' MEANFUNC '(' ')'
                                                                         { 
-                                                                                    
                                                                                     char *input = $1; // $1 is the string passed from the 'dataframe' rule
                                                                                     char identifier[100]; // Buffer to store the extracted identifier
 
@@ -716,7 +736,6 @@ function_call_statement:
                                                     }    
     | dataframe '.' TAILFUNC '(' head_tail_body ')'
                                                     { 
-                                                                
                                                                 char *input = $1; // $1 is the string passed from the 'dataframe' rule
                                                                 char identifier[100]; // Buffer to store the extracted identifier
 
@@ -778,15 +797,12 @@ function_call_statement:
                                                                         {
                                                                             if(!strcmp($5,"drop = True"))
                                                                             {
-                                                                                
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), "%s.reset_index(%s %s)\n",identifier,$5,$6);
                                                                                 $$ = strdup(buffer);
                                                                             }
                                                                             else
                                                                             {
-                                                                                
-                                                                                
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), "%s.set_index(%s)\n",identifier,$5);
                                                                                 $$ = strdup(buffer);
@@ -894,14 +910,10 @@ function_call_statement:
                                                                 }
                                                                 strncpy(identifier, start + 1, length);
                                                                 identifier[length] = '\0'; // Null-terminate the string
-    
-                                                
 
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), "%s.%s%s)\n", identifier, $5, $6);
                                                                 $$ = strdup(buffer);
-                                                                
-
                                                     }
     | dataframe '.' EXCHANGEVALUEFUNC '(' to_exchange ',' exchange_value exchange_body_optional ')'
                                                             { 
@@ -1077,11 +1089,11 @@ dataframe_list:
 
 to_exchange:
     REGX SINGLE_QUOTED_STRING
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "to_replace=r%s", $2);
-                                                                                $$ = strdup(buffer);
-                                                                            }
+                                                                    { 
+                                                                        char buffer[256]; 
+                                                                        snprintf(buffer, sizeof(buffer), "to_replace=r%s", $2);
+                                                                        $$ = strdup(buffer);
+                                                                    }
     ;
 
 exchange_value:
@@ -1349,26 +1361,26 @@ single_quoted_string_list:
 
 actual_parameters:
     expressions
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "%s", $1);
-                                                                                $$ = strdup(buffer);
-                                                                            }
+                                                { 
+                                                    char buffer[256]; 
+                                                    snprintf(buffer, sizeof(buffer), "%s", $1);
+                                                    $$ = strdup(buffer);
+                                                }
     | actual_parameters ',' expressions
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "%s,%s", $1,$3);
-                                                                                $$ = strdup(buffer);
-                                                                            }
+                                                { 
+                                                    char buffer[256]; 
+                                                    snprintf(buffer, sizeof(buffer), "%s,%s", $1,$3);
+                                                    $$ = strdup(buffer);
+                                                }
     ;
 
 grouping:
     '(' expressions ')'                             
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "(%s)", $2);
-                                                                                $$ = strdup(buffer);
-                                                                            }
+                                                { 
+                                                    char buffer[256]; 
+                                                    snprintf(buffer, sizeof(buffer), "(%s)", $2);
+                                                    $$ = strdup(buffer);
+                                                }
     ;
 
 operators:
@@ -1384,44 +1396,23 @@ operators:
     ;
 
 Loop_Statement:
-    Sub_Loop_Statement                                                                  { 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "%s", $1);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
+Sub_Loop_Statement                      { 
+                                            indent += 1;
+                                            char buffer[256]; 
+                                            snprintf(buffer, sizeof(buffer), "%s", $1);
+                                            $$ = strdup(buffer);
+                                           // indent -= 1;
+                                        }
     ;
 
 Sub_Loop_Statement:
     LOOP '(' initializtion SEMICOLON predicate_list SEMICOLON update ')'
     '{' loop_body '}'
-
-                                                                                        {
-                                                                                            char left[100], right[100];  // Buffers for the two parts
-                                                                                                char *equal_sign;
-
-                                                                                                // Find the '=' symbol in the string
-                                                                                            char* input = $3;
-                                                                                                equal_sign = strchr(input, '=');
-
-                                                                                                if (equal_sign != NULL) {
-                                                                                                    // Copy the part before '=' into 'left'
-                                                                                                    size_t left_length = equal_sign - input;
-                                                                                                    strncpy(left, input, left_length);
-                                                                                                    left[left_length] = '\0';  // Null-terminate the string
-
-                                                                                                    // Copy the part after '=' into 'right'
-                                                                                                    strcpy(right, equal_sign + 1);
-
-                                                                                                    // Output the results
-                                                                                                    printf("Left: %s\n", left);
-                                                                                                    printf("Right: %s\n", right);
-                                                                                                } else {
-                                                                                                    printf("Error: '=' not found in the string.\n");
-                                                                                                } 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "for %s in range (%s)", $1,$3);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
+                    {
+                        char buffer[256]; 
+                        snprintf(buffer, sizeof(buffer), "%s\nwhile(%s):\n%s\n\t%s", $3, $5, $10, $7);
+                        $$ = strdup(buffer);
+                    }
     ;
 
 initializtion:
@@ -1429,20 +1420,20 @@ initializtion:
     ;
 
 Identifier_List:
-    IDENTIFIER '=' INTNUM                                                               { 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "%s = %d", $1,$3);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
-    | IDENTIFIER '=' FLOATNUM                                                           { 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "%s = %f", $1,$3);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
+    IDENTIFIER '=' INTNUM           { 
+                                        char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s = %d", $1,$3);
+                                        $$ = strdup(buffer);
+                                    }
+    | IDENTIFIER '=' FLOATNUM       { 
+                                        char buffer[256]; 
+                                        snprintf(buffer, sizeof(buffer), "%s = %f", $1,$3);
+                                        $$ = strdup(buffer);
+                                    }
     ;
 
 update:
-    Function_Assignment_Statement
+    Function_Assignment_Statement { $$ = strdup($1); }
     ;
 
 loop_body:
@@ -1450,12 +1441,16 @@ loop_body:
     ;
 
 statment_list:
-    statement                           { $$ = strdup($1); } 
-    | statment_list statement                               { 
-                                                                char buffer[256]; 
-                                                                snprintf(buffer, sizeof(buffer), "%s%s", $1, $2);
-                                                                $$ = strdup(buffer);
-                                                            }
+    statement                           {  
+                                            char buffer[256] ;
+                                            snprintf(buffer, sizeof(buffer), "\t%s\n", $1); 
+                                            $$ = strdup(buffer);
+                                        } 
+    | statment_list statement           { 
+                                            char buffer[256]; 
+                                            snprintf(buffer, sizeof(buffer), "%s\t%s", $1, $2);
+                                            $$ = strdup(buffer);
+                                        }
     ;
 
 statement:
@@ -1469,61 +1464,89 @@ statement:
                                                                 snprintf(buffer, sizeof(buffer), "%s", $1);
                                                                 $$ = strdup(buffer);
                                                             }
-    | Conditional_Statements
-    | Loop_Statement
-    | BREAK SEMICOLON
-    | CONTINUE SEMICOLON
-    | function_call_statement
-    | Function_Assignment_Statement
+    | Conditional_Statements            {$$ = $1;}
+    | Loop_Statement                    {$$ = $1;}                       
+    | BREAK SEMICOLON                   { 
+                                            char buffer[256]; 
+                                            snprintf(buffer, sizeof(buffer), "break");
+                                            $$ = strdup(buffer);
+                                        }
+    | CONTINUE SEMICOLON                { 
+                                            char buffer[256]; 
+                                            snprintf(buffer, sizeof(buffer), "continue");
+                                            $$ = strdup(buffer);
+                                        }
+    | function_call_statement           {$$ = $1;}
+    | Function_Assignment_Statement     {$$ = $1;}
     // |
     ;
 
 Function_Assignment_Statement:
-    IDENTIFIER '=' expressions                                                          { 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "%s = %s", $1 ,$3);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
-    | dataframe_list '=' function_call_statement                                        { 
-                                                                                            char buffer[256]; 
-                                                                                            snprintf(buffer, sizeof(buffer), "%s = %s", $1,$3);
-                                                                                            $$ = strdup(buffer);
-                                                                                        }
+    IDENTIFIER '=' expressions                  { 
+                                                    char buffer[256]; 
+                                                    snprintf(buffer, sizeof(buffer), "%s = %s", $1 ,$3);
+                                                    $$ = strdup(buffer);
+                                                }
+    | dataframe_list '=' function_call_statement            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s = %s", $1,$3);
+                                                                $$ = strdup(buffer);
+                                                            }
     ;
 
 predicate_list:
-    predicate
-    | predicate_list logical_operators predicate
-    | predicate_list comparison_operators predicate
+    predicate { $$ = strdup($1);}
+    | predicate_list logical_operators predicate            { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1,$2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | predicate_list comparison_operators predicate         { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1,$2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
     ;
 
 predicate:
-    expressions comparison_operators expressions
-    | expressions logical_operators expressions
-    | NOT_OPERATOR expressions
+    expressions comparison_operators expressions { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1,$2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | expressions logical_operators expressions { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s %s", $1,$2, $3);
+                                                                $$ = strdup(buffer);
+                                                            }
+    | NOT_OPERATOR expressions { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%s %s", $1,$2);
+                                                                $$ = strdup(buffer);
+                                                            }
     ;
 
 logical_operators:
-    AND_OPERATOR
-    | OR_OPERATOR
+    AND_OPERATOR    { $$ = strdup(" and ");}
+    | OR_OPERATOR { $$ = strdup(" or ");}
     ;
 
 comparison_operators:
-    '<'
-    | '>'
-    | LE_OPERATOR
-    | GE_OPERATOR
-    | NE_OPERATOR
-    | DEQ_OPERATOR
+    '<' {$$ = strdup("<");}
+    | '>'   {$$ = strdup(">");}
+    | LE_OPERATOR   {$$ = strdup(" <= ");}
+    | GE_OPERATOR   {$$ = strdup(" >= ");}
+    | NE_OPERATOR   {$$ = strdup(" != ");}
+    | DEQ_OPERATOR  {$$ = strdup(" == ");}
     ;
 
 how_clause:
     HOW_TOKEN '=' how_list
-                                                            { 
-                                                                char buffer[256]; 
-                                                                snprintf(buffer, sizeof(buffer), "how = %s", $3);
-                                                                $$ = strdup(buffer);
-                                                            } 
+                                { 
+                                    char buffer[256]; 
+                                    snprintf(buffer, sizeof(buffer), "how = %s", $3);
+                                    $$ = strdup(buffer);
+                                } 
     ;
 
 how_list:
@@ -1561,35 +1584,66 @@ suffixes_clause:
     ;
 
 Conditional_Statements:
-    Conditional_Statements_1
-    | Conditional_Statements_2
-    | Conditional_Statements_3
-    | Conditional_Statements_4
+    Conditional_Statements_1 { $$ = strdup($1);}
+    | Conditional_Statements_2 { $$ = strdup($1);}
+    | Conditional_Statements_3 { $$ = strdup($1);}
+    | Conditional_Statements_4 { $$ = strdup($1);}
     ;
 
 Conditional_Statements_1:
     IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
     ELSE '{' conditional_body '}'
+    {
+        indent += 1;
+        fprintf(yacc_output, "if(%s):\n%s\n%selse:\n%s", $3, $6, $8, $11);
+        indent -= 1;
+    }
     ;
 
 Conditional_Statements_2:
     IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
+    {
+        indent += 1;
+        fprintf(yacc_output, "if(%s):\n%s\n%s", $3, $6, $8);
+        indent -= 1;
+    }
     ;
 
 Conditional_Statements_3:
     IF '(' predicate_list ')' '{' conditional_body '}'
     ELSE '{' conditional_body '}'
+    {
+        indent += 1;
+        fprintf(yacc_output, "if(%s):\n%s\nelse:\n%s", $3, $6, $10);
+        indent -= 1;
+    }
     ;
 
 Conditional_Statements_4:
     IF '(' predicate_list ')' '{' conditional_body '}'
+    {
+        indent += 1;
+        fprintf(yacc_output, "if(%s):\n%s\n", $3, $6);
+        indent -= 1;
+    }
     ;
 
 else_if_loop:
-    ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    ELSEIF '(' predicate_list ')' '{' conditional_body '}' {
+        indent += 1;
+        char buffer[256];
+        snprintf(buffer, sizeof(buffer), "elif(%s):\n%s\n", $3, $6);
+        $$ = strdup(buffer);
+        indent -= 1;
+    }
     | else_if_loop ELSEIF '(' predicate_list ')' '{' conditional_body '}'
+    { 
+        char buffer[256]; 
+        snprintf(buffer, sizeof(buffer), "%s\nelif(%s):\n%s\n", $1, $4, $7);
+        $$ = strdup(buffer);
+    }
     ;
 
 conditional_body:
