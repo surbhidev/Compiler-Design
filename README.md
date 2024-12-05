@@ -8,7 +8,7 @@ cd build
 ```
 Execute the makefile
 ```
-make -s run ../samples/sample1.rc
+make -s run INPUT_FILE=../samples/sample1.rc
 ```
 Replace sample1.rc by sample2.rc, sample3.rc etc to run other sample codes
 
