@@ -1,4 +1,4 @@
-INPUT_FILE = ../samples/samp.rc  # default input file
+INPUT_FILE ?= ../samples/samp.rc  # default input file
 
 run: execute_code2
 	python3 yacc_output.py
