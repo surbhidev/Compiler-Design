@@ -263,11 +263,44 @@ print_expressions:
     expressions {$$ = $1;}
     | strings_list {$$ = $1;}
     | print_expressions ',' strings_list {char buffer[256]; 
-                                        snprintf(buffer, sizeof(buffer), "%s, %s", $1,$3);
+                                        snprintf(buffer, sizeof(buffer), "%s,%s", $1,$3);
                                         $$ = strdup(buffer);}
     | print_expressions ',' expressions {char buffer[256]; 
-                                        snprintf(buffer, sizeof(buffer), "%s, %s", $1,$3);
+                                        snprintf(buffer, sizeof(buffer), "%s,%s", $1,$3);
                                         $$ = strdup(buffer);}
+    | dataframe 
+                                                                        { 
+                                                                                    char *input = $1; // $1 is the string passed from the 'dataframe' rule
+                                                                                    char identifier[100]; // Buffer to store the extracted identifier
+
+                                                                                    // Find the opening parenthesis
+                                                                                    char *start = strchr(input, '(');
+                                                                                    if (start == NULL) {
+                                                                                        yyerror("Invalid format: no opening parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Find the closing parenthesis
+                                                                                    char *end = strchr(start, ')');
+                                                                                    if (end == NULL) {
+                                                                                        yyerror("Invalid format: no closing parenthesis found");
+                                                                                        YYABORT;
+                                                                                    }
+
+                                                                                    // Copy the content between parentheses into the identifier buffer
+                                                                                    size_t length = end - start - 1;
+                                                                                    if (length <= 0 || length >= sizeof(identifier)) {
+                                                                                        yyerror("Invalid identifier length");
+                                                                                        YYABORT;
+                                                                                    }
+                                                                                    strncpy(identifier, start + 1, length);
+                                                                                    identifier[length] = '\0'; // Null-terminate the string
+
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s", identifier);
+                                                                                    $$ = strdup(buffer);
+                                                                                    
+                                                                        }
     ;
 
 strings_list:
@@ -733,6 +766,10 @@ function_call_statement:
 
     
                                                                 fprintf(yacc_output,"%s.head(%s)\n", identifier, $5);
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.head(%s)", identifier, $5);
+                                                                                    $$ = strdup(buffer);
+
                                                     }    
     | dataframe '.' TAILFUNC '(' head_tail_body ')'
                                                     { 
@@ -764,6 +801,10 @@ function_call_statement:
 
     
                                                                 fprintf(yacc_output,"%s.tail(%s)\n", identifier, $5);
+                                                                char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.tail(%s)", identifier, $5);
+                                                                                    $$ = strdup(buffer);
+
                                                     }  
     | dataframe '.' RESETINDEXFUNC '(' reset_index_body_drop reset_index_body_implace ')'
                                                                     { 
@@ -1689,7 +1730,7 @@ int main(int argc, char **argv) {
     // Clean up
     fclose(yyin);
 
-    int runStatus = system("python3 ../outputs/yacc_output.py > ../outputs/printed1.cpp");
+    int runStatus = system("python3 ../outputs/yacc_output.py");
 
     // Check if the script executed successfully
     if (runStatus != 0) {
