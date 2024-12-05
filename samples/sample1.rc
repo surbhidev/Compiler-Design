@@ -1,95 +1,23 @@
-//reads csv file as input
-input 'weather_data.csv';
-// Converts CSV file into data frame
-df(df_1) = read('weather_data.csv');
-// Fills missing values with the median
-df(df_filled) = df(df_1).miss_value(fill,df(df_1).median());
-df(df_filled) = df(df_1).miss_value(fill,method = ffill);
-df(df_1).exchange(regex'[0-9]',intro);
-// Calculate aggregate statistics
-mean_temp = df(df_filled)['Temperature'].mean();
-max_wind_speed = df(df_filled)['WindSpeed'].max();
-sum_precipitation = df(df_filled)['Precipitation'].sum();
-// df(df1), df(df_2) = df(df2).groupby('Category');
-concat([df(df1), df(df2)], axis=0);
-merge(df(df_1),df(df_2),how = inner, on = 'ok', suffix = ['ok','ok']); 
-// Print results
-print(mean_temp);
-print("hi");
-print(mean_temp, "Mean Temperature:");
-print("Max Wind Speed:" , max_wind_speed);
-print("Total Precipitation:" , sum_precipitation);
-df(df_filled).head(5);
-df(df_filled).tail(5);
-delhi = df(df_1)['sbhj','sadbk'].mean();
-column_mean = df(df_2).mean(axis = 0);
-concat([df(df1), df(df2)], axis=0);
-suvedh(a,b);
-if(suvedh==1)
-{
-    print("super");
-}
+input 'data.csv';
 
-if(suvedh==1)
-{
-    print("super");
-}
+df(df_1) = read('data.csv',sep=',',header=0,  index_col=0, usecols=['Name', 'Age', 'Department', 'Salary']);
 
-if(suvedh==1)
-{
-    print("super");
-}
-else
-{
-    print("not wow");
-}
+print("First 10 rows of the DataFrame:");
+print(df(df_1).head(10));
 
-if(suvedh==1)
-{
-    print("super");
-    if(suvedh==1)
-    {
-        print("super");
-    }
-    else if(suvedh == 2)
-    {
-        df(df_filled) = df(df_1).miss_value(drop);
-    }
-}
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-}
+print("Last 10 rows of the DataFrame:");
+print(df(df_1).tail(10));
 
-if(suvedh==1)
-{
-    print("super");
-}
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-}
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-}
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-}
-else if(suvedh == 2)
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-}
-else 
-{
-    df(df_filled) = df(df_1).miss_value(drop);
-    loop(i=0; i<10; i=i+1)
-    {
-        suvedh = suvedh+1;
-    }
-}
+df(df_1).reset_index(drop=True, inplace=True);
+print("\nDataFrame after resetting the index:");
+print(df(df_1));
 
-a=2*(3+4);
+df(df_1).to_csv('output.csv', index=True);
 
-a=4*foo(3,4)+e*d-3+4^5/0;
+df(df_1) = df(df_1).miss_value(fill,50);
+print("\nDataFrame after filling missing values with 0:");
+print(df(df_1));
+
+df(df_1).exchange(regex '\b60000\b', 50000, inplace=True);
+print("\nDataFrame after exchanging a value:");
+print(df(df_1));

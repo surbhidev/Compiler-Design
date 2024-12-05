@@ -1,3 +1,6 @@
+execute_code: ../outputs/yacc_output.py
+	python ../outputs/yacc_output.py
+
 myshell: lex.yy.c y.tab.c
 	g++ -I../src -o raccoons.out lex.yy.c y.tab.c
 

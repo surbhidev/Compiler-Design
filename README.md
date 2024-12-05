@@ -13,7 +13,7 @@ make
 Run the DSL code
 (Sample command with sample1.rc file)
 ```
-./raccoons.out ../samples/sample1.rc 
+./raccoons.out ../samples/samp.rc 
 ```
 
 **Directory Structure**
