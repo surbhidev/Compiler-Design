@@ -1,7 +1,7 @@
 INPUT_FILE = ../samples/samp.rc  # default input file
 
 run: execute_code2
-	python yacc_output.py
+	python3 yacc_output.py
 
 execute_code2: myshell
 	./raccoons.out $(INPUT_FILE)
