@@ -769,7 +769,7 @@ function_call_statement:
     
                                                                 fprintf(yacc_output,"%s.head(%s)\n", identifier, $5);
                                                                                     char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "print(%s.head(%s))", identifier, $5);
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.head(%s)", identifier, $5);
                                                                                     $$ = strdup(buffer);
 
                                                     }    
@@ -804,7 +804,7 @@ function_call_statement:
     
                                                                 fprintf(yacc_output,"%s.tail(%s)\n", identifier, $5);
                                                                 char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "print(%s.tail(%s))", identifier, $5);
+                                                                                    snprintf(buffer, sizeof(buffer), "%s.tail(%s)", identifier, $5);
                                                                                     $$ = strdup(buffer);
 
                                                     }  
