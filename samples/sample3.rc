@@ -1,12 +1,12 @@
-//reads csv file as input
-input weather_data1.csv;
-// Converts CSV file into data frame
-df=df_filled
-//obtained from EXAMPLE CODE 1
-df2 =read('weather_data1.csv')
-// Merge the two datasets on 'Date'
-merged_df = pd.merge(df, df2, on='Date', how='outer',suffixes=('_1', '_2')));
-// Interpolate missing values
-interpolated_df = merged_df.interpolate(inplace=’False’);
-// Print the first few rows of the merged and interpolated data
-interpolated_df.head();
+input 'weather_data.csv';
+
+// Read the weather data
+df(weather_df) = read('weather_data.csv', sep=',', header=0, index_col=0);
+
+print("Original DataFrame:");
+print(df(weather_df));
+
+// drop rows with missing values 
+df(weather_df) = df(weather_df).miss_value(drop);
+print("\nDataFrame after dropping rows with missing values:");
+print(df(weather_df));
