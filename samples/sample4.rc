@@ -1,17 +1,13 @@
 input 'weather_data.csv';
-df(df_1) = read('weather_data.csv');
 
-if(suvedh==1)
-{
-    print("super");
-}
-else
-{
-    print("not wow");
-}
+// Read the weather data
+df(weather_df) = read('weather_data.csv', sep=',', header=0);
 
-loop(i=0; i<10; i=i+1)
-{
-    suvedh = suvedh+1;
-    suvedh = 100;
-}
+print("Original DataFrame:");
+print(df(weather_df).head());
+
+df(weather_df) = df(weather_df).miss_value(drop);
+print(df(weather_df));
+
+mean_val = df(weather_df).mean(axis=0,numeric=True);
+print(mean_val);
