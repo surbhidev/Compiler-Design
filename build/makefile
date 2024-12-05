@@ -1,5 +1,10 @@
-execute_code: ../outputs/yacc_output.py
-	python ../outputs/yacc_output.py
+INPUT_FILE = ../samples/samp.rc  # default input file
+
+run: execute_code2
+	python yacc_output.py
+
+execute_code2: myshell
+	./raccoons.out $(INPUT_FILE)
 
 myshell: lex.yy.c y.tab.c
 	g++ -I../src -o raccoons.out lex.yy.c y.tab.c
@@ -11,4 +16,4 @@ y.tab.c: ../src/rc_parser.y
 	yacc -d ../src/rc_parser.y
 
 clean:
-	rm -f lex.yy.c y.tab.c y.tab.h raccoons.out
+	rm -f lex.yy.c y.tab.c y.tab.h raccoons.out yacc_output.py
