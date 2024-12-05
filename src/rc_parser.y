@@ -1715,7 +1715,7 @@ int main(int argc, char **argv) {
         return EXIT_FAILURE;
     }
 
-    yacc_output = fopen("../outputs/yacc_output.py", "w");
+    yacc_output = fopen("yacc_output.py", "w");
     fprintf(yacc_output, "import pandas as pd \nimport numpy as np \n \n");
     if(!yacc_output){
         perror("Error: Unable to open yacc_output.txt");
@@ -1732,7 +1732,7 @@ int main(int argc, char **argv) {
     // Clean up
     fclose(yyin);
 
-    int runStatus = system("python3 ../outputs/yacc_output.py");
+    int runStatus = system("python3 yacc_output.py");
 
     // Check if the script executed successfully
     if (runStatus != 0) {

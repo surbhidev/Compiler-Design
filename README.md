@@ -8,13 +8,9 @@ cd build
 ```
 Execute the makefile
 ```
-make
+make -s run ../samples/sample1.rc
 ```
-Run the DSL code
-(Sample command with sample1.rc file)
-```
-./raccoons.out ../samples/samp.rc 
-```
+Replace sample1.rc by sample2.rc, sample3.rc etc to run other sample codes
 
 **Directory Structure**
 1. src - contains all the compiler source code
