@@ -1,5 +1,23 @@
-input 'weather_data.csv';
-// Converts CSV file into data frame
+input 'data.csv';
 
-df(df_1) = read('weather_data.csv');
+df(df_1) = read('data.csv',sep=',',header=0,  index_col=0, usecols=['Name', 'Age', 'Department', 'Salary']);
+
+print("First 10 rows of the DataFrame:");
+print(df(df_1).head(10));
+
+print("Last 10 rows of the DataFrame:");
+print(df(df_1).tail(10));
+
+df(df_1).reset_index(drop=True, inplace=True);
+print("\nDataFrame after resetting the index:");
+print(df(df_1));
+
+df(df_1).to_csv('output.csv', index=True);
+
+df(df_1) = df(df_1).miss_value(fill,50);
+print("\nDataFrame after filling missing values with 0:");
+print(df(df_1));
+
+df(df_1).exchange(regex '\b60000\b', 50000, inplace=True);
+print("\nDataFrame after exchanging a value:");
 print(df(df_1));
