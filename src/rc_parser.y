@@ -112,7 +112,9 @@ input_statement:
     ;
 
 assignment_statement:
-    IDENTIFIER '=' expressions
+    IDENTIFIER '=' expressions{
+        fprintf(yacc_output,"%s = %s",$1,$3);
+    }
     | dataframe_list '=' function_call_statement
                                                             {
                                                                 int count = 0;
@@ -767,7 +769,7 @@ function_call_statement:
     
                                                                 fprintf(yacc_output,"%s.head(%s)\n", identifier, $5);
                                                                                     char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "%s.head(%s)", identifier, $5);
+                                                                                    snprintf(buffer, sizeof(buffer), "print(%s.head(%s))", identifier, $5);
                                                                                     $$ = strdup(buffer);
 
                                                     }    
@@ -802,7 +804,7 @@ function_call_statement:
     
                                                                 fprintf(yacc_output,"%s.tail(%s)\n", identifier, $5);
                                                                 char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "%s.tail(%s)", identifier, $5);
+                                                                                    snprintf(buffer, sizeof(buffer), "print(%s.tail(%s))", identifier, $5);
                                                                                     $$ = strdup(buffer);
 
                                                     }  
@@ -891,7 +893,7 @@ function_call_statement:
                                                                 identifier[length] = '\0'; // Null-terminate the string
 
                                                                 char buffer[256]; 
-                                                                fprintf(yacc_output, "identifier.to_csv(%s)\n", $6);
+                                                                fprintf(yacc_output, "%s.to_csv(%s %s)\n",identifier, $5,$6);
                                                     }
     | dataframe '.' DESCRIBEFUNC '(' ')'             
                                                     {
