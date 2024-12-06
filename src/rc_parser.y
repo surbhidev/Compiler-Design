@@ -36,6 +36,7 @@ extern FILE* lex_output;
     float flt;
     char *str;
     bool bl;
+
 }
 
 %left '+' '-' '\\' '.'
@@ -50,6 +51,7 @@ extern FILE* lex_output;
 %token <in> INTNUM
 %token <str> IDENTIFIER DATAFRAME CSVFILE EXPONENTIAL PERCENTAGE INNER LEFT RIGHT OUTER
 %type <in> axis_bit 
+%type <str> attr_value
 %type <str> dataframe_list dataframe assignment_statement BOOL single_quoted_string_list function_call_statement readcsv_body head_tail_body reset_index_body_drop reset_index_body_implace
 %type <str> mean_numerical mean_body missing_value_body missing_value_body_confirm aggregate_function_calls
 %type <str> exchange_body_optional exchange_value to_exchange concat_body
@@ -1331,10 +1333,16 @@ BOOL:
     ;
 
 reset_index_body_implace:
-    ',' INPLACE '=' BOOL                                                    { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s",$4);
-                                                                                $$ = strdup(buffer);
+    ',' INPLACE '=' attr_value                                              {
+                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), ",inplace = %s",$4);
+                                                                                    $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError: Inplace argument expects boolean value");
+                                                                                    exit(EXIT_FAILURE);
+                                                                                } 
                                                                             }  
     |
                                                                             { 
@@ -1343,6 +1351,19 @@ reset_index_body_implace:
                                                                                 $$ = strdup(buffer);
                                                                             }
     ;
+
+attr_value: BOOL       { $$ = strdup($1 ? "true" : "false"); }
+          | INTNUM     { char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%d", $1);
+                                                                $$ = strdup(buffer); }
+          | FLOATNUM   { char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "%f", $1);
+                                                                $$ = strdup(buffer);}
+          | STRING     { $$ = strdup($1); }
+          ;
+
+
+
 
 head_tail_body:
     INTNUM                                                  { 

@@ -8,7 +8,7 @@ print(df(df_1).head(10));
 print("Last 10 rows of the DataFrame:");
 print(df(df_1).tail(10));
 
-df(df_1).reset_index(drop=True, inplace=True);
+df(df_1).reset_index(drop=True, inplace=67);
 print("\nDataFrame after resetting the index:");
 print(df(df_1));
 
