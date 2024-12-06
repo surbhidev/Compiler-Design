@@ -1178,11 +1178,17 @@ exchange_value:
     ;
 
 exchange_body_optional:
-    ',' INPLACE '=' BOOL exchange_body_optional
-                                                                            { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
-                                                                                $$ = strdup(buffer);
+    ',' INPLACE '=' attr_value exchange_body_optional
+                                                                            {
+                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
+                                                                                    $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                }
                                                                             }   
     | ',' mean_body exchange_body_optional
                                                                             { 
@@ -1237,11 +1243,19 @@ missing_value_body_confirm:
     ;
 
 missing_value_body:
-    ',' INPLACE '=' BOOL missing_value_body
+    ',' INPLACE '=' attr_value missing_value_body
                                                                             { 
+                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
                                                                                 $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                }
+
+                                                                                
                                                                             }
     | ',' mean_body missing_value_body
                                                                             { 
@@ -1287,16 +1301,28 @@ axis_bit:
     ;
 
 mean_numerical:
-    ',' NUMERIC '=' BOOL mean_numerical
+    ',' NUMERIC '=' attr_value mean_numerical
                                                                             { 
+                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ", numeric_only = %s",$4);
                                                                                 $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: Numeric argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                } 
                                                                             }  
-    | ',' SKIPNA '=' BOOL mean_numerical                                    { 
+    | ',' SKIPNA '=' attr_value mean_numerical                                    {
+                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ", skip_na = %s",$4);
                                                                                 $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: SkipNA argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                }
                                                                             } 
     | ',' USECOLS '=' '[' single_quoted_string_list ']' mean_numerical      
                                                                             { 
@@ -1315,15 +1341,27 @@ mean_numerical:
 reset_index_body_drop:
     DROP '=' TRUE    
                                                                             { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "drop = True");
-                                                                                $$ = strdup(buffer);
+                                                                                if(strcmp($3, "True") == 0){
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "drop = True");
+                                                                                    $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: Drop argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                } 
                                                                             }           
     | DROP '=' FALSE ',' USECOLS '=' '[' single_quoted_string_list ']'
                                                                             { 
-                                                                                char buffer[256]; 
-                                                                                snprintf(buffer, sizeof(buffer), "[%s]",$8);
-                                                                                $$ = strdup(buffer);
+                                                                                if(strcmp($3, "False") == 0){
+                                                                                    char buffer[256]; 
+                                                                                    snprintf(buffer, sizeof(buffer), "[%s]",$8);
+                                                                                    $$ = strdup(buffer);
+                                                                                }
+                                                                                else{
+                                                                                    printf("TypeError at line %d: Drop argument expects boolean value \n", yylineno);
+                                                                                    exit(EXIT_FAILURE);
+                                                                                }
                                                                             }  
     ;
 
@@ -1340,7 +1378,7 @@ reset_index_body_implace:
                                                                                     $$ = strdup(buffer);
                                                                                 }
                                                                                 else{
-                                                                                    printf("TypeError: Inplace argument expects boolean value");
+                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
                                                                                     exit(EXIT_FAILURE);
                                                                                 } 
                                                                             }  
@@ -1352,13 +1390,22 @@ reset_index_body_implace:
                                                                             }
     ;
 
-attr_value: BOOL       { $$ = strdup($1 ? "true" : "false"); }
+attr_value: BOOL       { char buffer[256]; 
+                            if($1 == "True"){
+                                snprintf(buffer, sizeof(buffer), "True");
+                                $$ = strdup(buffer);
+                            }
+                            if($1 == "False"){
+                                snprintf(buffer, sizeof(buffer), "False");
+                                $$ = strdup(buffer);
+                            }
+                         }
           | INTNUM     { char buffer[256]; 
-                                                                snprintf(buffer, sizeof(buffer), "%d", $1);
-                                                                $$ = strdup(buffer); }
+                        snprintf(buffer, sizeof(buffer), "%d", $1);
+                        $$ = strdup(buffer); }
           | FLOATNUM   { char buffer[256]; 
-                                                                snprintf(buffer, sizeof(buffer), "%f", $1);
-                                                                $$ = strdup(buffer);}
+                        snprintf(buffer, sizeof(buffer), "%f", $1);
+                        $$ = strdup(buffer);}
           | STRING     { $$ = strdup($1); }
           ;
 
@@ -1400,11 +1447,19 @@ readcsv_body:
                                                                 snprintf(buffer, sizeof(buffer), ", index_col = %d\n", $4);
                                                                 $$ = strdup(buffer);
                                                             }
-    | ',' INDEX '=' BOOL readcsv_body
-                                                            { 
-                                                                char buffer[256]; 
+    | ',' INDEX '=' attr_value readcsv_body
+                                                            {
+                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
+                                                                    char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), ", index = %s\n", $4);
                                                                 $$ = strdup(buffer);
+                                                                }
+                                                                else{
+                                                                    printf("TypeError at line %d: Index argument expects boolean value \n", yylineno);
+                                                                    exit(EXIT_FAILURE);
+                                                                } 
+
+                                                                
                                                             }
     | ',' USECOLS '=' '[' single_quoted_string_list ']' readcsv_body    
                                                             { 

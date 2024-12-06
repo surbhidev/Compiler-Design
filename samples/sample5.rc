@@ -1,3 +1,5 @@
+// NEGATIVE TEST CASE: RETURNS A SEMANTIC ERROR (TYPE ERROR FOR THE INPLACE ARGUMENT IN LINE 13)
+
 input 'data.csv';
 
 df(df_1) = read('data.csv',sep=',',header=0,  index_col=0, usecols=['Name', 'Age', 'Department', 'Salary']);
@@ -8,7 +10,7 @@ print(df(df_1).head(10));
 print("Last 10 rows of the DataFrame:");
 print(df(df_1).tail(10));
 
-df(df_1).reset_index(drop=True, inplace=True);
+df(df_1).reset_index(drop=True, inplace=67);
 print("\nDataFrame after resetting the index:");
 print(df(df_1));
 

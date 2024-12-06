@@ -1,88 +1,88 @@
 
- 1 : INPUT
- 1 : CSVFILE
- 1 : SEMICOLON
- 3 : DATAFRAME
- 3 : (
- 3 : IDENTIFIER
- 3 : )
- 3 : =
- 3 : READCSVFUNC
- 3 : (
+ 3 : INPUT
  3 : CSVFILE
- 3 : ,
- 3 : SEP
- 3 : =
- 3 : SINGLE_QUOTED_STRING
- 3 : ,
- 3 : HEADER
- 3 : =
- 3 : INTNUM
- 3 : ,
- 3 : INDEX_COL
- 3 : =
- 3 : INTNUM
- 3 : ,
- 3 : USECOLS
- 3 : =
- 3 : [
- 3 : SINGLE_QUOTED_STRING
- 3 : ,
- 3 : SINGLE_QUOTED_STRING
- 3 : ,
- 3 : SINGLE_QUOTED_STRING
- 3 : ,
- 3 : SINGLE_QUOTED_STRING
- 3 : ]
- 3 : )
  3 : SEMICOLON
- 5 : PRINT
+ 5 : DATAFRAME
  5 : (
- 5 : STRING
+ 5 : IDENTIFIER
+ 5 : )
+ 5 : =
+ 5 : READCSVFUNC
+ 5 : (
+ 5 : CSVFILE
+ 5 : ,
+ 5 : SEP
+ 5 : =
+ 5 : SINGLE_QUOTED_STRING
+ 5 : ,
+ 5 : HEADER
+ 5 : =
+ 5 : INTNUM
+ 5 : ,
+ 5 : INDEX_COL
+ 5 : =
+ 5 : INTNUM
+ 5 : ,
+ 5 : USECOLS
+ 5 : =
+ 5 : [
+ 5 : SINGLE_QUOTED_STRING
+ 5 : ,
+ 5 : SINGLE_QUOTED_STRING
+ 5 : ,
+ 5 : SINGLE_QUOTED_STRING
+ 5 : ,
+ 5 : SINGLE_QUOTED_STRING
+ 5 : ]
  5 : )
  5 : SEMICOLON
- 6 : PRINT
- 6 : (
- 6 : DATAFRAME
- 6 : (
- 6 : IDENTIFIER
- 6 : )
- 6 : .
- 6 : HEADFUNC
- 6 : (
- 6 : INTNUM
- 6 : )
- 6 : )
- 6 : SEMICOLON
+ 7 : PRINT
+ 7 : (
+ 7 : STRING
+ 7 : )
+ 7 : SEMICOLON
  8 : PRINT
  8 : (
- 8 : STRING
+ 8 : DATAFRAME
+ 8 : (
+ 8 : IDENTIFIER
+ 8 : )
+ 8 : .
+ 8 : HEADFUNC
+ 8 : (
+ 8 : INTNUM
+ 8 : )
  8 : )
  8 : SEMICOLON
- 9 : PRINT
- 9 : (
- 9 : DATAFRAME
- 9 : (
- 9 : IDENTIFIER
- 9 : )
- 9 : .
- 9 : TAILFUNC
- 9 : (
- 9 : INTNUM
- 9 : )
- 9 : )
- 9 : SEMICOLON
+ 10 : PRINT
+ 10 : (
+ 10 : STRING
+ 10 : )
+ 10 : SEMICOLON
+ 11 : PRINT
+ 11 : (
  11 : DATAFRAME
  11 : (
  11 : IDENTIFIER
  11 : )
  11 : .
- 11 : RESETINDEXFUNC
+ 11 : TAILFUNC
  11 : (
- 11 : DROP
- 11 : =
- 11 : TRUE
- 11 : ,
- 11 : INPLACE
- 11 : =
  11 : INTNUM
+ 11 : )
+ 11 : )
+ 11 : SEMICOLON
+ 13 : DATAFRAME
+ 13 : (
+ 13 : IDENTIFIER
+ 13 : )
+ 13 : .
+ 13 : RESETINDEXFUNC
+ 13 : (
+ 13 : DROP
+ 13 : =
+ 13 : TRUE
+ 13 : ,
+ 13 : INPLACE
+ 13 : =
+ 13 : INTNUM
