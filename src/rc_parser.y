@@ -4,7 +4,7 @@
 #include <string.h>
 #include "typechecker.h"
 #include <stdbool.h>
-
+#include "read_sym_chk.h"
 void yyerror(const char *s);
 
 #ifdef __cplusplus
@@ -14,6 +14,7 @@ extern "C" {
 int yylex();
 int yyparse();
 int yywrap();
+int header_present=0,header=-1;
 
 // Global var for indentation of loop body
 int indent = 0;
@@ -732,7 +733,12 @@ aggregate_function_calls:
     ;
 
 function_call_statement:
-    READCSVFUNC '(' CSVFILE readcsv_body ')'        { 
+    READCSVFUNC '(' CSVFILE readcsv_body ')'        {           if(header_present == 1){
+                                                                   
+                                                                   is_valid_header_row($3,header);
+                                               
+                                                                 }
+                                                                process_csvfile($3);
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), "pd.read_csv(%s)\n", $3);
                                                                 $$ = strdup(buffer);
@@ -1354,13 +1360,15 @@ head_tail_body:
 
 readcsv_body:
     ',' SEP '=' SINGLE_QUOTED_STRING readcsv_body                           
-                                                            { 
+                                                            {   is_valid_delimiter($4);
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), ", sep = %s\n", $4);
                                                                 $$ = strdup(buffer);
                                                             }
     | ',' HEADER '=' INTNUM readcsv_body
-                                                            { 
+                                                            {   header_present=1;
+                                                                header=$4;
+                                                                
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), ", header = %d\n", $4);
                                                                 $$ = strdup(buffer);
