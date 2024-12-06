@@ -16,9 +16,6 @@ int yyparse();
 int yywrap();
 int header_present=0,header=-1;
 
-// Global var for indentation of loop body
-int indent = 0;
-
 #ifdef __cplusplus
 }
 #endif
@@ -1524,11 +1521,9 @@ operators:
 
 Loop_Statement:
 Sub_Loop_Statement                      { 
-                                            indent += 1;
                                             char buffer[256]; 
                                             snprintf(buffer, sizeof(buffer), "%s", $1);
                                             $$ = strdup(buffer);
-                                           // indent -= 1;
                                         }
     ;
 
@@ -1722,9 +1717,7 @@ Conditional_Statements_1:
     else_if_loop
     ELSE '{' conditional_body '}'
     {
-        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n%selse:\n%s", $3, $6, $8, $11);
-        indent -= 1;
     }
     ;
 
@@ -1732,9 +1725,7 @@ Conditional_Statements_2:
     IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
     {
-        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n%s", $3, $6, $8);
-        indent -= 1;
     }
     ;
 
@@ -1742,28 +1733,22 @@ Conditional_Statements_3:
     IF '(' predicate_list ')' '{' conditional_body '}'
     ELSE '{' conditional_body '}'
     {
-        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\nelse:\n%s", $3, $6, $10);
-        indent -= 1;
     }
     ;
 
 Conditional_Statements_4:
     IF '(' predicate_list ')' '{' conditional_body '}'
     {
-        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n", $3, $6);
-        indent -= 1;
     }
     ;
 
 else_if_loop:
     ELSEIF '(' predicate_list ')' '{' conditional_body '}' {
-        indent += 1;
         char buffer[256];
         snprintf(buffer, sizeof(buffer), "elif(%s):\n%s\n", $3, $6);
         $$ = strdup(buffer);
-        indent -= 1;
     }
     | else_if_loop ELSEIF '(' predicate_list ')' '{' conditional_body '}'
     { 
@@ -1811,18 +1796,9 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Error: Unable to open lex_output.txt");
     }
 
-    // Call yyparse to parse the input until EOF
+    // calling yyparse to parse the input until EOF
     yyparse();
-    // Clean up
     fclose(yyin);
-
-    int runStatus = system("python3 yacc_output.py");
-
-    // Check if the script executed successfully
-    if (runStatus != 0) {
-        fprintf(stderr, "Error running the Python script\n");
-        return 1; // Exit with an error code
-    }
 
     return 0;
 }
