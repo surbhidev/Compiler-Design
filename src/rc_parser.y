@@ -5,6 +5,15 @@
 #include "typechecker.h"
 #include <stdbool.h>
 #include "read_sym_chk.h"
+#include "head_tail_chk.h"
+DataFrameManager df_manager;
+#include "df_chks.h"
+DataFrameStore store = createStore();
+char* df_file;
+char* column_name;
+char* df_names[3];
+int df_cnt =0;
+int concat_axis = -1;
 void yyerror(const char *s);
 
 #ifdef __cplusplus
@@ -15,6 +24,9 @@ int yylex();
 int yyparse();
 int yywrap();
 int header_present=0,header=-1;
+
+// Global var for indentation of loop body
+int indent = 0;
 
 #ifdef __cplusplus
 }
@@ -33,7 +45,6 @@ extern FILE* lex_output;
     float flt;
     char *str;
     bool bl;
-
 }
 
 %left '+' '-' '\\' '.'
@@ -48,7 +59,6 @@ extern FILE* lex_output;
 %token <in> INTNUM
 %token <str> IDENTIFIER DATAFRAME CSVFILE EXPONENTIAL PERCENTAGE INNER LEFT RIGHT OUTER
 %type <in> axis_bit 
-%type <str> attr_value
 %type <str> dataframe_list dataframe assignment_statement BOOL single_quoted_string_list function_call_statement readcsv_body head_tail_body reset_index_body_drop reset_index_body_implace
 %type <str> mean_numerical mean_body missing_value_body missing_value_body_confirm aggregate_function_calls
 %type <str> exchange_body_optional exchange_value to_exchange concat_body
@@ -109,14 +119,30 @@ input_statement:
 
         free(cleaned_filename); */
     }
-    ;
+    
 
 assignment_statement:
     IDENTIFIER '=' expressions{
         fprintf(yacc_output,"%s = %s",$1,$3);
     }
     | dataframe_list '=' function_call_statement
-                                                            {
+                                                            {   df_manager.addDataFrame($1);
+                                                                    char file_name[512];
+								    strncpy(file_name, df_file, sizeof(file_name) - 1);
+								    file_name[sizeof(file_name) - 1] = '\0'; // Ensure null termination
+
+								    // Strip surrounding quotes
+								    strip_quotes(file_name);
+
+								    // Define the prefix path
+								    const char *prefix = "../build/";
+
+								    // Buffer to store the full path
+								    char full_path[512];
+								    // Concatenate the prefix and the file name
+                                                                snprintf(full_path, sizeof(full_path), "%s%s", prefix, file_name);
+                                                                
+                                                                adddfname(&store,$1,df_file);
                                                                 int count = 0;
                                                                 for(int i = 0; i < strlen($1); i++){
                                                                     if($1[i] == ','){
@@ -135,7 +161,7 @@ assignment_statement:
     ;
 
 dataframe:
-    DATAFRAME '(' IDENTIFIER ')'                            {
+    DATAFRAME '(' IDENTIFIER ')'                            {   
                                                                 char buffer[256];
                                                                 snprintf(buffer, sizeof(buffer), "%s(%s)", $1, $3);
                                                                 $$ = strdup(buffer);
@@ -300,7 +326,10 @@ print_expressions:
 
                                                                                     char buffer[256]; 
                                                                                     snprintf(buffer, sizeof(buffer), "%s", identifier);
+                                                                                    df_names[df_cnt]=identifier;
+                                                                                    df_cnt++;
                                                                                     $$ = strdup(buffer);
+                                                                                    
                                                                                     
                                                                         }
     ;
@@ -738,6 +767,7 @@ function_call_statement:
                                                
                                                                  }
                                                                 process_csvfile($3);
+                                                                df_file = $3;
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), "pd.read_csv(%s)\n", $3);
                                                                 $$ = strdup(buffer);
@@ -996,10 +1026,18 @@ function_call_statement:
                                                             }  
     | CONCATFUNC '(' '[' dataframe_list ']' ',' concat_body ')'
                                                                             { 
+                                                                            if(concat_axis == 1){
+                                                                                    
+//haveSameNumberOfRows(findDataFrameNameByFilePath(&store,df_names[0]),findDataFrameNameByFilePath(&store,df_names[1]));
+                                                                                 }else{
+                                                                               //haveSameNumberOfColumns(findDataFrameNameByFilePath(&store,df_names[0]),findDataFrameNameByFilePath(&store,df_names[1]));  
+                                                                                 
+                                                                                 }
                                                                                 fprintf(yacc_output,"pd.concat([%s],%s)", $4,$7);
                                                                             }
     | MERGEFUNC '(' dataframe ',' dataframe ',' how_clause ',' on_clause ',' suffixes_clause ')'
-                                                                            { 
+                                                                            { //printf("csv1=%s,csv2=%s",findDataFrameNameByFilePath(&store,$3),findDataFrameNameByFilePath(&store,$5));
+                                                                            //columnExistsInBoth(findDataFrameNameByFilePath($3),findDataFrameNameByFilePath($4));
                                                                                 char *input = $3; // $1 is the string passed from the 'dataframe' rule
                                                                                 char identifier[100]; // Buffer to store the extracted identifier
 
@@ -1064,7 +1102,7 @@ function_call_statement:
 
 concat_body:
     AXIS '=' axis_bit
-                                                                            { 
+                                                                            {   concat_axis = $3;
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), "axis = %d", $3);
                                                                                 $$ = strdup(buffer);
@@ -1175,17 +1213,11 @@ exchange_value:
     ;
 
 exchange_body_optional:
-    ',' INPLACE '=' attr_value exchange_body_optional
-                                                                            {
-                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
-                                                                                    char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
-                                                                                    $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                }
+    ',' INPLACE '=' BOOL exchange_body_optional
+                                                                            { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
+                                                                                $$ = strdup(buffer);
                                                                             }   
     | ',' mean_body exchange_body_optional
                                                                             { 
@@ -1240,19 +1272,11 @@ missing_value_body_confirm:
     ;
 
 missing_value_body:
-    ',' INPLACE '=' attr_value missing_value_body
+    ',' INPLACE '=' BOOL missing_value_body
                                                                             { 
-                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ",inplace = %s", $4);
                                                                                 $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                }
-
-                                                                                
                                                                             }
     | ',' mean_body missing_value_body
                                                                             { 
@@ -1298,28 +1322,16 @@ axis_bit:
     ;
 
 mean_numerical:
-    ',' NUMERIC '=' attr_value mean_numerical
+    ',' NUMERIC '=' BOOL mean_numerical
                                                                             { 
-                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ", numeric_only = %s",$4);
                                                                                 $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Numeric argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                } 
                                                                             }  
-    | ',' SKIPNA '=' attr_value mean_numerical                                    {
-                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
+    | ',' SKIPNA '=' BOOL mean_numerical                                    { 
                                                                                 char buffer[256]; 
                                                                                 snprintf(buffer, sizeof(buffer), ", skip_na = %s",$4);
                                                                                 $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: SkipNA argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                }
                                                                             } 
     | ',' USECOLS '=' '[' single_quoted_string_list ']' mean_numerical      
                                                                             { 
@@ -1338,27 +1350,15 @@ mean_numerical:
 reset_index_body_drop:
     DROP '=' TRUE    
                                                                             { 
-                                                                                if(strcmp($3, "True") == 0){
-                                                                                    char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "drop = True");
-                                                                                    $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Drop argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                } 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "drop = True");
+                                                                                $$ = strdup(buffer);
                                                                             }           
     | DROP '=' FALSE ',' USECOLS '=' '[' single_quoted_string_list ']'
                                                                             { 
-                                                                                if(strcmp($3, "False") == 0){
-                                                                                    char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), "[%s]",$8);
-                                                                                    $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Drop argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                }
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), "[%s]",$8);
+                                                                                $$ = strdup(buffer);
                                                                             }  
     ;
 
@@ -1368,16 +1368,10 @@ BOOL:
     ;
 
 reset_index_body_implace:
-    ',' INPLACE '=' attr_value                                              {
-                                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
-                                                                                    char buffer[256]; 
-                                                                                    snprintf(buffer, sizeof(buffer), ",inplace = %s",$4);
-                                                                                    $$ = strdup(buffer);
-                                                                                }
-                                                                                else{
-                                                                                    printf("TypeError at line %d: Inplace argument expects boolean value \n", yylineno);
-                                                                                    exit(EXIT_FAILURE);
-                                                                                } 
+    ',' INPLACE '=' BOOL                                                    { 
+                                                                                char buffer[256]; 
+                                                                                snprintf(buffer, sizeof(buffer), ",inplace = %s",$4);
+                                                                                $$ = strdup(buffer);
                                                                             }  
     |
                                                                             { 
@@ -1386,28 +1380,6 @@ reset_index_body_implace:
                                                                                 $$ = strdup(buffer);
                                                                             }
     ;
-
-attr_value: BOOL       { char buffer[256]; 
-                            if($1 == "True"){
-                                snprintf(buffer, sizeof(buffer), "True");
-                                $$ = strdup(buffer);
-                            }
-                            if($1 == "False"){
-                                snprintf(buffer, sizeof(buffer), "False");
-                                $$ = strdup(buffer);
-                            }
-                         }
-          | INTNUM     { char buffer[256]; 
-                        snprintf(buffer, sizeof(buffer), "%d", $1);
-                        $$ = strdup(buffer); }
-          | FLOATNUM   { char buffer[256]; 
-                        snprintf(buffer, sizeof(buffer), "%f", $1);
-                        $$ = strdup(buffer);}
-          | STRING     { $$ = strdup($1); }
-          ;
-
-
-
 
 head_tail_body:
     INTNUM                                                  { 
@@ -1444,19 +1416,11 @@ readcsv_body:
                                                                 snprintf(buffer, sizeof(buffer), ", index_col = %d\n", $4);
                                                                 $$ = strdup(buffer);
                                                             }
-    | ',' INDEX '=' attr_value readcsv_body
-                                                            {
-                                                                if((strcmp($4, "True") == 0) || (strcmp($4, "False") == 0)){
-                                                                    char buffer[256]; 
+    | ',' INDEX '=' BOOL readcsv_body
+                                                            { 
+                                                                char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), ", index = %s\n", $4);
                                                                 $$ = strdup(buffer);
-                                                                }
-                                                                else{
-                                                                    printf("TypeError at line %d: Index argument expects boolean value \n", yylineno);
-                                                                    exit(EXIT_FAILURE);
-                                                                } 
-
-                                                                
                                                             }
     | ',' USECOLS '=' '[' single_quoted_string_list ']' readcsv_body    
                                                             { 
@@ -1521,9 +1485,11 @@ operators:
 
 Loop_Statement:
 Sub_Loop_Statement                      { 
+                                            indent += 1;
                                             char buffer[256]; 
                                             snprintf(buffer, sizeof(buffer), "%s", $1);
                                             $$ = strdup(buffer);
+                                           // indent -= 1;
                                         }
     ;
 
@@ -1687,10 +1653,15 @@ how_list:
                                                                 snprintf(buffer, sizeof(buffer), "'%s'", $1);
                                                                 $$ = strdup(buffer);
                                                             } 
+    | LEFT                                                { 
+                                                                char buffer[256]; 
+                                                                snprintf(buffer, sizeof(buffer), "'%s'", $1);
+                                                                $$ = strdup(buffer);
+                                                            } 
     ;
 
 on_clause:
-    ON_TOKEN '=' SINGLE_QUOTED_STRING                       { 
+    ON_TOKEN '=' SINGLE_QUOTED_STRING                       {   column_name = $3;
                                                                 char buffer[256]; 
                                                                 snprintf(buffer, sizeof(buffer), "on = %s", $3);
                                                                 $$ = strdup(buffer);
@@ -1717,7 +1688,9 @@ Conditional_Statements_1:
     else_if_loop
     ELSE '{' conditional_body '}'
     {
+        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n%selse:\n%s", $3, $6, $8, $11);
+        indent -= 1;
     }
     ;
 
@@ -1725,7 +1698,9 @@ Conditional_Statements_2:
     IF '(' predicate_list ')' '{' conditional_body '}'
     else_if_loop
     {
+        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n%s", $3, $6, $8);
+        indent -= 1;
     }
     ;
 
@@ -1733,22 +1708,28 @@ Conditional_Statements_3:
     IF '(' predicate_list ')' '{' conditional_body '}'
     ELSE '{' conditional_body '}'
     {
+        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\nelse:\n%s", $3, $6, $10);
+        indent -= 1;
     }
     ;
 
 Conditional_Statements_4:
     IF '(' predicate_list ')' '{' conditional_body '}'
     {
+        indent += 1;
         fprintf(yacc_output, "if(%s):\n%s\n", $3, $6);
+        indent -= 1;
     }
     ;
 
 else_if_loop:
     ELSEIF '(' predicate_list ')' '{' conditional_body '}' {
+        indent += 1;
         char buffer[256];
         snprintf(buffer, sizeof(buffer), "elif(%s):\n%s\n", $3, $6);
         $$ = strdup(buffer);
+        indent -= 1;
     }
     | else_if_loop ELSEIF '(' predicate_list ')' '{' conditional_body '}'
     { 
@@ -1796,9 +1777,18 @@ int main(int argc, char **argv) {
         fprintf(stderr, "Error: Unable to open lex_output.txt");
     }
 
-    // calling yyparse to parse the input until EOF
+    // Call yyparse to parse the input until EOF
     yyparse();
+    // Clean up
     fclose(yyin);
+
+    int runStatus = system("python3 yacc_output.py");
+
+    // Check if the script executed successfully
+    if (runStatus != 0) {
+        fprintf(stderr, "Error running the Python script\n");
+        return 1; // Exit with an error code
+    }
 
     return 0;
 }
