@@ -1,5 +1,5 @@
 
-#line 2 "lex.yy.c"
+#line 3 "lex.yy.c"
 
 #define  YY_INT_ALIGNED short int
 
@@ -702,8 +702,8 @@ ST<int, SymbolInfo> symbolTable;
 // Counter for unique IDs
 int uniqueID = 1;
 
-#line 705 "lex.yy.c"
 #line 706 "lex.yy.c"
+#line 707 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -922,7 +922,7 @@ YY_DECL
 	{
 #line 49 "../src/readCode.l"
 
-#line 925 "lex.yy.c"
+#line 926 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -1553,7 +1553,7 @@ YY_RULE_SETUP
 #line 163 "../src/readCode.l"
 ECHO;
 	YY_BREAK
-#line 1556 "lex.yy.c"
+#line 1557 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 

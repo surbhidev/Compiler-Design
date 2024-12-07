@@ -1,9 +1,11 @@
+//Negative test case -- Semantic error: inplace argument expects bool value
+
 input 'data.csv';
 
 df(df_1) = read('data.csv',sep=';',header=1,  index_col=0, usecols=['Name', 'Age', 'Department', 'Salary']);
 
 print("First 10 rows of the DataFrame:");
-print(df(df_3).head(10));
+print(df(newdf).head(10));
 
 print("Last 10 rows of the DataFrame:");
 print(df(df_1).tail(10));

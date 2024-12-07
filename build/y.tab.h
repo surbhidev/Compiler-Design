@@ -1,8 +1,8 @@
-/* A Bison parser, made by GNU Bison 3.8.2.  */
+/* A Bison parser, made by GNU Bison 3.5.1.  */
 
 /* Bison interface for Yacc-like parsers in C
 
-   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2021 Free Software Foundation,
+   Copyright (C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation,
    Inc.
 
    This program is free software: you can redistribute it and/or modify
@@ -16,7 +16,7 @@
    GNU General Public License for more details.
 
    You should have received a copy of the GNU General Public License
-   along with this program.  If not, see <https://www.gnu.org/licenses/>.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -31,9 +31,8 @@
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
-/* DO NOT RELY ON FEATURES THAT ARE NOT DOCUMENTED in the manual,
-   especially those whose name start with YY_ or yy_.  They are
-   private implementation details that can be changed or removed.  */
+/* Undocumented macros, especially those whose name start with YY_,
+   are private implementation details.  Do not rely on them.  */
 
 #ifndef YY_YY_Y_TAB_H_INCLUDED
 # define YY_YY_Y_TAB_H_INCLUDED
@@ -45,150 +44,141 @@
 extern int yydebug;
 #endif
 
-/* Token kinds.  */
+/* Token type.  */
 #ifndef YYTOKENTYPE
 # define YYTOKENTYPE
   enum yytokentype
   {
-    YYEMPTY = -2,
-    YYEOF = 0,                     /* "end of file"  */
-    YYerror = 256,                 /* error  */
-    YYUNDEF = 257,                 /* "invalid token"  */
-    LOWER_THAN_ELSE = 258,         /* LOWER_THAN_ELSE  */
-    INTNUM = 259,                  /* INTNUM  */
-    IDENTIFIER = 260,              /* IDENTIFIER  */
-    DATAFRAME = 261,               /* DATAFRAME  */
-    CSVFILE = 262,                 /* CSVFILE  */
-    EXPONENTIAL = 263,             /* EXPONENTIAL  */
-    PERCENTAGE = 264,              /* PERCENTAGE  */
-    INNER = 265,                   /* INNER  */
-    LEFT = 266,                    /* LEFT  */
-    RIGHT = 267,                   /* RIGHT  */
-    OUTER = 268,                   /* OUTER  */
-    INT_TYPE = 269,                /* INT_TYPE  */
-    FLOAT_TYPE = 270,              /* FLOAT_TYPE  */
-    STRING_TYPE = 271,             /* STRING_TYPE  */
-    SKIPNA = 272,                  /* SKIPNA  */
-    FILL = 273,                    /* FILL  */
-    FFILL = 274,                   /* FFILL  */
-    BFILL = 275,                   /* BFILL  */
-    INTERPOLATE = 276,             /* INTERPOLATE  */
-    METHOD = 277,                  /* METHOD  */
-    REGX = 278,                    /* REGX  */
-    SEP = 279,                     /* SEP  */
-    HEADER = 280,                  /* HEADER  */
-    INDEX_COL = 281,               /* INDEX_COL  */
-    USECOLS = 282,                 /* USECOLS  */
-    INDEX = 283,                   /* INDEX  */
-    DROP = 284,                    /* DROP  */
-    INPLACE = 285,                 /* INPLACE  */
-    AXIS = 286,                    /* AXIS  */
-    NUMERIC = 287,                 /* NUMERIC  */
-    LOOP = 288,                    /* LOOP  */
-    IF = 289,                      /* IF  */
-    ELSE = 290,                    /* ELSE  */
-    ELSEIF = 291,                  /* ELSEIF  */
-    BREAK = 292,                   /* BREAK  */
-    CONTINUE = 293,                /* CONTINUE  */
-    RTRN = 294,                    /* RTRN  */
-    FUNC = 295,                    /* FUNC  */
-    FLOATNUM = 296,                /* FLOATNUM  */
-    STRING = 297,                  /* STRING  */
-    SINGLE_QUOTED_STRING = 298,    /* SINGLE_QUOTED_STRING  */
-    TRUE = 299,                    /* TRUE  */
-    FALSE = 300,                   /* FALSE  */
-    NOT_OPERATOR = 301,            /* NOT_OPERATOR  */
-    INPUT = 302,                   /* INPUT  */
-    OUTPUT = 303,                  /* OUTPUT  */
-    ADD_ASSIGN_OPERATOR = 304,     /* ADD_ASSIGN_OPERATOR  */
-    SUB_ASSIGN_OPERATOR = 305,     /* SUB_ASSIGN_OPERATOR  */
-    MUL_ASSIGN_OPERATOR = 306,     /* MUL_ASSIGN_OPERATOR  */
-    DIV_ASSIGN_OPERATOR = 307,     /* DIV_ASSIGN_OPERATOR  */
-    MOD_ASSIGN_OPERATOR = 308,     /* MOD_ASSIGN_OPERATOR  */
-    LE_OPERATOR = 309,             /* LE_OPERATOR  */
-    GE_OPERATOR = 310,             /* GE_OPERATOR  */
-    DEQ_OPERATOR = 311,            /* DEQ_OPERATOR  */
-    NE_OPERATOR = 312,             /* NE_OPERATOR  */
-    INTEGER = 313,                 /* INTEGER  */
-    SEMICOLON = 314,               /* SEMICOLON  */
-    AND_OPERATOR = 315,            /* AND_OPERATOR  */
-    OR_OPERATOR = 316,             /* OR_OPERATOR  */
-    INC_OPERATOR = 317,            /* INC_OPERATOR  */
-    DEC_OPERATOR = 318,            /* DEC_OPERATOR  */
-    RIGHTSHIFT_OPERATOR = 319,     /* RIGHTSHIFT_OPERATOR  */
-    LEFTSHIFT_OPERATOR = 320,      /* LEFTSHIFT_OPERATOR  */
-    ELLIPSIS = 321,                /* ELLIPSIS  */
-    DUST = 322,                    /* DUST  */
-    FUNCTIONCALL = 323,            /* FUNCTIONCALL  */
-    PRINT = 324,                   /* PRINT  */
-    CONSTANT = 325,                /* CONSTANT  */
-    READCSVFUNC = 326,             /* READCSVFUNC  */
-    HEADFUNC = 327,                /* HEADFUNC  */
-    TAILFUNC = 328,                /* TAILFUNC  */
-    RESETINDEXFUNC = 329,          /* RESETINDEXFUNC  */
-    TOCSVFUNC = 330,               /* TOCSVFUNC  */
-    DESCRIBEFUNC = 331,            /* DESCRIBEFUNC  */
-    MEANFUNC = 332,                /* MEANFUNC  */
-    MODEFUNC = 333,                /* MODEFUNC  */
-    MEDIANFUNC = 334,              /* MEDIANFUNC  */
-    SUMFUNC = 335,                 /* SUMFUNC  */
-    MINFUNC = 336,                 /* MINFUNC  */
-    MAXFUNC = 337,                 /* MAXFUNC  */
-    MISSVALUEFUNC = 338,           /* MISSVALUEFUNC  */
-    EXCHANGEVALUEFUNC = 339,       /* EXCHANGEVALUEFUNC  */
-    GROUPBYFUNC = 340,             /* GROUPBYFUNC  */
-    CONCATFUNC = 341,              /* CONCATFUNC  */
-    MERGEFUNC = 342,               /* MERGEFUNC  */
-    JOINFUNC = 343,                /* JOINFUNC  */
-    AXIS_TOKEN = 344,              /* AXIS_TOKEN  */
-    DROP_TOKEN = 345,              /* DROP_TOKEN  */
-    INPLACE_TOKEN = 346,           /* INPLACE_TOKEN  */
-    METHOD_TOKEN = 347,            /* METHOD_TOKEN  */
-    HOW_TOKEN = 348,               /* HOW_TOKEN  */
-    ON_TOKEN = 349,                /* ON_TOKEN  */
-    SUFFIXES_TOKEN = 350,          /* SUFFIXES_TOKEN  */
-    FILL_TOKEN = 351               /* FILL_TOKEN  */
+    LOWER_THAN_ELSE = 258,
+    ELSE = 259,
+    INTNUM = 260,
+    IDENTIFIER = 261,
+    DATAFRAME = 262,
+    CSVFILE = 263,
+    EXPONENTIAL = 264,
+    PERCENTAGE = 265,
+    INNER = 266,
+    LEFT = 267,
+    RIGHT = 268,
+    OUTER = 269,
+    INT_TYPE = 270,
+    FLOAT_TYPE = 271,
+    STRING_TYPE = 272,
+    SKIPNA = 273,
+    FILL = 274,
+    FFILL = 275,
+    BFILL = 276,
+    INTERPOLATE = 277,
+    METHOD = 278,
+    REGX = 279,
+    SEP = 280,
+    HEADER = 281,
+    INDEX_COL = 282,
+    USECOLS = 283,
+    INDEX = 284,
+    DROP = 285,
+    INPLACE = 286,
+    AXIS = 287,
+    NUMERIC = 288,
+    LOOP = 289,
+    IF = 290,
+    ELSEIF = 291,
+    BREAK = 292,
+    CONTINUE = 293,
+    RTRN = 294,
+    FUNC = 295,
+    FLOATNUM = 296,
+    STRING = 297,
+    SINGLE_QUOTED_STRING = 298,
+    TRUE = 299,
+    FALSE = 300,
+    NOT_OPERATOR = 301,
+    INPUT = 302,
+    OUTPUT = 303,
+    ADD_ASSIGN_OPERATOR = 304,
+    SUB_ASSIGN_OPERATOR = 305,
+    MUL_ASSIGN_OPERATOR = 306,
+    DIV_ASSIGN_OPERATOR = 307,
+    MOD_ASSIGN_OPERATOR = 308,
+    LE_OPERATOR = 309,
+    GE_OPERATOR = 310,
+    DEQ_OPERATOR = 311,
+    NE_OPERATOR = 312,
+    INTEGER = 313,
+    SEMICOLON = 314,
+    AND_OPERATOR = 315,
+    OR_OPERATOR = 316,
+    INC_OPERATOR = 317,
+    DEC_OPERATOR = 318,
+    RIGHTSHIFT_OPERATOR = 319,
+    LEFTSHIFT_OPERATOR = 320,
+    ELLIPSIS = 321,
+    DUST = 322,
+    FUNCTIONCALL = 323,
+    PRINT = 324,
+    CONSTANT = 325,
+    READCSVFUNC = 326,
+    HEADFUNC = 327,
+    TAILFUNC = 328,
+    RESETINDEXFUNC = 329,
+    TOCSVFUNC = 330,
+    DESCRIBEFUNC = 331,
+    MEANFUNC = 332,
+    MODEFUNC = 333,
+    MEDIANFUNC = 334,
+    SUMFUNC = 335,
+    MINFUNC = 336,
+    MAXFUNC = 337,
+    MISSVALUEFUNC = 338,
+    EXCHANGEVALUEFUNC = 339,
+    GROUPBYFUNC = 340,
+    CONCATFUNC = 341,
+    MERGEFUNC = 342,
+    JOINFUNC = 343,
+    AXIS_TOKEN = 344,
+    DROP_TOKEN = 345,
+    INPLACE_TOKEN = 346,
+    METHOD_TOKEN = 347,
+    HOW_TOKEN = 348,
+    ON_TOKEN = 349,
+    SUFFIXES_TOKEN = 350,
+    FILL_TOKEN = 351
   };
-  typedef enum yytokentype yytoken_kind_t;
 #endif
-/* Token kinds.  */
-#define YYEMPTY -2
-#define YYEOF 0
-#define YYerror 256
-#define YYUNDEF 257
+/* Tokens.  */
 #define LOWER_THAN_ELSE 258
-#define INTNUM 259
-#define IDENTIFIER 260
-#define DATAFRAME 261
-#define CSVFILE 262
-#define EXPONENTIAL 263
-#define PERCENTAGE 264
-#define INNER 265
-#define LEFT 266
-#define RIGHT 267
-#define OUTER 268
-#define INT_TYPE 269
-#define FLOAT_TYPE 270
-#define STRING_TYPE 271
-#define SKIPNA 272
-#define FILL 273
-#define FFILL 274
-#define BFILL 275
-#define INTERPOLATE 276
-#define METHOD 277
-#define REGX 278
-#define SEP 279
-#define HEADER 280
-#define INDEX_COL 281
-#define USECOLS 282
-#define INDEX 283
-#define DROP 284
-#define INPLACE 285
-#define AXIS 286
-#define NUMERIC 287
-#define LOOP 288
-#define IF 289
-#define ELSE 290
+#define ELSE 259
+#define INTNUM 260
+#define IDENTIFIER 261
+#define DATAFRAME 262
+#define CSVFILE 263
+#define EXPONENTIAL 264
+#define PERCENTAGE 265
+#define INNER 266
+#define LEFT 267
+#define RIGHT 268
+#define OUTER 269
+#define INT_TYPE 270
+#define FLOAT_TYPE 271
+#define STRING_TYPE 272
+#define SKIPNA 273
+#define FILL 274
+#define FFILL 275
+#define BFILL 276
+#define INTERPOLATE 277
+#define METHOD 278
+#define REGX 279
+#define SEP 280
+#define HEADER 281
+#define INDEX_COL 282
+#define USECOLS 283
+#define INDEX 284
+#define DROP 285
+#define INPLACE 286
+#define AXIS 287
+#define NUMERIC 288
+#define LOOP 289
+#define IF 290
 #define ELSEIF 291
 #define BREAK 292
 #define CONTINUE 293
@@ -255,7 +245,7 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 34 "../src/rc_parser.y"
+#line 31 "../src/rc_parser.y"
 
     int in;
     float flt;
@@ -263,7 +253,7 @@ union YYSTYPE
     bool bl;
 
 
-#line 267 "y.tab.h"
+#line 257 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -274,8 +264,6 @@ typedef union YYSTYPE YYSTYPE;
 
 extern YYSTYPE yylval;
 
-
 int yyparse (void);
-
 
 #endif /* !YY_YY_Y_TAB_H_INCLUDED  */
